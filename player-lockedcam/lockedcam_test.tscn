@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d13bt6klhddbo"]
+
+[ext_resource type="PackedScene" uid="uid://cjchb78a2wlru" path="res://player-lockedcam/player.tscn" id="1_d11ds"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m0h26"]
+
+[node name="FreecamTest" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_d11ds")]
+
+[node name="TestEnemy" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestEnemy"]
+shape = SubResource("CapsuleShape3D_m0h26")

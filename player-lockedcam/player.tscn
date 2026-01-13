@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjchb78a2wlru"]
+
+[ext_resource type="Script" uid="uid://bk8kye3xi21r4" path="res://player-lockedcam/player.gd" id="1_n2kcp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kegl3"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_n2kcp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_kegl3")
+
+[node name="FacingDirection" type="RayCast3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43317437, 0.5796539, 0)
+target_position = Vector3(1, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0.12186934, -0.9925461, 0, 0.9925461, 0.12186934, 1, 5.327078e-09, -4.3385565e-08, -4, 2, 0)
