@@ -14,6 +14,13 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		var mouse_motion = -1 * event.screen_relative.x * CAM_SENS
 		rotation += Vector3(0, mouse_motion, 0)
+		
+	## hi steven, i just quickly put in escape key functionality
+	if event.is_action_pressed("ui_cancel"):
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(_delta):
 	## Player Movement
