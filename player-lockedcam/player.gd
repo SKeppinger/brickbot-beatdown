@@ -20,14 +20,12 @@ func _process(_delta):
 			GameState.paused = false
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not GameState.paused:
 		## Player Input
 		var input_dir = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
 		## Camera Lock
-		if abs(input_dir.x) > 0:
-			var angle = (PI/2) - atan(global_position.distance_to(target.global_position) / (SPEED * delta))
-			rotation.y += angle * input_dir.x
+		look_at(target.global_position, up_direction)
 		## Player Movement
 		var direction_facing = (global_position.direction_to(target.global_position) * input_dir.y).normalized()
 		var direction_strafe = (global_position.direction_to(target.global_position).cross(up_direction)) * input_dir.x
