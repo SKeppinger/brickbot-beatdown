@@ -11,8 +11,10 @@ script = ExtResource("1_n2kcp")
 shape = SubResource("CapsuleShape3D_kegl3")
 
 [node name="FacingDirection" type="RayCast3D" parent="CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43317437, 0.5796539, 0)
-target_position = Vector3(1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, -0.433)
+target_position = Vector3(0, 0, -1)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0.12186934, -0.9925461, 0, 0.9925461, 0.12186934, 1, 5.327078e-09, -4.3385565e-08, -4, 2, 0)
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.99254614, 0.12186935, 0, -0.12186935, 0.99254614, 0, 2, 4)

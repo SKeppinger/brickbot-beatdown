@@ -25,7 +25,7 @@ func _input(event):
 	## hi steven, i just quickly put in escape key functionality
 	## you are the GOAT, but I'm going to put it in the process function bc otherwise it will trigger as long
 	## as ESC is held down, not just when it's initially pressed! Also going to add a pause/unpause framework
-	## to program defensively
+	## to program defensively and not move the camera when the mouse is freed
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -37,16 +37,17 @@ func _process(_delta):
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(_delta):
-	## Player Movement
-	var input_dir = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
-	var facing_direction = facing.to_global(Vector3.ZERO).direction_to(facing.to_global(facing.target_position.normalized()))
-	var direction_facing = (facing_direction * input_dir.y).normalized()
-	var direction_strafe = (facing_direction.cross(up_direction) * input_dir.x).normalized()
-	var direction = direction_facing + direction_strafe
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-	move_and_slide()
+	if not GameState.paused:
+		## Player Movement
+		var input_dir = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
+		var facing_direction = facing.to_global(Vector3.ZERO).direction_to(facing.to_global(facing.target_position.normalized()))
+		var direction_facing = (facing_direction * input_dir.y).normalized()
+		var direction_strafe = (facing_direction.cross(up_direction) * input_dir.x).normalized()
+		var direction = direction_facing + direction_strafe
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+		move_and_slide()
