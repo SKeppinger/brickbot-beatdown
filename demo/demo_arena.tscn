@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://bx0kkcbv5xepn"]
 
-[ext_resource type="PackedScene" uid="uid://d1d35a4aiirdi" path="res://demo/player.tscn" id="1_d6po2"]
-[ext_resource type="PackedScene" uid="uid://bwi5vwavkqhot" path="res://demo/enemy.tscn" id="2_ytiva"]
+[ext_resource type="PackedScene" uid="uid://d1d35a4aiirdi" path="res://demo/player.tscn" id="1_b6hqq"]
+[ext_resource type="PackedScene" uid="uid://bwi5vwavkqhot" path="res://demo/enemy.tscn" id="2_igoa8"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d6po2"]
 
@@ -57,7 +57,7 @@ flip_faces = true
 size = Vector2(60, 20)
 orientation = 0
 
-[node name="Demo" type="Node3D"]
+[node name="DemoArena" type="Node3D"]
 
 [node name="Light1" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 25, -19)
@@ -87,7 +87,7 @@ light_indirect_energy = 16.0
 omni_range = 60.0
 omni_attenuation = 0.2
 
-[node name="Player" parent="." instance=ExtResource("1_d6po2")]
+[node name="Player" parent="." instance=ExtResource("1_b6hqq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 25)
 
 [node name="Floor" type="StaticBody3D" parent="."]
@@ -133,5 +133,5 @@ mesh = SubResource("PlaneMesh_u10mr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
 mesh = SubResource("PlaneMesh_s1s6j")
 
-[node name="Enemy" parent="." instance=ExtResource("2_ytiva")]
+[node name="Enemy" parent="." instance=ExtResource("2_igoa8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -10)

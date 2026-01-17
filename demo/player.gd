@@ -7,10 +7,9 @@ const JUMP_SPEED = 15.0
 const GRAVITY = -30.0
 const CAMLOCK_SPEED = 8.0
 const CAMLOCK_VRATIO = 0.1
-const CAMLOCK_MINDIST = 1.5
 const CAMLOCK_MARGIN = 0.02
 const CAM_SENS = 0.001
-const VCAM_RANGE = PI / 4 # This is the maximum vertical camera rotation, in radians
+const VCAM_RANGE = PI / 5 # This is the maximum vertical camera rotation, in radians
 
 @onready var facing = $CollisionShape3D/FacingDirection
 @onready var camera_pivot = $CameraPivot
@@ -75,8 +74,12 @@ func _physics_process(delta):
 			else:
 				velocity.y = 0
 		if move_direction:
-			velocity.x = move_direction.x * SPEED
-			velocity.z = move_direction.z * SPEED
+			if Input.is_action_pressed("sprint") and input_dir.y > 0:
+				velocity.x = move_toward(velocity.x, move_direction.x * SPRINT_SPEED, SPEED)
+				velocity.z = move_toward(velocity.z, move_direction.z * SPRINT_SPEED, SPEED)
+			else:
+				velocity.x = move_direction.x * SPEED
+				velocity.z = move_direction.z * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -85,19 +88,17 @@ func _physics_process(delta):
 		## Camera Lock
 		if locked_on:
 			## Horizontal rotation
-			var target_distance = (Vector2(global_position.x, global_position.z) - Vector2(target.global_position.x, target.global_position.z)).length()
 			var current_rotation = rotation
-			if target_distance >= CAMLOCK_MINDIST:
-				look_at(target.global_position, up_direction)
-				var target_rotation = rotation
-				rotation = current_rotation
-				var rotation_diff = rotation.y - target_rotation.y
-				if rotation_diff > PI or rotation_diff < -1 * PI:
-					rotation.y = lerp(rotation.y, PI * sign(rotation_diff), delta * CAMLOCK_SPEED)
-					if abs(rotation.y) >= PI - CAMLOCK_MARGIN:
-						rotation.y = PI * sign(rotation_diff)
-				else:
-					rotation.y = lerp(rotation.y, target_rotation.y, delta * CAMLOCK_SPEED)
+			look_at(target.global_position, up_direction)
+			var target_rotation = rotation
+			rotation = current_rotation
+			var rotation_diff = rotation.y - target_rotation.y
+			if rotation_diff > PI or rotation_diff < -1 * PI:
+				rotation.y = lerp(rotation.y, PI * sign(rotation_diff), delta * CAMLOCK_SPEED)
+				if abs(rotation.y) >= PI - CAMLOCK_MARGIN:
+					rotation.y = PI * sign(rotation_diff)
+			else:
+				rotation.y = lerp(rotation.y, target_rotation.y, delta * CAMLOCK_SPEED)
 			## Vertical rotation
 			var height_diff = target.global_position.y - global_position.y
 			camera_pivot.rotation.x = lerp(camera_pivot.rotation.x, height_diff * CAMLOCK_VRATIO, delta * CAMLOCK_SPEED)
