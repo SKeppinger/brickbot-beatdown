@@ -1,0 +1,137 @@
+[gd_scene load_steps=18 format=3 uid="uid://bx0kkcbv5xepn"]
+
+[ext_resource type="PackedScene" uid="uid://d1d35a4aiirdi" path="res://demo/player.tscn" id="1_d6po2"]
+[ext_resource type="PackedScene" uid="uid://bwi5vwavkqhot" path="res://demo/enemy.tscn" id="2_ytiva"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d6po2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6po2"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ytiva"]
+material = SubResource("StandardMaterial3D_d6po2")
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u10mr"]
+plane = Plane(1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dar0o"]
+plane = Plane(-1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ytiva"]
+plane = Plane(0, 0, -1, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_j5lb4"]
+plane = Plane(0, 0, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ytiva"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dar0o"]
+material = SubResource("StandardMaterial3D_ytiva")
+size = Vector2(60, 20)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dar0o"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j5lb4"]
+material = SubResource("StandardMaterial3D_dar0o")
+size = Vector2(60, 20)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5lb4"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_u10mr"]
+material = SubResource("StandardMaterial3D_j5lb4")
+flip_faces = true
+size = Vector2(60, 20)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onu7k"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_s1s6j"]
+material = SubResource("StandardMaterial3D_onu7k")
+flip_faces = true
+size = Vector2(60, 20)
+orientation = 0
+
+[node name="Demo" type="Node3D"]
+
+[node name="Light1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 25, -19)
+light_energy = 8.0
+light_indirect_energy = 16.0
+omni_range = 60.0
+omni_attenuation = 0.2
+
+[node name="Light2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 19, 25, 19)
+light_energy = 8.0
+light_indirect_energy = 16.0
+omni_range = 60.0
+omni_attenuation = 0.2
+
+[node name="Light3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 25, 19)
+light_energy = 8.0
+light_indirect_energy = 16.0
+omni_range = 60.0
+omni_attenuation = 0.2
+
+[node name="Light4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 19, 25, -19)
+light_energy = 8.0
+light_indirect_energy = 16.0
+omni_range = 60.0
+omni_attenuation = 0.2
+
+[node name="Player" parent="." instance=ExtResource("1_d6po2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 25)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape3D_d6po2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ytiva")
+
+[node name="Walls" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_u10mr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_dar0o")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+shape = SubResource("WorldBoundaryShape3D_ytiva")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+shape = SubResource("WorldBoundaryShape3D_j5lb4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
+mesh = SubResource("PlaneMesh_dar0o")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -30)
+mesh = SubResource("PlaneMesh_j5lb4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 30)
+mesh = SubResource("PlaneMesh_u10mr")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
+mesh = SubResource("PlaneMesh_s1s6j")
+
+[node name="Enemy" parent="." instance=ExtResource("2_ytiva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -10)

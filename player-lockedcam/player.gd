@@ -37,3 +37,10 @@ func _physics_process(_delta):
 		move_and_slide()
 		## Camera Lock
 		look_at(target.global_position, up_direction)
+		## So, Godot has this look_at function, which is OBVIOUSLY the first thing I tried to do for target locking
+		## and for some reason, at first, it was cooked. It would not do what I wanted no matter what. So I went on
+		## a whole math journey to try and do what this function was doing manually. Then I scrapped that and
+		## tried to just reconfigure the movement to do this on its own, with a bit of the angle math I did. But
+		## by changing the movement to operate on the target position rather than the current facing direction, I
+		## realized that was the problem with using look_at all along, so now the solution is 1 line long and I feel
+		## very silly :(
