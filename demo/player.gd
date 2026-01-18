@@ -8,11 +8,12 @@ const SPEED = 10.0
 const SPRINT_SPEED = 18.0
 const JUMP_SPEED = 15.0
 const GRAVITY = -30.0
-const CAMLOCK_SPEED = 8.0
+const CAMLOCK_BASE_SPEED = 12.0
+const CAMLOCK_DBOOST = 5.0
 const CAMLOCK_VRATIO = 0.1
 const CAMLOCK_MARGIN = 0.05
 const CAM_SENS = 0.001
-const VCAM_RANGE = PI / 5 # This is the maximum vertical camera rotation, in radians
+const VCAM_RANGE = PI / 4 # This is the maximum vertical camera rotation, in radians
 
 @onready var facing_ray = $CollisionShape3D/FacingDirection
 @onready var camera_pivot = $CameraPivot
@@ -22,6 +23,8 @@ var move_direction = Vector3.ZERO
 var jump_direction = Vector3.ZERO
 var locked_on = false
 var target = null
+var movement_locked = false
+var ml_timer = 0.0
 
 var left_attachment = null
 var right_attachment = null
@@ -34,8 +37,8 @@ var special_attachment = null
 func load_attachments():
 	left_attachment = $LeftArmAttachment.get_child(0)
 	left_attachment.type = Reference.AttachmentType.LeftArm
-	#right_attachment = $RightArmAttachment.get_child(0)
-	#right_attachment.type = Reference.AttachmentType.RightArm
+	right_attachment = $RightArmAttachment.get_child(0)
+	right_attachment.type = Reference.AttachmentType.RightArm
 	## TODO: special attachment and maybe a cleaner way to do this
 
 ## Ready (capture mouse)
@@ -56,7 +59,7 @@ func _input(event):
 				camera_pivot.rotation.x = sign(camera_pivot.rotation.x) * VCAM_RANGE
 
 ## Process
-func _process(_delta):
+func _process(delta):
 	## Pause
 	if Input.is_action_just_pressed("ui_cancel"):
 		if not GameState.paused:
@@ -84,12 +87,22 @@ func _process(_delta):
 		## Special
 		if Input.is_action_pressed("special_ability"):
 			pass
+		
+		## Timers
+		## Movement lock
+		if movement_locked:
+			ml_timer -= delta
+		if ml_timer <= 0.0:
+			movement_locked = false
+			ml_timer = 0.0
 
 ## Physics process
 func _physics_process(delta):
 	if not GameState.paused:
 		## Player Movement
 		var input_dir = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
+		if movement_locked:
+			input_dir = Vector2.ZERO
 		var facing_direction = get_facing_direction()
 		var direction_strafe = (facing_direction.cross(up_direction) * input_dir.x).normalized()
 		var direction_fb = (facing_direction * input_dir.y).normalized()
@@ -105,7 +118,7 @@ func _physics_process(delta):
 				jump_direction = Vector3.ZERO
 				velocity.y = 0
 		if move_direction:
-			if Input.is_action_pressed("sprint") and input_dir.y > 0:
+			if is_on_floor() and Input.is_action_pressed("sprint") and input_dir.y > 0:
 				velocity.x = move_toward(velocity.x, move_direction.x * SPRINT_SPEED, SPEED)
 				velocity.z = move_toward(velocity.z, move_direction.z * SPRINT_SPEED, SPEED)
 			else:
@@ -118,6 +131,9 @@ func _physics_process(delta):
 		
 		## Camera Lock
 		if locked_on:
+			## Calculate camera speed
+			var dist = global_position.distance_to(target.global_position)
+			var cam_speed = CAMLOCK_BASE_SPEED + (CAMLOCK_DBOOST / dist)
 			## Horizontal rotation
 			var current_rotation = rotation
 			look_at(target.global_position, up_direction)
@@ -125,16 +141,21 @@ func _physics_process(delta):
 			rotation = current_rotation
 			var rotation_diff = rotation.y - target_rotation.y
 			if rotation_diff > PI or rotation_diff < -1 * PI:
-				rotation.y = lerp(rotation.y, PI * sign(rotation_diff), delta * CAMLOCK_SPEED)
+				rotation.y = lerp(rotation.y, PI * sign(rotation_diff), delta * cam_speed)
 				if abs(rotation.y) >= PI - CAMLOCK_MARGIN:
 					rotation.y = (PI * sign(rotation_diff))
 			else:
-				rotation.y = lerp(rotation.y, target_rotation.y, delta * CAMLOCK_SPEED)
+				rotation.y = lerp(rotation.y, target_rotation.y, delta * cam_speed)
 			## Vertical rotation
 			var height_diff = target.global_position.y - global_position.y
-			camera_pivot.rotation.x = lerp(camera_pivot.rotation.x, height_diff * CAMLOCK_VRATIO, delta * CAMLOCK_SPEED)
+			camera_pivot.rotation.x = lerp(camera_pivot.rotation.x, height_diff * CAMLOCK_VRATIO, delta * cam_speed)
 			if abs(camera_pivot.rotation.x) > VCAM_RANGE:
 				camera_pivot.rotation.x = sign(camera_pivot.rotation.x) * VCAM_RANGE
+
+## Lock movement (for attachments that interrupt movement)
+func lock_movement(duration):
+	movement_locked = true
+	ml_timer = duration
 
 ## Lock on to target
 func lock_on():

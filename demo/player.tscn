@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1d35a4aiirdi"]
+[gd_scene load_steps=6 format=3 uid="uid://d1d35a4aiirdi"]
 
 [ext_resource type="Script" uid="uid://bbhrg8i6qpd4i" path="res://demo/player.gd" id="1_euw2q"]
 [ext_resource type="PackedScene" uid="uid://ceuf45tbqi1rd" path="res://attachments/ranged_attachment.tscn" id="2_giqk6"]
+[ext_resource type="PackedScene" uid="uid://debxgxhqpgpf1" path="res://attachments/melee_attachment.tscn" id="3_yji6d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kegl3"]
 
@@ -34,3 +35,5 @@ collision_mask = 7
 
 [node name="RightArmAttachment" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+
+[node name="MeleeAttachment" parent="RightArmAttachment" instance=ExtResource("3_yji6d")]

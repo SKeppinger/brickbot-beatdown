@@ -5,7 +5,7 @@ class_name Projectile
 @export var lifetime = 3.0
 
 ## Projectile speed
-@export var speed = 15.0
+@export var speed = 26.0
 
 ## Projectile direction (to be set by source)
 @export var direction: Vector3
@@ -35,5 +35,5 @@ func _process(delta):
 func _physics_process(delta):
 	var collision = move_and_collide(direction * speed * delta)
 	if collision:
-		## TODO: differentiate between enemy/player and environment
+		## TODO: differentiate between enemy/player and environment + deal damage
 		queue_free()

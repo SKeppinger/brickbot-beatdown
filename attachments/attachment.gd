@@ -2,7 +2,9 @@ extends StaticBody3D
 class_name Attachment
 
 ## A rotation value to aim a (tiny) bit toward the player center, given this is an arm attachment
-const ARM_ROTATION = PI / 512
+const ARM_ROTATION = PI / 360
+## The ratio to rotate an arm attachment according to the vertical camera pivot
+const VRATIO = 0.5
 
 ## The type (left/right arm or special)
 @export var type: Reference.AttachmentType

@@ -23,9 +23,9 @@ func _process(delta):
 		cooldown -= delta
 	else:
 		cooldown = 0.0
-	if not action_held:
-		pivot.rotation = Vector3.ZERO
-	action_held = false
+		if not action_held:
+			pivot.rotation = Vector3.ZERO
+		action_held = false
 
 ## Fire a projectile
 func do_action():
@@ -37,7 +37,7 @@ func do_action():
 	## Face the vertical direction the player is aiming (even if on cooldown)
 	## TODO: animate this gradually or add a button to "line up" your arm attachments
 	##		or automatically line up if locked onto the target?
-	pivot.rotation.x = (PI / 2) + player.get_camera_pivot()
+	pivot.rotation.x = (PI / 2) + (player.get_camera_pivot() * VRATIO)
 	action_held = true
 	## If the cooldown is over
 	if cooldown <= 0.0:
