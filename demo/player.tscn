@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1d35a4aiirdi"]
+[gd_scene load_steps=5 format=3 uid="uid://d1d35a4aiirdi"]
 
 [ext_resource type="Script" uid="uid://bbhrg8i6qpd4i" path="res://demo/player.gd" id="1_euw2q"]
+[ext_resource type="PackedScene" uid="uid://ceuf45tbqi1rd" path="res://attachments/ranged_attachment.tscn" id="2_giqk6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kegl3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_euw2q"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_mask = 7
 script = ExtResource("1_euw2q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -16,10 +18,19 @@ shape = SubResource("CapsuleShape3D_kegl3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, -0.433)
 target_position = Vector3(0, 0, -1)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_euw2q")
+
 [node name="CameraPivot" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.99254614, 0.12186935, 0, -0.12186935, 0.99254614, 0, 2, 4)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_euw2q")
+[node name="LeftArmAttachment" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
+
+[node name="RangedAttachment" parent="LeftArmAttachment" instance=ExtResource("2_giqk6")]
+collision_mask = 7
+
+[node name="RightArmAttachment" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)

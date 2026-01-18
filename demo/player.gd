@@ -1,3 +1,6 @@
+## This class handles the control of the player; it also contains some functions which allow the
+## attachments to access information like: the direction the player is facing, where the camera
+## is pointing, etc.
 extends CharacterBody3D
 class_name Player
 
@@ -11,7 +14,7 @@ const CAMLOCK_MARGIN = 0.05
 const CAM_SENS = 0.001
 const VCAM_RANGE = PI / 5 # This is the maximum vertical camera rotation, in radians
 
-@onready var facing = $CollisionShape3D/FacingDirection
+@onready var facing_ray = $CollisionShape3D/FacingDirection
 @onready var camera_pivot = $CameraPivot
 @onready var default_camera_pivot = camera_pivot.rotation
 
@@ -20,9 +23,25 @@ var jump_direction = Vector3.ZERO
 var locked_on = false
 var target = null
 
+var left_attachment = null
+var right_attachment = null
+var special_attachment = null
+
+## CONTROL
+
+## Load attachments
+# Once attachments are chosen, this function will fill out their references
+func load_attachments():
+	left_attachment = $LeftArmAttachment.get_child(0)
+	left_attachment.type = Reference.AttachmentType.LeftArm
+	#right_attachment = $RightArmAttachment.get_child(0)
+	#right_attachment.type = Reference.AttachmentType.RightArm
+	## TODO: special attachment and maybe a cleaner way to do this
+
 ## Ready (capture mouse)
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	load_attachments() ## TEMPORARY FOR TESTING
 
 ## Input (camera movement)
 func _input(event):
@@ -56,22 +75,31 @@ func _process(_delta):
 				locked_on = false
 			else:
 				lock_on()
+		## Left Arm
+		if Input.is_action_pressed("left_ability"):
+			left_attachment.do_action()
+		## Right Arm
+		if Input.is_action_pressed("right_ability"):
+			right_attachment.do_action()
+		## Special
+		if Input.is_action_pressed("special_ability"):
+			pass
 
 ## Physics process
 func _physics_process(delta):
 	if not GameState.paused:
 		## Player Movement
 		var input_dir = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
-		var facing_direction = facing.to_global(Vector3.ZERO).direction_to(facing.to_global(facing.target_position.normalized()))
+		var facing_direction = get_facing_direction()
 		var direction_strafe = (facing_direction.cross(up_direction) * input_dir.x).normalized()
-		var direction_facing = (facing_direction * input_dir.y).normalized()
-		move_direction = direction_facing + direction_strafe
+		var direction_fb = (facing_direction * input_dir.y).normalized()
+		move_direction = direction_fb + direction_strafe
 		if not is_on_floor():
 			move_direction = jump_direction + direction_strafe
 			velocity.y += GRAVITY * delta
 		else:
 			if Input.is_action_just_pressed("jump"):
-				jump_direction = direction_facing
+				jump_direction = direction_fb
 				velocity.y = JUMP_SPEED
 			else:
 				jump_direction = Vector3.ZERO
@@ -113,3 +141,20 @@ func lock_on():
 	camera_pivot.rotation = default_camera_pivot
 	target = get_tree().get_first_node_in_group("enemy") # TODO: Multiple enemies?
 	locked_on = true
+
+## INFORMATION ACCESS
+
+## Get the vertical pivot of the camera
+# This is used by attachments which point where the player is aiming.
+# Under the assumption that attachments will rotate with the player, they should
+# theoretically only need this vertical pivot.
+func get_camera_pivot():
+	return camera_pivot.rotation.x
+
+## Get the movement direction
+func get_move_direction():
+	return move_direction
+
+## Get the facing direction
+func get_facing_direction():
+	return facing_ray.to_global(Vector3.ZERO).direction_to(facing_ray.to_global(facing_ray.target_position.normalized()))
