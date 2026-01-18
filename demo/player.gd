@@ -7,7 +7,7 @@ const JUMP_SPEED = 15.0
 const GRAVITY = -30.0
 const CAMLOCK_SPEED = 8.0
 const CAMLOCK_VRATIO = 0.1
-const CAMLOCK_MARGIN = 0.02
+const CAMLOCK_MARGIN = 0.05
 const CAM_SENS = 0.001
 const VCAM_RANGE = PI / 5 # This is the maximum vertical camera rotation, in radians
 
@@ -15,7 +15,8 @@ const VCAM_RANGE = PI / 5 # This is the maximum vertical camera rotation, in rad
 @onready var camera_pivot = $CameraPivot
 @onready var default_camera_pivot = camera_pivot.rotation
 
-var move_direction = Vector2.ZERO
+var move_direction = Vector3.ZERO
+var jump_direction = Vector3.ZERO
 var locked_on = false
 var target = null
 
@@ -66,12 +67,14 @@ func _physics_process(delta):
 		var direction_facing = (facing_direction * input_dir.y).normalized()
 		move_direction = direction_facing + direction_strafe
 		if not is_on_floor():
-			# TODO: Maybe disallow the changing of forward/backward momentum while in the air
+			move_direction = jump_direction + direction_strafe
 			velocity.y += GRAVITY * delta
 		else:
 			if Input.is_action_just_pressed("jump"):
+				jump_direction = direction_facing
 				velocity.y = JUMP_SPEED
 			else:
+				jump_direction = Vector3.ZERO
 				velocity.y = 0
 		if move_direction:
 			if Input.is_action_pressed("sprint") and input_dir.y > 0:
@@ -96,7 +99,7 @@ func _physics_process(delta):
 			if rotation_diff > PI or rotation_diff < -1 * PI:
 				rotation.y = lerp(rotation.y, PI * sign(rotation_diff), delta * CAMLOCK_SPEED)
 				if abs(rotation.y) >= PI - CAMLOCK_MARGIN:
-					rotation.y = PI * sign(rotation_diff)
+					rotation.y = (PI * sign(rotation_diff))
 			else:
 				rotation.y = lerp(rotation.y, target_rotation.y, delta * CAMLOCK_SPEED)
 			## Vertical rotation
