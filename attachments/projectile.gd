@@ -35,5 +35,7 @@ func _process(delta):
 func _physics_process(delta):
 	var collision = move_and_collide(direction * speed * delta)
 	if collision:
-		## TODO: differentiate between enemy/player and environment + deal damage
+		## TODO: differentiate between player and enemy
+		if collision.get_collider().has_method("hurt"):
+			collision.get_collider().hurt()
 		queue_free()

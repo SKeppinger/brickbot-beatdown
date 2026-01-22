@@ -26,6 +26,8 @@ func _process(delta):
 		queue_free()
 
 ## Collision handling
-func _on_body_entered(_body):
-	## TODO: differentiate between enemy/player and environment + deal damage
+func _on_body_entered(body):
+	## TODO: differentiate between enemy/player
+	if body.has_method("hurt"):
+		body.hurt()
 	queue_free()

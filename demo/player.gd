@@ -17,6 +17,7 @@ const VCAM_RANGE = PI / 4 # This is the maximum vertical camera rotation, in rad
 
 @onready var facing_ray = $CollisionShape3D/FacingDirection
 @onready var camera_pivot = $CameraPivot
+@onready var camera = $CameraPivot/Camera3D
 @onready var default_camera_pivot = camera_pivot.rotation
 
 var move_direction = Vector3.ZERO
@@ -78,6 +79,9 @@ func _process(delta):
 				locked_on = false
 			else:
 				lock_on()
+		## Change Shoulder
+		if Input.is_action_just_pressed("change_shoulder"):
+			camera.position.x *= -1
 		## Left Arm
 		if Input.is_action_pressed("left_ability"):
 			left_attachment.do_action()
