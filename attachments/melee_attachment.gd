@@ -10,6 +10,9 @@ class_name MeleeAttachment
 ## The attack object
 @export var attack: PackedScene
 
+## animation player test for melee
+@export var target_anim_player: AnimationPlayer
+
 ## The pivot for rotation
 @onready var pivot = $Pivot
 ## The attack spawn point
@@ -59,5 +62,9 @@ func do_action():
 		var atk = attack.instantiate()
 		#atk.source = Reference.Source.Player
 		attack_spawn.add_child(atk)
+		
+		##play animation test
+		target_anim_player.play("metarigAction")
+		
 		## Start the cooldown
 		cooldown = attack_cooldown
