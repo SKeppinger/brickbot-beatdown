@@ -2,31 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bbhrg8i6qpd4i" path="res://demo/player.gd" id="1_euw2q"]
 [ext_resource type="PackedScene" uid="uid://ceuf45tbqi1rd" path="res://attachments/ranged_attachment.tscn" id="2_giqk6"]
-[ext_resource type="PackedScene" uid="uid://di4aa3xtg5058" path="res://assets/character/demo_model/melee_left.blend" id="2_uuw2b"]
 [ext_resource type="PackedScene" uid="uid://debxgxhqpgpf1" path="res://attachments/melee_attachment.tscn" id="3_yji6d"]
+[ext_resource type="PackedScene" uid="uid://b7syin4csi1kt" path="res://assets/character/demo_model/melee_left_timing.glb" id="4_uuw2b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kegl3"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 7
 script = ExtResource("1_euw2q")
-
-[node name="melee_left" parent="." instance=ExtResource("2_uuw2b")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0059975386, -1.092127, -0.113744974)
-
-[node name="Skeleton3D" parent="melee_left/metarig" index="0"]
-bones/1/rotation = Quaternion(-0.047831547, 0.01234272, 0.022182927, 0.99853283)
-bones/2/rotation = Quaternion(0.08091339, -0.040989872, -0.9683671, 0.23246108)
-bones/4/rotation = Quaternion(-0.072738804, 0.95446473, 0.01723683, -0.28880614)
-bones/5/rotation = Quaternion(0.08715988, 0.03314946, 0.9691212, 0.22827268)
-bones/6/rotation = Quaternion(0.015960252, 0.006836313, 0.005962037, 0.9998315)
-bones/7/rotation = Quaternion(-0.05914043, 0.9648103, -0.040887825, 0.2529263)
-bones/8/rotation = Quaternion(0.9958667, 0.08878965, -0.018974394, 0.002431257)
-bones/9/rotation = Quaternion(-0.00441561, 0.014815405, 0.056085505, 0.9983063)
-bones/10/rotation = Quaternion(-0.44032034, -0.103073105, -0.13534054, 0.8815763)
-bones/11/rotation = Quaternion(0.99638605, -0.08029837, 0.027400527, -0.004039309)
-bones/12/rotation = Quaternion(-0.00867633, -0.025505103, -0.06490075, 0.997528)
-bones/13/rotation = Quaternion(-0.45424265, 0.2523761, 0.14647816, 0.84173274)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_kegl3")
@@ -50,6 +33,26 @@ collision_mask = 7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 
 [node name="MeleeAttachment" parent="RightArmAttachment" node_paths=PackedStringArray("target_anim_player") instance=ExtResource("3_yji6d")]
-target_anim_player = NodePath("../../melee_left/AnimationPlayer")
+target_anim_player = NodePath("../../melee_left_timing/AnimationPlayer")
 
-[editable path="melee_left"]
+[node name="melee_left_timing" parent="." instance=ExtResource("4_uuw2b")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.06248331, -1.09346, 0)
+
+[node name="metarig" parent="melee_left_timing" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.050854594, -0.024490476, 1.1210122e-08)
+
+[node name="Skeleton3D" parent="melee_left_timing/metarig" index="0"]
+bones/1/rotation = Quaternion(-0.047831547, 0.01234272, 0.022182927, 0.99853283)
+bones/2/rotation = Quaternion(0.08091339, -0.040989872, -0.9683671, 0.23246108)
+bones/4/rotation = Quaternion(-0.072738804, 0.95446473, 0.01723683, -0.28880614)
+bones/5/rotation = Quaternion(0.08715988, 0.03314946, 0.9691212, 0.22827268)
+bones/6/rotation = Quaternion(0.015960252, 0.006836313, 0.005962037, 0.9998315)
+bones/7/rotation = Quaternion(-0.05914043, 0.9648103, -0.040887825, 0.2529263)
+bones/8/rotation = Quaternion(0.9958667, 0.08878965, -0.018974394, 0.002431257)
+bones/9/rotation = Quaternion(-0.00441561, 0.014815405, 0.056085505, 0.9983063)
+bones/10/rotation = Quaternion(-0.44032034, -0.103073105, -0.13534054, 0.8815763)
+bones/11/rotation = Quaternion(0.99638605, -0.08029837, 0.027400527, -0.004039309)
+bones/12/rotation = Quaternion(-0.00867633, -0.025505103, -0.06490075, 0.997528)
+bones/13/rotation = Quaternion(-0.45424265, 0.2523761, 0.14647816, 0.84173274)
+
+[editable path="melee_left_timing"]
