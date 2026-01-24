@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Brickbot Beatdown"
-run/main_scene="uid://btuiscwt0ev6x"
+run/main_scene="uid://bx0kkcbv5xepn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
