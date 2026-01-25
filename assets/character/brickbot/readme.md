@@ -4,4 +4,6 @@ when you're done, check it back in by uploading your work as a new version numbe
 
 1 uploaded initial file. basic robot skeleton with proportions and rig -kieran
 
-current checkout: matt 1/24/26 8:30 est
+current checkout: none
+
+v2: matt's 50% done running animation
