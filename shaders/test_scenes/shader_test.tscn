@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c05h7m1n8fob4"]
+
+[ext_resource type="Shader" uid="uid://bttevaacy2ewr" path="res://shaders/testshader2.gdshader" id="1_27aeg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vkksl"]
+shader = ExtResource("1_27aeg")
+shader_parameter/wiggle = 0.00999999977648
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 0.4710000223725
+shader_parameter/blur_samples = 8
+
+[node name="Shader_Test" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_vkksl")
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 648.0
