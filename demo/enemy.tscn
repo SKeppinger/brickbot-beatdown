@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwi5vwavkqhot"]
+[gd_scene format=3 uid="uid://bwi5vwavkqhot"]
 
 [ext_resource type="Script" uid="uid://cp3ojsmv7olaf" path="res://demo/demo_enemy.gd" id="1_xm18p"]
 
@@ -16,17 +16,17 @@ albedo_color = Color(1, 0.599933, 0.540393, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wtyih"]
 material = SubResource("StandardMaterial3D_4us2m")
 
-[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+[node name="Enemy" type="CharacterBody3D" unique_id=409825031 groups=["enemy"]]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_xm18p")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=592725260]
 shape = SubResource("CapsuleShape3D_h17gs")
 
-[node name="NormalMesh" type="MeshInstance3D" parent="."]
+[node name="NormalMesh" type="MeshInstance3D" parent="." unique_id=167494461]
 mesh = SubResource("CapsuleMesh_xm18p")
 
-[node name="HurtMesh" type="MeshInstance3D" parent="."]
+[node name="HurtMesh" type="MeshInstance3D" parent="." unique_id=2091913855]
 visible = false
 mesh = SubResource("CapsuleMesh_wtyih")

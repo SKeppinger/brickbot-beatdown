@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bx0kkcbv5xepn"]
+[gd_scene format=3 uid="uid://bx0kkcbv5xepn"]
 
 [ext_resource type="PackedScene" uid="uid://d1d35a4aiirdi" path="res://demo/player.tscn" id="1_b6hqq"]
 [ext_resource type="PackedScene" uid="uid://bwi5vwavkqhot" path="res://demo/enemy.tscn" id="2_igoa8"]
@@ -57,85 +57,86 @@ flip_faces = true
 size = Vector2(60, 20)
 orientation = 0
 
-[node name="DemoArena" type="Node3D"]
+[node name="DemoArena" type="Node3D" unique_id=548794428]
 
-[node name="Light1" type="OmniLight3D" parent="."]
+[node name="Light1" type="OmniLight3D" parent="." unique_id=797241854]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 25, -19)
 light_energy = 8.0
 light_indirect_energy = 16.0
 omni_range = 60.0
 omni_attenuation = 0.2
 
-[node name="Light2" type="OmniLight3D" parent="."]
+[node name="Light2" type="OmniLight3D" parent="." unique_id=1854399376]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 19, 25, 19)
 light_energy = 8.0
 light_indirect_energy = 16.0
 omni_range = 60.0
 omni_attenuation = 0.2
 
-[node name="Light3" type="OmniLight3D" parent="."]
+[node name="Light3" type="OmniLight3D" parent="." unique_id=1283709486]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 25, 19)
 light_energy = 8.0
 light_indirect_energy = 16.0
 omni_range = 60.0
 omni_attenuation = 0.2
 
-[node name="Light4" type="OmniLight3D" parent="."]
+[node name="Light4" type="OmniLight3D" parent="." unique_id=1301191350]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 19, 25, -19)
 light_energy = 8.0
 light_indirect_energy = 16.0
 omni_range = 60.0
 omni_attenuation = 0.2
 
-[node name="Player" parent="." instance=ExtResource("1_b6hqq")]
+[node name="Player" parent="." unique_id=1426380079 instance=ExtResource("1_b6hqq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 25)
 
-[node name="Floor" type="StaticBody3D" parent="."]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1942380653]
 collision_layer = 4
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=615976014]
 shape = SubResource("WorldBoundaryShape3D_d6po2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1939002869]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ytiva")
 
-[node name="Walls" type="StaticBody3D" parent="."]
+[node name="Walls" type="StaticBody3D" parent="." unique_id=942350698]
 collision_layer = 4
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls" unique_id=932111494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_u10mr")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls" unique_id=1459139080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_dar0o")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls" unique_id=13994922]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
 shape = SubResource("WorldBoundaryShape3D_ytiva")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls" unique_id=970853013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
 shape = SubResource("WorldBoundaryShape3D_j5lb4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls" unique_id=734377864]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
 mesh = SubResource("PlaneMesh_dar0o")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls" unique_id=328087010]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -30)
 mesh = SubResource("PlaneMesh_j5lb4")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls" unique_id=1092355978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 30)
 mesh = SubResource("PlaneMesh_u10mr")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls" unique_id=264127332]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
 mesh = SubResource("PlaneMesh_s1s6j")
 
-[node name="Enemy" parent="." instance=ExtResource("2_igoa8")]
+[node name="Enemy" parent="." unique_id=1289073528 node_paths=PackedStringArray("player") instance=ExtResource("2_igoa8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -10)
+player = NodePath("../Player")

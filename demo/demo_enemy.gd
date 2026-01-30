@@ -4,25 +4,41 @@ class_name DemoEnemy
 @onready var normal_mesh = $NormalMesh
 @onready var hurt_mesh = $HurtMesh
 
+@export var player: Player
+
 const SPEED = 11.0
 const GRAVITY = -30.0
 const HURT_DURATION = 0.25
 
-var direction = Vector2(0, 0)
+var direction = Vector3(0, 0, 0)
 var dir_duration = 0.0
 var dir_change_timer = 0.0
 var is_hurt = false
 var hurt_timer = 0.0
+var health = 100
+var desired_range = "close"
+var target_position = Vector3.ZERO
 
 func _process(delta):
+	#Current desired behaviors: Pick between wanting to be close or far, then attempt to move to that range. Recheck and change every 15? sec
 	if dir_change_timer <= 0.0:
-		dir_duration = randf_range(0.5, 3.0)
-		dir_change_timer = dir_duration
-		direction.x = randf_range(-1, 1)
-		direction.y = randf_range(-1, 1)
-	else:
-		dir_change_timer -= delta
+		dir_change_timer = 30
+		if desired_range == "far":
+			desired_range = "close"
+		else:
+			desired_range = "far"
+	 
 	
+		
+	#if dir_change_timer <= 0.0:
+		#dir_duration = randf_range(0.5, 3.0)
+		#dir_change_timer = dir_duration
+		#direction.x = randf_range(-1, 1)
+		#direction.y = randf_range(-1, 1)
+	#else:
+		#dir_change_timer -= delta
+	
+	#Hurt color change
 	if hurt_timer <= 0.0:
 		normal_mesh.visible = true
 		hurt_mesh.visible = false
@@ -35,6 +51,12 @@ func _physics_process(delta):
 		velocity.x = 0.0
 		velocity.z = 0.0
 	else:
+		#If staying at far, move to target point, otherwise move towards player.
+		if desired_range == "far":
+			direction = position.direction_to(target_position)
+		else:
+			direction = position.direction_to(player.position)
+			
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.y * SPEED
 	if not is_on_floor():
