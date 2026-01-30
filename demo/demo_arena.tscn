@@ -167,6 +167,6 @@ mesh = SubResource("PlaneMesh_u10mr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
 mesh = SubResource("PlaneMesh_s1s6j")
 
-[node name="Enemy" parent="." unique_id=783461347 instance=ExtResource("2_igoa8")]
+[node name="Enemy" parent="." unique_id=783461347 node_paths=PackedStringArray("player") instance=ExtResource("2_igoa8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -10)
 player = NodePath("../Player")

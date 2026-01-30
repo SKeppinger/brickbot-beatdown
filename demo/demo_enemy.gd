@@ -7,7 +7,7 @@ class_name DemoEnemy
 @export var player: Player
 @export var max_hp = 10
 
-const SPEED = 11.0
+const SPEED = 2.5
 const GRAVITY = -30.0
 const HURT_DURATION = 0.25
 
@@ -25,12 +25,19 @@ var target_position = Vector3.ZERO
 func _process(delta):
 	#Current desired behaviors: Pick between wanting to be close or far, then attempt to move to that range. Recheck and change every 15? sec
 	if dir_change_timer <= 0.0:
-		dir_change_timer = 30
+		print("dir change timer")
+		dir_change_timer = 15
 		if desired_range == "far":
 			desired_range = "close"
 		else:
+			#for far distance, moves in a direction perpendicular to the line between it and player, in order to be predictable. this is shitass but should work.
 			desired_range = "far"
-	 
+			
+			direction.x = position.direction_to(player.position).z
+			direction.z = sign(randf_range(-1,1))*position.direction_to(player.position).x
+		print(desired_range)
+	else:
+		dir_change_timer -= delta
 	
 		
 	#if dir_change_timer <= 0.0:
@@ -55,13 +62,11 @@ func _physics_process(delta):
 		velocity.z = 0.0
 	else:
 		#If staying at far, move to target point, otherwise move towards player.
-		if desired_range == "far":
-			direction = position.direction_to(target_position)
-		else:
+		if desired_range == "close":
 			direction = position.direction_to(player.position)
 			
 		velocity.x = direction.x * SPEED
-		velocity.z = direction.y * SPEED
+		velocity.z = direction.z * SPEED
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	move_and_slide()
