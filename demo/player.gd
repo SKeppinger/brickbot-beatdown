@@ -63,7 +63,7 @@ func _input(event):
 		if not locked_on and event is InputEventMouseMotion:
 			var mouse_motion_h = -1 * event.screen_relative.x * CAM_SENS
 			rotation += Vector3(0, mouse_motion_h, 0)
-			var mouse_motion_v = event.screen_relative.y * CAM_SENS
+			var mouse_motion_v = -1 * event.screen_relative.y * CAM_SENS
 			camera_pivot.rotation += Vector3(mouse_motion_v, 0, 0)
 			if abs(camera_pivot.rotation.x) > VCAM_RANGE:
 				camera_pivot.rotation.x = sign(camera_pivot.rotation.x) * VCAM_RANGE
@@ -113,7 +113,6 @@ func _process(delta):
 			is_hurt = false
 		else:
 			hurt_timer -= delta
-
 ## Physics process
 func _physics_process(delta):
 	if not GameState.paused:

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://d1d35a4aiirdi"]
 
 [ext_resource type="Script" uid="uid://bbhrg8i6qpd4i" path="res://demo/player.gd" id="1_euw2q"]
-[ext_resource type="PackedScene" uid="uid://ceuf45tbqi1rd" path="res://attachments/ranged_attachment.tscn" id="2_giqk6"]
 [ext_resource type="PackedScene" uid="uid://cjqh8oojt61a3" path="res://assets/character/demo_model/char_brickbot_1.glb" id="2_pdims"]
-[ext_resource type="PackedScene" uid="uid://debxgxhqpgpf1" path="res://attachments/melee_attachment.tscn" id="3_yji6d"]
+[ext_resource type="PackedScene" uid="uid://cf2tch766jqhv" path="res://attachments/shield_attachment.tscn" id="3_pdims"]
+[ext_resource type="PackedScene" uid="uid://bsxw3rsifs8f2" path="res://attachments/big_melee_attachment.tscn" id="4_pdims"]
 [ext_resource type="PackedScene" uid="uid://bvqb4ofwl2w84" path="res://assets/character/brickbot/char_brickbot_2.glb" id="5_pdims"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kegl3"]
@@ -16,7 +16,7 @@ script = ExtResource("1_euw2q")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.1204621, 0)
 visible = false
 
-[node name="Skeleton3D" parent="char_brickbot_1/metarig" parent_id_path=PackedInt32Array(1138550672, 597674357) index="0" unique_id=1801817379]
+[node name="Skeleton3D" parent="char_brickbot_1/metarig" parent_id_path=PackedInt32Array(1138550672, 1041924663) index="0" unique_id=301934269]
 bones/3/rotation = Quaternion(-0.0016382344, 0.013940774, -0.9897335, 0.14223386)
 bones/5/rotation = Quaternion(-0.072738804, 0.9544648, 0.017236829, -0.28880617)
 bones/6/rotation = Quaternion(-0.0016780565, -0.013922628, 0.9887918, 0.14864105)
@@ -40,18 +40,16 @@ transform = Transform3D(1, 0, 0, 0, 0.99254614, 0.12186935, 0, -0.12186935, 0.99
 [node name="LeftArmAttachment" type="Node3D" parent="." unique_id=178813499]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
 
-[node name="RangedAttachment" parent="LeftArmAttachment" unique_id=104347526 instance=ExtResource("2_giqk6")]
-collision_mask = 7
+[node name="Shield" parent="LeftArmAttachment" unique_id=757603234 instance=ExtResource("3_pdims")]
 
 [node name="RightArmAttachment" type="Node3D" parent="." unique_id=2130059498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 
-[node name="MeleeAttachment" parent="RightArmAttachment" unique_id=767251105 node_paths=PackedStringArray("target_anim_player") instance=ExtResource("3_yji6d")]
-target_anim_player = NodePath("../../char_brickbot_1/AnimationPlayer")
+[node name="BigMeleeAttachment" parent="RightArmAttachment" unique_id=1751486643 instance=ExtResource("4_pdims")]
 
 [node name="char_brickbot_2" parent="." unique_id=496472428 instance=ExtResource("5_pdims")]
 
-[node name="Skeleton3D" parent="char_brickbot_2/metarig" parent_id_path=PackedInt32Array(496472428, 1250699374) index="0" unique_id=1867213969]
+[node name="Skeleton3D" parent="char_brickbot_2/metarig" parent_id_path=PackedInt32Array(496472428, 384528686) index="0" unique_id=437304694]
 bones/0/position = Vector3(2.7782404e-10, 1.0712608, -0.0013082863)
 bones/3/rotation = Quaternion(0.049790867, 0.37020862, -0.917968, 0.13342194)
 bones/4/rotation = Quaternion(0.5976825, -0.17334944, -0.0103760045, 0.7826992)

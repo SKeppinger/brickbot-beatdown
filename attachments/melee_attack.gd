@@ -7,6 +7,9 @@ class_name MeleeAttack
 ## Attack source
 @export var source: Reference.Source
 
+## Attack damage
+@export var damage = 1.5
+
 ## Attack uptime
 var uptime = 0.0
 
@@ -29,5 +32,5 @@ func _process(delta):
 func _on_body_entered(body):
 	## TODO: differentiate between enemy/player
 	if body.has_method("hurt"):
-		body.hurt()
+		body.hurt(damage)
 	queue_free()

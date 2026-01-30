@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://db1rqoryashc7"]
+[gd_scene format=3 uid="uid://db1rqoryashc7"]
 
 [ext_resource type="Script" uid="uid://11d7lp206w2v" path="res://attachments/projectile.gd" id="1_y86e5"]
 
@@ -9,13 +9,13 @@ radius = 0.25
 radius = 0.25
 height = 0.5
 
-[node name="Projectile" type="StaticBody3D"]
+[node name="MedProjectile" type="StaticBody3D" unique_id=71213699]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_y86e5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=54050456]
 shape = SubResource("SphereShape3D_5pkkt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=732816730]
 mesh = SubResource("SphereMesh_5pkkt")

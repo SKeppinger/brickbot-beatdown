@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://vu04671xunx7"]
+
+[ext_resource type="Script" uid="uid://d3lrrrf0jb20l" path="res://attachments/ranged_attachment.gd" id="1_f7itf"]
+[ext_resource type="PackedScene" uid="uid://c4rggn0047yes" path="res://attachments/fast_projectile.tscn" id="2_f7itf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0mly6"]
+radius = 0.1
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ajwrl"]
+radius = 0.1
+height = 1.0
+
+[node name="FastRangedAttachment" type="StaticBody3D" unique_id=1116467258]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_f7itf")
+fire_cooldown = 0.1
+projectile = ExtResource("2_f7itf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=903875857]
+shape = SubResource("CapsuleShape3D_0mly6")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=1914885130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot" unique_id=171334952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+mesh = SubResource("CapsuleMesh_ajwrl")
+skeleton = NodePath("../..")
+
+[node name="ProjectileSpawn" type="Node3D" parent="Pivot" unique_id=879188515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90000004, 0)

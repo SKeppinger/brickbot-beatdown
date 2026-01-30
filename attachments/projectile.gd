@@ -8,7 +8,7 @@ class_name Projectile
 @export var speed = 26.0
 
 ## Projectile damage
-@export var damage = 1
+@export var damage = 1.0
 
 ## Projectile direction (to be set by source)
 @export var direction: Vector3
