@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bwi5vwavkqhot"]
 
 [ext_resource type="Script" uid="uid://cp3ojsmv7olaf" path="res://demo/demo_enemy.gd" id="1_xm18p"]
+[ext_resource type="PackedScene" uid="uid://bhb5nn2c51h61" path="res://demo/demo_enemy_projectile.tscn" id="2_4us2m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h17gs"]
 
@@ -30,3 +31,7 @@ mesh = SubResource("CapsuleMesh_xm18p")
 [node name="HurtMesh" type="MeshInstance3D" parent="." unique_id=2091913855]
 visible = false
 mesh = SubResource("CapsuleMesh_wtyih")
+
+[node name="Weapon" type="Node3D" parent="." unique_id=1936467027]
+
+[node name="demo_enemy_projectile" parent="Weapon" unique_id=1462585374 instance=ExtResource("2_4us2m")]

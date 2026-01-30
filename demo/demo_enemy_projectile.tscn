@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bhb5nn2c51h61"]
+
+[ext_resource type="Script" uid="uid://11d7lp206w2v" path="res://attachments/projectile.gd" id="1_p6js5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b2qwp"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_t2c0f"]
+
+[node name="demo_enemy_projectile" type="StaticBody3D" unique_id=1462585374]
+script = ExtResource("1_p6js5")
+lifetime = 5.0
+speed = 10.0
+metadata/_custom_type_script = "uid://11d7lp206w2v"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=268207585]
+shape = SubResource("SphereShape3D_b2qwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=617234909]
+mesh = SubResource("SphereMesh_t2c0f")
+skeleton = NodePath("../CollisionShape3D")

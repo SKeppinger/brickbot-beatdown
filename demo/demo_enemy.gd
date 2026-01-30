@@ -3,24 +3,32 @@ class_name DemoEnemy
 
 @onready var normal_mesh = $NormalMesh
 @onready var hurt_mesh = $HurtMesh
-
+#this means every enemy requires player to be assigned in the editor, find a better solution
 @export var player: Player
 @export var max_hp = 10
+@export var projectile: PackedScene
+
+
 
 const SPEED = 2.5
 const GRAVITY = -30.0
 const HURT_DURATION = 0.25
+#I have COPIED this code and I DO NOT understand it.
+## The pivot for rotation
+@onready var pivot = $Pivot
+## The projectile spawn point
+@onready var proj_spawn = $Pivot/ProjectileSpawn
 
 var direction = Vector3(0, 0, 0)
 var hp = max_hp
-
 var dir_duration = 0.0
 var dir_change_timer = 0.0
 var is_hurt = false
 var hurt_timer = 0.0
-var health = 100
 var desired_range = "close"
 var target_position = Vector3.ZERO
+var attack_cooldown = 1.0
+var attack_timer = attack_cooldown
 
 func _process(delta):
 	#Current desired behaviors: Pick between wanting to be close or far, then attempt to move to that range. Recheck and change every 15? sec
@@ -38,8 +46,11 @@ func _process(delta):
 		print(desired_range)
 	else:
 		dir_change_timer -= delta
-	
-		
+	if attack_timer <= 0:
+		attack()
+		attack_timer = attack_cooldown
+	else:
+		attack_timer -= delta
 	#if dir_change_timer <= 0.0:
 		#dir_duration = randf_range(0.5, 3.0)
 		#dir_change_timer = dir_duration
@@ -80,3 +91,12 @@ func hurt(damage):
 		normal_mesh.visible = false
 		is_hurt = true
 		hurt_timer = HURT_DURATION
+		
+#attack function, called whenever cooldown hits 0
+func attack():
+	var proj = projectile.instantiate()
+	proj.direction = position.direction_to(player.position)
+	#what does this do? did i do this right? we just dont know
+	proj.source = Reference.Source.Enemy
+	get_tree().root.add_child(proj)
+	proj.global_position = position

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c3q74ciu2y4rc" path="res://demo/Interface/interface.tscn" id="1_igoa8"]
 [ext_resource type="PackedScene" uid="uid://bwi5vwavkqhot" path="res://demo/enemy.tscn" id="2_igoa8"]
 [ext_resource type="Script" uid="uid://cfwda0euuja1g" path="res://demo/player_health.gd" id="2_mj8rb"]
+[ext_resource type="PackedScene" uid="uid://bhb5nn2c51h61" path="res://demo/demo_enemy_projectile.tscn" id="5_apafh"]
 
 [sub_resource type="Theme" id="Theme_apafh"]
 
@@ -170,3 +171,4 @@ mesh = SubResource("PlaneMesh_s1s6j")
 [node name="Enemy" parent="." unique_id=783461347 node_paths=PackedStringArray("player") instance=ExtResource("2_igoa8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -10)
 player = NodePath("../Player")
+projectile = ExtResource("5_apafh")
