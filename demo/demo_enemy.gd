@@ -5,12 +5,15 @@ class_name DemoEnemy
 @onready var hurt_mesh = $HurtMesh
 
 @export var player: Player
+@export var max_hp = 10
 
 const SPEED = 11.0
 const GRAVITY = -30.0
 const HURT_DURATION = 0.25
 
 var direction = Vector3(0, 0, 0)
+var hp = max_hp
+
 var dir_duration = 0.0
 var dir_change_timer = 0.0
 var is_hurt = false
@@ -63,8 +66,12 @@ func _physics_process(delta):
 		velocity.y += GRAVITY * delta
 	move_and_slide()
 
-func hurt():
-	hurt_mesh.visible = true
-	normal_mesh.visible = false
-	is_hurt = true
-	hurt_timer = HURT_DURATION
+func hurt(damage):
+	if not is_hurt:
+		hp -= damage
+		if hp <= 0:
+			queue_free()
+		hurt_mesh.visible = true
+		normal_mesh.visible = false
+		is_hurt = true
+		hurt_timer = HURT_DURATION

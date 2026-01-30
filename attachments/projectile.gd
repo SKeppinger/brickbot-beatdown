@@ -7,6 +7,9 @@ class_name Projectile
 ## Projectile speed
 @export var speed = 26.0
 
+## Projectile damage
+@export var damage = 1.0
+
 ## Projectile direction (to be set by source)
 @export var direction: Vector3
 
@@ -37,5 +40,5 @@ func _physics_process(delta):
 	if collision:
 		## TODO: differentiate between player and enemy
 		if collision.get_collider().has_method("hurt"):
-			collision.get_collider().hurt()
+			collision.get_collider().hurt(damage)
 		queue_free()

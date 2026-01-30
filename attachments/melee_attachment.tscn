@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://debxgxhqpgpf1"]
+[gd_scene format=3 uid="uid://debxgxhqpgpf1"]
 
 [ext_resource type="Script" uid="uid://gvnrymhelq8d" path="res://attachments/melee_attachment.gd" id="1_0b6p8"]
 [ext_resource type="PackedScene" uid="uid://xqwucw658v3w" path="res://attachments/melee_attack.tscn" id="2_iqotn"]
@@ -11,23 +11,23 @@ height = 1.3029785
 radius = 0.1
 height = 1.303
 
-[node name="MeleeAttachment" type="StaticBody3D"]
+[node name="MeleeAttachment" type="StaticBody3D" unique_id=1885538313]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_0b6p8")
 attack = ExtResource("2_iqotn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=27528712]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15148926, 0)
 shape = SubResource("CapsuleShape3D_7jeuy")
 
-[node name="Pivot" type="Node3D" parent="."]
+[node name="Pivot" type="Node3D" parent="." unique_id=1479634291]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot" unique_id=1298726067]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45039567, 0)
 mesh = SubResource("CapsuleMesh_0b6p8")
 skeleton = NodePath("../..")
 
-[node name="AttackSpawn" type="Node3D" parent="Pivot"]
+[node name="AttackSpawn" type="Node3D" parent="Pivot" unique_id=1416683968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90000004, 0)
