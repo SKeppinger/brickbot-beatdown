@@ -4,6 +4,8 @@
 extends CharacterBody3D
 class_name Player
 
+
+const HURT_DURATION = 0.25
 const SPEED = 10.0
 const SPRINT_SPEED = 18.0
 const JUMP_SPEED = 15.0
@@ -15,10 +17,17 @@ const CAMLOCK_MARGIN = 0.05
 const CAM_SENS = 0.001
 const VCAM_RANGE = PI / 4 # This is the maximum vertical camera rotation, in radians
 
+@export var max_hp = 10
+
 @onready var facing_ray = $CollisionShape3D/FacingDirection
 @onready var camera_pivot = $CameraPivot
 @onready var camera = $CameraPivot/Camera3D
 @onready var default_camera_pivot = camera_pivot.rotation
+
+signal player_health
+var hp = max_hp
+var is_hurt = false
+var hurt_timer = 0.0
 
 var move_direction = Vector3.ZERO
 var jump_direction = Vector3.ZERO
@@ -99,6 +108,11 @@ func _process(delta):
 		if ml_timer <= 0.0:
 			movement_locked = false
 			ml_timer = 0.0
+		## Hurt
+		if hurt_timer <= 0.0:
+			is_hurt = false
+		else:
+			hurt_timer -= delta
 
 ## Physics process
 func _physics_process(delta):
@@ -134,6 +148,8 @@ func _physics_process(delta):
 		move_and_slide()
 		
 		## Camera Lock
+		if not target:
+			locked_on = false
 		if locked_on:
 			## Calculate camera speed
 			var dist = global_position.distance_to(target.global_position)
@@ -167,7 +183,19 @@ func lock_on():
 	target = get_tree().get_first_node_in_group("enemy") # TODO: Multiple enemies?
 	locked_on = true
 
+## Get hurt
+func hurt(damage):
+	if not is_hurt:
+		hp -= damage
+		player_health.emit(get_health())
+		is_hurt = true
+		hurt_timer = HURT_DURATION
+
 ## INFORMATION ACCESS
+
+## Get the player's current health
+func get_health():
+	return hp
 
 ## Get the vertical pivot of the camera
 # This is used by attachments which point where the player is aiming.
