@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ceducew546plh"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" unique_id=302837149]
+offset_right = 40.0
+offset_bottom = 40.0
+rounded = true
+allow_greater = true
