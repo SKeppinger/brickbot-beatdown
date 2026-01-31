@@ -470,7 +470,7 @@ mesh = SubResource("ArrayMesh_8k1se")
 skeleton = NodePath("")
 
 [node name="concrete_walls3" type="MeshInstance3D" parent="Level/Walls" unique_id=1293997911]
-transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 4.426763, 1.0213455, 9.357125)
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 4.426763, 0.9345759, 9.357125)
 mesh = SubResource("ArrayMesh_8k1se")
 skeleton = NodePath("")
 
