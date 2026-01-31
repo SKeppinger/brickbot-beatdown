@@ -20,6 +20,7 @@ const HURT_DURATION = 0.25
 #@onready var proj_spawn = $Pivot/ProjectileSpawn
 
 var direction = Vector3(0, 0, 0)
+signal enemy_health
 var hp = max_hp
 var dir_duration = 0.0
 var dir_change_timer = 0.0
@@ -97,6 +98,7 @@ func hurt(damage):
 		hp -= damage
 		if hp <= 0:
 			queue_free()
+		enemy_health.emit(get_health())
 		hurt_mesh.visible = true
 		normal_mesh.visible = false
 		is_hurt = true
@@ -122,3 +124,7 @@ func attack_close():
 		proj_angle = proj_angle.rotated( y_axis, PI/2)
 func bounced():
 	direction = -direction
+
+## Get health
+func get_health():
+	return hp
