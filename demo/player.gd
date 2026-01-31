@@ -56,6 +56,8 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	load_attachments() ## TEMPORARY FOR TESTING
 
+
+
 ## Input (camera movement)
 func _input(event):
 	if not GameState.paused:
@@ -67,6 +69,9 @@ func _input(event):
 			camera_pivot.rotation += Vector3(mouse_motion_v, 0, 0)
 			if abs(camera_pivot.rotation.x) > VCAM_RANGE:
 				camera_pivot.rotation.x = sign(camera_pivot.rotation.x) * VCAM_RANGE
+## Capture mouse for web code that i copied from reddit
+	if (Input.mouse_mode != Input.MOUSE_MODE_CAPTURED) and event is InputEventMouseButton: 
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 ## Process
 func _process(delta):

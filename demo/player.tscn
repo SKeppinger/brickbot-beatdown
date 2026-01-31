@@ -16,7 +16,7 @@ script = ExtResource("1_euw2q")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.1204621, 0)
 visible = false
 
-[node name="Skeleton3D" parent="char_brickbot_1/metarig" parent_id_path=PackedInt32Array(1138550672, 1041924663) index="0" unique_id=301934269]
+[node name="Skeleton3D" parent="char_brickbot_1/metarig" index="0"]
 bones/3/rotation = Quaternion(-0.0016382344, 0.013940774, -0.9897335, 0.14223386)
 bones/5/rotation = Quaternion(-0.072738804, 0.9544648, 0.017236829, -0.28880617)
 bones/6/rotation = Quaternion(-0.0016780565, -0.013922628, 0.9887918, 0.14864105)
@@ -49,7 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 
 [node name="char_brickbot_2" parent="." unique_id=496472428 instance=ExtResource("5_pdims")]
 
-[node name="Skeleton3D" parent="char_brickbot_2/metarig" parent_id_path=PackedInt32Array(496472428, 384528686) index="0" unique_id=437304694]
+[node name="Skeleton3D" parent="char_brickbot_2/metarig" parent_id_path=PackedInt32Array(496472428, 1086040228) index="0" unique_id=649960190]
 bones/0/position = Vector3(2.7782404e-10, 1.0712608, -0.0013082863)
 bones/3/rotation = Quaternion(0.049790867, 0.37020862, -0.917968, 0.13342194)
 bones/4/rotation = Quaternion(0.5976825, -0.17334944, -0.0103760045, 0.7826992)
