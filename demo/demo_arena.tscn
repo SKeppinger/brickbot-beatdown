@@ -340,9 +340,11 @@ fill_mode = 1
 script = ExtResource("3_57bbd")
 
 [node name="Light1" type="OmniLight3D" parent="." unique_id=105655334]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 25, -19)
-light_energy = 8.0
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 16.121984, 25.208866, -15.911537)
+light_color = Color(0.99999994, 0.96233636, 0.87819064, 1)
+light_energy = 5.705
 light_indirect_energy = 16.0
+light_volumetric_fog_energy = 3.834
 omni_range = 60.0
 omni_attenuation = 0.2
 
@@ -356,8 +358,10 @@ omni_attenuation = 0.2
 
 [node name="Light3" type="OmniLight3D" parent="." unique_id=802817677]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 25, 19)
+light_color = Color(0.9969266, 0.9439155, 0.9240424, 1)
 light_energy = 8.0
 light_indirect_energy = 16.0
+light_volumetric_fog_energy = 3.065
 omni_range = 60.0
 omni_attenuation = 0.2
 

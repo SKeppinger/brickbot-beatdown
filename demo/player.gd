@@ -19,6 +19,9 @@ const VCAM_RANGE = PI / 4 # This is the maximum vertical camera rotation, in rad
 
 @export var max_hp = 10
 
+## animation player for running
+@export var target_anim_player: AnimationPlayer
+
 @onready var facing_ray = $CollisionShape3D/FacingDirection
 @onready var camera_pivot = $CameraPivot
 @onready var camera = $CameraPivot/Camera3D
@@ -130,10 +133,12 @@ func _physics_process(delta):
 		var input_dir = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
 		if movement_locked:
 			input_dir = Vector2.ZERO
+			target_anim_player.play("Frozen")
 		var facing_direction = get_facing_direction()
 		var direction_strafe = (facing_direction.cross(up_direction) * input_dir.x).normalized()
 		var direction_fb = (facing_direction * input_dir.y).normalized()
 		move_direction = direction_fb + direction_strafe
+		
 		if not is_on_floor():
 			move_direction = jump_direction + direction_strafe
 			velocity.y += GRAVITY * delta
@@ -148,12 +153,15 @@ func _physics_process(delta):
 			if is_on_floor() and Input.is_action_pressed("sprint") and input_dir.y > 0:
 				velocity.x = move_toward(velocity.x, move_direction.x * SPRINT_SPEED, SPEED)
 				velocity.z = move_toward(velocity.z, move_direction.z * SPRINT_SPEED, SPEED)
+				target_anim_player.play("Run")
 			else:
 				velocity.x = move_direction.x * SPEED
 				velocity.z = move_direction.z * SPEED
+				target_anim_player.play("Run")
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
+			target_anim_player.play("Frozen")
 		move_and_slide()
 		
 		## Camera Lock

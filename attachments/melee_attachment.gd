@@ -64,7 +64,7 @@ func do_action():
 		attack_spawn.add_child(atk)
 		
 		##play animation test
-		#target_anim_player.play("Melee-Left")
+		target_anim_player.play("Melee-Left")
 		
 		## Start the cooldown
 		cooldown = attack_cooldown
