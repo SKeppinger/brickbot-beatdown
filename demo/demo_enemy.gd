@@ -120,3 +120,5 @@ func attack_close():
 		get_tree().root.add_child(proj)
 		proj.global_position = position
 		proj_angle = proj_angle.rotated( y_axis, PI/2)
+func bounced():
+	direction = -direction

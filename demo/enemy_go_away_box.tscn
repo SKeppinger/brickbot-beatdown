@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://sof7kk7s4syt"]
+
+[ext_resource type="Script" uid="uid://c7mt3j1a5ixnb" path="res://demo/enemy_go_away_box.gd" id="1_usymk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j76o1"]
+
+[node name="enemy go away box" type="StaticBody3D" unique_id=1989507031]
+script = ExtResource("1_usymk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1841287958]
+shape = SubResource("BoxShape3D_j76o1")
