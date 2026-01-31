@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cw287ac7uqk70"]
+
+[ext_resource type="Script" uid="uid://de8fy2rdnsefk" path="res://options.gd" id="1_5v8ap"]
+
+[node name="Options" type="Node2D" unique_id=1686654684]
+script = ExtResource("1_5v8ap")
+
+[node name="Main Menu" type="Button" parent="." unique_id=1994071799]
+offset_left = 351.0
+offset_top = 301.0
+offset_right = 857.0
+offset_bottom = 384.0
+text = "Options is still under construction. Click to return to Main menu."
+
+[connection signal="pressed" from="Main Menu" to="." method="_on_main_menu_pressed"]

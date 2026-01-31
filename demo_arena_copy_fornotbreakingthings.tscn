@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://jutrqlm5ssqy"]
+
+[ext_resource type="PackedScene" uid="uid://c3q74ciu2y4rc" path="res://demo/Interface/interface.tscn" id="1_kibeh"]
+[ext_resource type="Script" uid="uid://b860cvwmkki4d" path="res://demo/Interface/interface.gd" id="2_djofn"]
+[ext_resource type="Script" uid="uid://cfwda0euuja1g" path="res://demo/player_health.gd" id="2_fbwt7"]
+[ext_resource type="Script" uid="uid://da7u0y2h0f6iq" path="res://demo/enemy_health.gd" id="3_djofn"]
+[ext_resource type="PackedScene" uid="uid://d1d35a4aiirdi" path="res://demo/player.tscn" id="4_2d3tk"]
+[ext_resource type="Script" uid="uid://bb2run4gtnwud" path="res://reload_scenario.gd" id="5_2d3tk"]
+[ext_resource type="PackedScene" uid="uid://bwi5vwavkqhot" path="res://demo/enemy.tscn" id="5_712ii"]
+
+[sub_resource type="Theme" id="Theme_apafh"]
+
+[sub_resource type="Theme" id="Theme_57bbd"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d6po2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6po2"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ytiva"]
+material = SubResource("StandardMaterial3D_d6po2")
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u10mr"]
+plane = Plane(1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dar0o"]
+plane = Plane(-1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ytiva"]
+plane = Plane(0, 0, -1, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_j5lb4"]
+plane = Plane(0, 0, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ytiva"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dar0o"]
+material = SubResource("StandardMaterial3D_ytiva")
+size = Vector2(60, 20)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dar0o"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j5lb4"]
+material = SubResource("StandardMaterial3D_dar0o")
+size = Vector2(60, 20)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5lb4"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_u10mr"]
+material = SubResource("StandardMaterial3D_j5lb4")
+flip_faces = true
+size = Vector2(60, 20)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onu7k"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_s1s6j"]
+material = SubResource("StandardMaterial3D_onu7k")
+flip_faces = true
+size = Vector2(60, 20)
+orientation = 0
+
+[node name="DemoArena" type="Node3D" unique_id=1621715514]
+
+[node name="interface" parent="." unique_id=64711133 instance=ExtResource("1_kibeh")]
+script = ExtResource("2_djofn")
+
+[node name="Player Health" type="ProgressBar" parent="interface" unique_id=586760305]
+layout_mode = 0
+offset_right = 411.0
+offset_bottom = 64.0
+theme = SubResource("Theme_apafh")
+theme_override_colors/font_color = Color(4.0670484e-06, 0.5695745, 0.1542531, 1)
+rounded = true
+allow_greater = true
+script = ExtResource("2_fbwt7")
+
+[node name="Enemy Health" type="ProgressBar" parent="interface" unique_id=844071276]
+layout_mode = 0
+offset_left = 739.0
+offset_top = 4.0
+offset_right = 1149.0
+offset_bottom = 67.0
+theme = SubResource("Theme_57bbd")
+theme_override_colors/font_color = Color(0.92525136, 0, 0.121327944, 1)
+rounded = true
+allow_greater = true
+fill_mode = 1
+script = ExtResource("3_djofn")
+
+[node name="Reload Scenario" type="Button" parent="interface" unique_id=816464341]
+layout_mode = 0
+offset_left = 945.0
+offset_top = 569.0
+offset_right = 1154.0
+offset_bottom = 647.0
+text = "Reload"
+script = ExtResource("5_2d3tk")
+
+[node name="Light1" type="OmniLight3D" parent="." unique_id=105655334]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 25, -19)
+light_energy = 8.0
+light_indirect_energy = 16.0
+omni_range = 60.0
+omni_attenuation = 0.2
+
+[node name="Light2" type="OmniLight3D" parent="." unique_id=1928826207]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 19, 25, 19)
+light_energy = 8.0
+light_indirect_energy = 16.0
+omni_range = 60.0
+omni_attenuation = 0.2
+
+[node name="Light3" type="OmniLight3D" parent="." unique_id=802817677]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 25, 19)
+light_energy = 8.0
+light_indirect_energy = 16.0
+omni_range = 60.0
+omni_attenuation = 0.2
+
+[node name="Light4" type="OmniLight3D" parent="." unique_id=555023439]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 19, 25, -19)
+light_energy = 8.0
+light_indirect_energy = 16.0
+omni_range = 60.0
+omni_attenuation = 0.2
+
+[node name="Player" parent="." unique_id=781637815 instance=ExtResource("4_2d3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 25)
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=611984033]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=427529319]
+shape = SubResource("WorldBoundaryShape3D_d6po2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1145800407]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ytiva")
+
+[node name="Walls" type="StaticBody3D" parent="." unique_id=1270895905]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls" unique_id=1867327371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_u10mr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls" unique_id=463717441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_dar0o")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls" unique_id=398265782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+shape = SubResource("WorldBoundaryShape3D_ytiva")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls" unique_id=401842839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+shape = SubResource("WorldBoundaryShape3D_j5lb4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls" unique_id=2128126596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
+mesh = SubResource("PlaneMesh_dar0o")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls" unique_id=1612925193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -30)
+mesh = SubResource("PlaneMesh_j5lb4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls" unique_id=16849873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 30)
+mesh = SubResource("PlaneMesh_u10mr")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls" unique_id=90667304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
+mesh = SubResource("PlaneMesh_s1s6j")
+
+[node name="Enemy" parent="." unique_id=783461347 instance=ExtResource("5_712ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -10)
+
+[connection signal="pressed" from="interface/Reload Scenario" to="interface/Reload Scenario" method="_on_pressed"]
