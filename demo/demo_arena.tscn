@@ -2,9 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://d1d35a4aiirdi" path="res://demo/player.tscn" id="1_b6hqq"]
 [ext_resource type="PackedScene" uid="uid://c3q74ciu2y4rc" path="res://demo/Interface/interface.tscn" id="1_igoa8"]
+[ext_resource type="Script" uid="uid://b860cvwmkki4d" path="res://demo/Interface/interface.gd" id="2_0df66"]
 [ext_resource type="PackedScene" uid="uid://bwi5vwavkqhot" path="res://demo/enemy.tscn" id="2_igoa8"]
 [ext_resource type="Script" uid="uid://cfwda0euuja1g" path="res://demo/player_health.gd" id="2_mj8rb"]
 [ext_resource type="Script" uid="uid://da7u0y2h0f6iq" path="res://demo/enemy_health.gd" id="3_57bbd"]
+[ext_resource type="Script" uid="uid://bxv4giyhx4fgd" path="res://demo/return.gd" id="5_xqphr"]
 [ext_resource type="Texture2D" uid="uid://duln22rey0qxs" path="res://assets/environments/arena1_skatepark/arena1_concretewalls_concrete_texture_large.png" id="6_slg55"]
 [ext_resource type="Texture2D" uid="uid://d035ht43jmm78" path="res://assets/environments/arena1_skatepark/arena_bits_skatepark_concrete_texture.png" id="7_rxdt8"]
 [ext_resource type="Texture2D" uid="uid://d2x3gbh3xxsbk" path="res://assets/environments/arena1_skatepark/arena_bits_skatepark_metal_texture-export.png" id="8_0df66"]
@@ -315,6 +317,7 @@ size = Vector3(5.3433366, 3.066424, 3.0664244)
 [node name="DemoArena" type="Node3D" unique_id=1621715514]
 
 [node name="interface" parent="." unique_id=64711133 instance=ExtResource("1_igoa8")]
+script = ExtResource("2_0df66")
 
 [node name="Player Health" type="ProgressBar" parent="interface" unique_id=586760305]
 layout_mode = 0
@@ -338,6 +341,15 @@ rounded = true
 allow_greater = true
 fill_mode = 1
 script = ExtResource("3_57bbd")
+
+[node name="Return" type="Button" parent="interface" unique_id=1286966972]
+layout_mode = 0
+offset_left = 871.0
+offset_top = 524.0
+offset_right = 1139.0
+offset_bottom = 604.0
+text = "Return to main menu"
+script = ExtResource("5_xqphr")
 
 [node name="Light1" type="OmniLight3D" parent="." unique_id=105655334]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 16.121984, 25.208866, -15.911537)
@@ -990,3 +1002,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08682704, -0.00048208237, 
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/pipeopening_large3/StaticBody3D" unique_id=680563683]
 shape = SubResource("BoxShape3D_ktx83")
+
+[connection signal="pressed" from="interface/Return" to="interface" method="_on_return_pressed"]
