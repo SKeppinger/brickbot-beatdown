@@ -47,6 +47,7 @@ func do_action():
 		## Aim slightly towards player center
 		if type == Reference.AttachmentType.LeftArm:
 			pivot.rotation.y = -50 * ARM_ROTATION
+			
 		elif type == Reference.AttachmentType.RightArm:
 			pivot.rotation.y = 50 * ARM_ROTATION
 	## Face the vertical direction the player is aiming (even if on cooldown)
@@ -62,9 +63,6 @@ func do_action():
 		var atk = attack.instantiate()
 		#atk.source = Reference.Source.Player
 		attack_spawn.add_child(atk)
-		
-		##play animation test
-		target_anim_player.play("Melee-Left")
 		
 		## Start the cooldown
 		cooldown = attack_cooldown
