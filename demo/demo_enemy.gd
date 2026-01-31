@@ -14,10 +14,10 @@ const SPEED = 2.5
 const GRAVITY = -30.0
 const HURT_DURATION = 0.25
 #I have COPIED this code and I DO NOT understand it.
-## The pivot for rotation
-@onready var pivot = $Pivot
-## The projectile spawn point
-@onready var proj_spawn = $Pivot/ProjectileSpawn
+### The pivot for rotation
+#@onready var pivot = $Pivot
+### The projectile spawn point
+#@onready var proj_spawn = $Pivot/ProjectileSpawn
 
 var direction = Vector3(0, 0, 0)
 var hp = max_hp
@@ -29,25 +29,35 @@ var desired_range = "close"
 var target_position = Vector3.ZERO
 var attack_cooldown = 1.0
 var attack_timer = attack_cooldown
+var close_attack_rotation = PI/30
+var y_axis = Vector3(0,1,0)
+@onready var proj_angle = (position.direction_to(player.position)).rotated( y_axis, (PI/4))
 
 func _process(delta):
 	#Current desired behaviors: Pick between wanting to be close or far, then attempt to move to that range. Recheck and change every 15? sec
 	if dir_change_timer <= 0.0:
-		print("dir change timer")
 		dir_change_timer = 15
 		if desired_range == "far":
 			desired_range = "close"
+			attack_cooldown = 0.2
+			var proj_angle = (position.direction_to(player.position)).rotated( y_axis, (PI/4))
+
 		else:
 			#for far distance, moves in a direction perpendicular to the line between it and player, in order to be predictable. this is shitass but should work.
 			desired_range = "far"
-			
+			attack_cooldown = 1
 			direction.x = position.direction_to(player.position).z
 			direction.z = sign(randf_range(-1,1))*position.direction_to(player.position).x
 		print(desired_range)
 	else:
+		#if desired_range == "close":
+			#close_attack_rotation += (PI/8)*delta
 		dir_change_timer -= delta
 	if attack_timer <= 0:
-		attack()
+		if desired_range == "far":
+			attack()
+		else:
+			attack_close()
 		attack_timer = attack_cooldown
 	else:
 		attack_timer -= delta
@@ -100,3 +110,13 @@ func attack():
 	proj.source = Reference.Source.Enemy
 	get_tree().root.add_child(proj)
 	proj.global_position = position
+func attack_close():
+	proj_angle = proj_angle.rotated(y_axis, close_attack_rotation)
+	for i in range(4):
+		
+		var proj = projectile.instantiate()
+		proj.direction = proj_angle
+		proj.source = Reference.Source.Enemy
+		get_tree().root.add_child(proj)
+		proj.global_position = position
+		proj_angle = proj_angle.rotated( y_axis, PI/2)
