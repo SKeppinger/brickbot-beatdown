@@ -12,3 +12,7 @@ func _process(delta):
 	uptime += delta
 	if uptime >= lifetime:
 		queue_free()
+
+func _on_body_entered(body):
+	if body is Projectile and body.source == Reference.Source.Enemy:
+		body.queue_free()

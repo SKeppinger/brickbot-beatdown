@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://h77j60a802cy" path="res://attachments/shield.gd" id="1_ug0bx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ug0bx"]
-size = Vector3(1.75, 0.5, 1)
+size = Vector3(1, 0.5, 1.75)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ug0bx"]
 size = Vector3(1, 0.5, 1.75)
 
 [node name="Shield" type="Area3D" unique_id=1696600682]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 20
 script = ExtResource("1_ug0bx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1159744599]
