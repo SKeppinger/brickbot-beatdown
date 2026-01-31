@@ -1,9 +1,19 @@
 [gd_scene format=3 uid="uid://hwwble31n3j5"]
 
-[ext_resource type="Script" uid="uid://b11pcibjx50pn" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://b11pcibjx50pn" path="res://GUI/main_menu.gd" id="1_06t4h"]
+[ext_resource type="PackedScene" uid="uid://vu04671xunx7" path="res://attachments/fast_ranged_attachment.tscn" id="2_rhcmj"]
+[ext_resource type="PackedScene" uid="uid://ceuf45tbqi1rd" path="res://attachments/med_ranged_attachment.tscn" id="3_exjve"]
+[ext_resource type="PackedScene" uid="uid://bsxw3rsifs8f2" path="res://attachments/big_melee_attachment.tscn" id="4_s7n8e"]
+[ext_resource type="PackedScene" uid="uid://debxgxhqpgpf1" path="res://attachments/melee_attachment.tscn" id="5_w0c01"]
+[ext_resource type="PackedScene" uid="uid://cf2tch766jqhv" path="res://attachments/shield_attachment.tscn" id="6_w0c01"]
 
 [node name="Main Menu" type="Node2D" unique_id=1178264397]
 script = ExtResource("1_06t4h")
+attachment_1 = ExtResource("2_rhcmj")
+attachment_2 = ExtResource("3_exjve")
+attachment_3 = ExtResource("4_s7n8e")
+attachment_4 = ExtResource("5_w0c01")
+attachment_5 = ExtResource("6_w0c01")
 
 [node name="Left arm weapon" type="OptionButton" parent="." unique_id=1657294550]
 offset_left = 133.0
@@ -12,16 +22,20 @@ offset_right = 411.0
 offset_bottom = 241.0
 button_pressed = true
 keep_pressed_outside = true
-item_count = 4
+item_count = 6
 popup/item_0/text = "ARM YOURSELF"
 popup/item_0/id = 0
 popup/item_0/disabled = true
 popup/item_1/text = "Small Fast bullet"
 popup/item_1/id = 1
-popup/item_2/text = "Big Sword"
+popup/item_2/text = "Bigger Slower bullets"
 popup/item_2/id = 2
-popup/item_3/text = "Stick"
+popup/item_3/text = "Big Sword"
 popup/item_3/id = 3
+popup/item_4/text = "Stick"
+popup/item_4/id = 4
+popup/item_5/text = "Shield"
+popup/item_5/id = 5
 
 [node name="Right arm weapon" type="OptionButton" parent="." unique_id=1676839548]
 offset_left = 772.0
@@ -30,16 +44,20 @@ offset_right = 1050.0
 offset_bottom = 243.0
 button_pressed = true
 keep_pressed_outside = true
-item_count = 4
+item_count = 6
 popup/item_0/text = "ARM YOURSELF"
 popup/item_0/id = 0
 popup/item_0/disabled = true
 popup/item_1/text = "Small Fast bullet"
 popup/item_1/id = 1
-popup/item_2/text = "Big Sword"
+popup/item_2/text = "Bigger Slower bullets"
 popup/item_2/id = 2
-popup/item_3/text = "Stick"
+popup/item_3/text = "Big Sword"
 popup/item_3/id = 3
+popup/item_4/text = "Stick"
+popup/item_4/id = 4
+popup/item_5/text = "Shield"
+popup/item_5/id = 5
 
 [node name="Fight" type="Button" parent="." unique_id=520077590]
 offset_left = 479.0

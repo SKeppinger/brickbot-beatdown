@@ -54,7 +54,12 @@ func load_attachments():
 ## Ready (capture mouse)
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	load_attachments() ## TEMPORARY FOR TESTING
+	if GameState.left_arm and GameState.right_arm:
+		var l = GameState.left_arm.instantiate()
+		var r = GameState.right_arm.instantiate()
+		$LeftArmAttachment.add_child(l)
+		$RightArmAttachment.add_child(r)
+		load_attachments() ## TEMPORARY FOR TESTING
 
 
 
@@ -97,13 +102,13 @@ func _process(delta):
 		if Input.is_action_just_pressed("change_shoulder"):
 			camera.position.x *= -1
 		## Left Arm
-		if Input.is_action_pressed("left_ability"):
+		if left_attachment and Input.is_action_pressed("left_ability"):
 			left_attachment.do_action()
 		## Right Arm
-		if Input.is_action_pressed("right_ability"):
+		if right_attachment and Input.is_action_pressed("right_ability"):
 			right_attachment.do_action()
 		## Special
-		if Input.is_action_pressed("special_ability"):
+		if special_attachment and Input.is_action_pressed("special_ability"):
 			pass
 		
 		## Timers
