@@ -441,27 +441,27 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Walls" unique_id=16627356]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.311501, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.311501, 0, 3.429205)
 shape = SubResource("WorldBoundaryShape3D_j4cfe")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Level/Walls" unique_id=302201121]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.852291, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.852291, 0, 3.0045285)
 shape = SubResource("WorldBoundaryShape3D_cqhpu")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Level/Walls" unique_id=1455982411]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.18906)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.016792)
 shape = SubResource("WorldBoundaryShape3D_xl7b5")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Level/Walls" unique_id=1341750039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.108765)
 shape = SubResource("WorldBoundaryShape3D_p5ojx")
 
-[node name="concrete_walls2" type="MeshInstance3D" parent="Level" unique_id=1905708482]
+[node name="concrete_walls2" type="MeshInstance3D" parent="Level/Walls" unique_id=1905708482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.005857, 1.0213455, -1.6287003)
 mesh = SubResource("ArrayMesh_8k1se")
 skeleton = NodePath("")
 
-[node name="concrete_walls3" type="MeshInstance3D" parent="Level" unique_id=1293997911]
+[node name="concrete_walls3" type="MeshInstance3D" parent="Level/Walls" unique_id=1293997911]
 transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 4.426763, 1.0213455, 9.357125)
 mesh = SubResource("ArrayMesh_8k1se")
 skeleton = NodePath("")
