@@ -1,28 +1,57 @@
 [gd_scene format=3 uid="uid://d1d35a4aiirdi"]
 
 [ext_resource type="Script" uid="uid://bbhrg8i6qpd4i" path="res://demo/player.gd" id="1_euw2q"]
-[ext_resource type="PackedScene" uid="uid://cjqh8oojt61a3" path="res://assets/character/demo_model/char_brickbot_1.glb" id="2_pdims"]
+[ext_resource type="Script" uid="uid://cuu8fg0sd6wrw" path="res://player-semilockedcam/player_animation_tree.gd" id="2_yji6d"]
 [ext_resource type="PackedScene" uid="uid://bvqb4ofwl2w84" path="res://assets/character/brickbot/char_brickbot_2.glb" id="5_pdims"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kegl3"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yji6d"]
+animation = &"Frozen"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uuw2b"]
+animation = &"Melee-Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pdims"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s4nun"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0j7tx"]
+switch_mode = 1
+advance_mode = 2
+advance_expression = "!velocity"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yb033"]
+switch_mode = 1
+advance_mode = 2
+advance_expression = "velocity"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yji6d"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uuw2b"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pdims"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0il8d"]
+states/End/position = Vector2(937, 147)
+states/Frozen/node = SubResource("AnimationNodeAnimation_yji6d")
+states/Frozen/position = Vector2(479, 210)
+states/Melee-Left/node = SubResource("AnimationNodeAnimation_uuw2b")
+states/Melee-Left/position = Vector2(635, 210)
+states/Run/node = SubResource("AnimationNodeAnimation_pdims")
+states/Run/position = Vector2(479, 85)
+states/Start/position = Vector2(279, 210)
+transitions = ["Start", "Run", SubResource("AnimationNodeStateMachineTransition_s4nun"), "Run", "Frozen", SubResource("AnimationNodeStateMachineTransition_0j7tx"), "Frozen", "Run", SubResource("AnimationNodeStateMachineTransition_yb033"), "Run", "Melee-Left", SubResource("AnimationNodeStateMachineTransition_yji6d"), "Frozen", "Melee-Left", SubResource("AnimationNodeStateMachineTransition_uuw2b"), "Melee-Left", "Frozen", SubResource("AnimationNodeStateMachineTransition_pdims")]
 
 [node name="Player" type="CharacterBody3D" unique_id=1046148302 node_paths=PackedStringArray("target_anim_player") groups=["player"]]
 collision_mask = 7
 script = ExtResource("1_euw2q")
 target_anim_player = NodePath("char_brickbot_2/AnimationPlayer")
-
-[node name="char_brickbot_1" parent="." unique_id=1138550672 instance=ExtResource("2_pdims")]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, -1.1204621, 0)
-visible = false
-
-[node name="Skeleton3D" parent="char_brickbot_1/metarig" index="0"]
-bones/3/rotation = Quaternion(-0.0016382344, 0.013940774, -0.9897335, 0.14223386)
-bones/5/rotation = Quaternion(-0.072738804, 0.9544648, 0.017236829, -0.28880617)
-bones/6/rotation = Quaternion(-0.0016780565, -0.013922628, 0.9887918, 0.14864105)
-bones/7/rotation = Quaternion(0.058677543, 0.0727655, 0.1082252, 0.98972195)
-bones/8/rotation = Quaternion(0.19054742, 0.90246534, -0.048702113, 0.3832443)
-bones/9/rotation = Quaternion(0.9999852, -0.00021410994, -9.582519e-05, -0.0054339655)
-bones/12/rotation = Quaternion(0.9999852, 0.00021410857, 9.606176e-05, -0.005433965)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=819164279]
 shape = SubResource("CapsuleShape3D_kegl3")
@@ -42,23 +71,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
 [node name="RightArmAttachment" type="Node3D" parent="." unique_id=2130059498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 
+[node name="Animation" type="Node3D" parent="." unique_id=1356760414 node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("2_yji6d")
+animation_tree = NodePath("../char_brickbot_2/AnimationTree")
+
 [node name="char_brickbot_2" parent="." unique_id=496472428 instance=ExtResource("5_pdims")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.0798512, 0)
 
-[node name="Skeleton3D" parent="char_brickbot_2/metarig" parent_id_path=PackedInt32Array(496472428, 1086040228) index="0" unique_id=649960190]
-bones/0/position = Vector3(-2.7755582e-17, 1.0639584, -0.001308287)
-bones/3/rotation = Quaternion(-0.0016382344, 0.013940774, -0.9897335, 0.14223386)
-bones/4/rotation = Quaternion(0.015960254, -0.0068363296, -0.0059620775, 0.9998315)
-bones/5/rotation = Quaternion(-0.072738804, 0.9544648, 0.017236829, -0.28880617)
-bones/6/rotation = Quaternion(-0.0016780565, -0.013922628, 0.9887918, 0.14864105)
-bones/7/rotation = Quaternion(0.058677543, 0.0727655, 0.1082252, 0.98972195)
-bones/8/rotation = Quaternion(0.19054742, 0.90246534, -0.048702113, 0.3832443)
-bones/9/rotation = Quaternion(0.9999852, -0.00021410994, -9.582519e-05, -0.0054339655)
-bones/10/rotation = Quaternion(-0.009639912, 0.0020695697, -0.0051850216, 0.99993795)
-bones/11/rotation = Quaternion(-0.4815445, -0.04324796, -0.02641112, 0.8749554)
-bones/12/rotation = Quaternion(0.9999852, 0.00021410857, 9.606176e-05, -0.005433965)
-bones/13/rotation = Quaternion(-0.009639913, -0.0020695697, 0.0051850183, 0.99993795)
-bones/14/rotation = Quaternion(-0.4815446, 0.043247964, 0.026411124, 0.87495536)
+[node name="AnimationTree" type="AnimationTree" parent="char_brickbot_2" unique_id=897100888]
+tree_root = SubResource("AnimationNodeStateMachine_0il8d")
+advance_expression_base_node = NodePath("../..")
+anim_player = NodePath("../AnimationPlayer")
 
-[editable path="char_brickbot_1"]
 [editable path="char_brickbot_2"]

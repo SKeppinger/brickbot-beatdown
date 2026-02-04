@@ -133,7 +133,7 @@ func _physics_process(delta):
 		var input_dir = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
 		if movement_locked:
 			input_dir = Vector2.ZERO
-			target_anim_player.play("Frozen")
+			## target_anim_player.play("Frozen")
 		var facing_direction = get_facing_direction()
 		var direction_strafe = (facing_direction.cross(up_direction) * input_dir.x).normalized()
 		var direction_fb = (facing_direction * input_dir.y).normalized()
@@ -153,15 +153,15 @@ func _physics_process(delta):
 			if is_on_floor() and Input.is_action_pressed("sprint") and input_dir.y > 0:
 				velocity.x = move_toward(velocity.x, move_direction.x * SPRINT_SPEED, SPEED)
 				velocity.z = move_toward(velocity.z, move_direction.z * SPRINT_SPEED, SPEED)
-				target_anim_player.play("Run")
+				## target_anim_player.play("Run")
 			else:
 				velocity.x = move_direction.x * SPEED
 				velocity.z = move_direction.z * SPEED
-				target_anim_player.play("Run")
+				## target_anim_player.play("Run")
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
-			target_anim_player.play("Frozen")
+			## target_anim_player.play("Frozen")
 		move_and_slide()
 		
 		## Camera Lock
