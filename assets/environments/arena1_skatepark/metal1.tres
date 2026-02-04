@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cxh7mvg85xiub"]
+
+[ext_resource type="Texture2D" uid="uid://d2x3gbh3xxsbk" path="res://assets/environments/arena1_skatepark/arena_bits_skatepark_metal_texture-export.png" id="1_y81sj"]
+
+[resource]
+resource_name = "metal1"
+cull_mode = 2
+albedo_texture = ExtResource("1_y81sj")
+roughness = 0.5
+texture_filter = 2

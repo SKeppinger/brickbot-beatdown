@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bedv770c7rt8r"]
+
+[ext_resource type="Texture2D" uid="uid://duln22rey0qxs" path="res://assets/environments/arena1_skatepark/arena1_concretewalls_concrete_texture_large.png" id="1_ve8jx"]
+
+[resource]
+resource_name = "concrete_walls"
+cull_mode = 2
+albedo_texture = ExtResource("1_ve8jx")
+metallic_specular = 0.07
+roughness_texture_channel = 4
+texture_filter = 2
