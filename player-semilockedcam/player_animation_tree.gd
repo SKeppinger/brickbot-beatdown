@@ -9,5 +9,5 @@ func _process(delta: float) -> void:
 	
 	var idle = !player.velocity
 	
-	animation_tree.set("Run", player.velocity.normalized())
+	animation_tree.set("parameters/RuningBlend/blend_position", player.velocity.normalized())
 	animation_tree.set("Frozen", player.velocity.normalized())
