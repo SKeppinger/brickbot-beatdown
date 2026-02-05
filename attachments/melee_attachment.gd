@@ -22,11 +22,16 @@ class_name MeleeAttachment
 var cooldown = 0.0
 ## Whether the action is currently held
 var action_held = false
+## Animation Flags
+var attackingAnim = false
+var rightAttackAnim = false
 
 ## Process the cooldown timer/attack motion, and reset rotation
 func _process(delta):
 	if cooldown > 0.0:
 		cooldown -= delta
+		attackingAnim = false
+		rightAttackAnim = false
 	else:
 		cooldown = 0.0
 		if not action_held:
@@ -39,6 +44,8 @@ func _process(delta):
 			pivot.rotation.y = lerp(pivot.rotation.y, 50 * ARM_ROTATION, 0.2)
 		elif type == Reference.AttachmentType.RightArm:
 			pivot.rotation.y = lerp(pivot.rotation.y, -50 * ARM_ROTATION, 0.2)
+
+		
 
 ## Perform a melee attack
 func do_action():
@@ -63,6 +70,11 @@ func do_action():
 		var atk = attack.instantiate()
 		#atk.source = Reference.Source.Player
 		attack_spawn.add_child(atk)
+		
+		##animations
+		attackingAnim = true
+		if Input.is_action_just_pressed("left_ability"):
+			rightAttackAnim = true;
 		
 		## Start the cooldown
 		cooldown = attack_cooldown
