@@ -16,6 +16,7 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_vp6rp")
 animation_duration = 0.4
+move_speed = 2.5
 attack_cooldown = 0.9
 attack = ExtResource("2_vp6rp")
 

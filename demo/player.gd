@@ -116,6 +116,12 @@ func _process(delta):
 			pass
 		
 		## Timers
+		## Movement slow
+		if movement_slowed:
+			ms_timer -= delta
+		if ms_timer <= 0.0:
+			movement_slowed = false
+			ms_timer = 0.0
 		## Movement lock
 		if movement_locked:
 			ml_timer -= delta
@@ -191,6 +197,7 @@ func _physics_process(delta):
 
 ## Slow movement (for attachments that slow movement)
 func slow_movement(speed, duration):
+	print("movement slowed")
 	movement_slowed = true
 	slow_speed = speed
 	ms_timer = duration

@@ -5,7 +5,7 @@ class_name MeleeAttachment
 @export var animation_duration = 0.25
 
 ## The movement speed while attacking
-@export var move_speed = 8.0
+@export var move_speed = 5.0
 
 ## The cooldown (this includes the animation duration!)
 @export var attack_cooldown = 0.4
