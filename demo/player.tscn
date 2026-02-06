@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bvqb4ofwl2w84" path="res://assets/character/brickbot/char_brickbot_2.glb" id="5_pdims"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kegl3"]
+radius = 0.25
+height = 1.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yji6d"]
 animation = &"Frozen"
@@ -110,7 +112,7 @@ target_position = Vector3(0, 0, -1)
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1731401337]
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1310681344]
-transform = Transform3D(1, 0, 0, 0, 0.99254614, 0.12186935, 0, -0.12186935, 0.99254614, 1.1, 1.5, 2.75)
+transform = Transform3D(1, 0, 0, 0, 0.99254614, 0.12186935, 0, -0.12186935, 0.99254614, 0.4, 0.75, 1.3)
 
 [node name="LeftArmAttachment" type="Node3D" parent="." unique_id=178813499]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
@@ -123,7 +125,22 @@ script = ExtResource("2_yji6d")
 animation_tree = NodePath("../char_brickbot_2/AnimationTree")
 
 [node name="char_brickbot_2" parent="." unique_id=496472428 instance=ExtResource("5_pdims")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.0798512, 0)
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, -0.5, 0)
+
+[node name="Skeleton3D" parent="char_brickbot_2/metarig" parent_id_path=PackedInt32Array(496472428, 1819955316) index="0" unique_id=1524123626]
+bones/0/position = Vector3(-2.7755582e-17, 1.0639584, -0.001308287)
+bones/3/rotation = Quaternion(-0.0016382344, 0.013940774, -0.9897335, 0.14223386)
+bones/4/rotation = Quaternion(0.015960254, -0.0068363296, -0.0059620775, 0.9998315)
+bones/5/rotation = Quaternion(-0.072738804, 0.9544648, 0.017236829, -0.28880617)
+bones/6/rotation = Quaternion(-0.0016780565, -0.013922628, 0.9887918, 0.14864105)
+bones/7/rotation = Quaternion(0.058677543, 0.0727655, 0.1082252, 0.98972195)
+bones/8/rotation = Quaternion(0.19054742, 0.90246534, -0.048702113, 0.3832443)
+bones/9/rotation = Quaternion(0.9999852, -0.00021410994, -9.582519e-05, -0.0054339655)
+bones/10/rotation = Quaternion(-0.009639912, 0.0020695697, -0.0051850216, 0.99993795)
+bones/11/rotation = Quaternion(-0.4815445, -0.04324796, -0.02641112, 0.8749554)
+bones/12/rotation = Quaternion(0.9999852, 0.00021410857, 9.606176e-05, -0.005433965)
+bones/13/rotation = Quaternion(-0.009639913, -0.0020695697, 0.0051850183, 0.99993795)
+bones/14/rotation = Quaternion(-0.4815446, 0.043247964, 0.026411124, 0.87495536)
 
 [node name="AnimationTree" type="AnimationTree" parent="char_brickbot_2" unique_id=897100888]
 tree_root = SubResource("AnimationNodeStateMachine_0il8d")

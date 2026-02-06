@@ -72,9 +72,9 @@ func _input(event):
 	if not GameState.paused:
 		## Camera Movement
 		if not locked_on and event is InputEventMouseMotion:
-			var mouse_motion_h = -1 * event.screen_relative.x * CAM_SENS
+			var mouse_motion_h = -1 * event.screen_relative.x * CAM_SENS * GameState.sensitivity
 			rotation += Vector3(0, mouse_motion_h, 0)
-			var mouse_motion_v = -1 * event.screen_relative.y * CAM_SENS
+			var mouse_motion_v = -1 * event.screen_relative.y * CAM_SENS * GameState.sensitivity
 			camera_pivot.rotation += Vector3(mouse_motion_v, 0, 0)
 			if abs(camera_pivot.rotation.x) > VCAM_RANGE:
 				camera_pivot.rotation.x = sign(camera_pivot.rotation.x) * VCAM_RANGE

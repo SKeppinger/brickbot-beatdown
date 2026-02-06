@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 
 
 func _on_fight_pressed() -> void:
-	if left_arm_dropdown.get_selected_id() and right_arm_dropdown.get_selected_id():
+	if left_arm_dropdown.get_selected_id() != 0 and right_arm_dropdown.get_selected_id() != 0:
 		print(left_arm_dropdown.get_selected_id())
 		print(right_arm_dropdown.get_selected_id())
 		GameState.left_arm = get_attachments_from_dropdowns()[0]
@@ -64,3 +64,8 @@ func _on_options_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_sensitivity_slider_value_changed(value):
+	$SensitivityLabel.text = "Sensitivity: " + str(value)
+	GameState.sensitivity = value

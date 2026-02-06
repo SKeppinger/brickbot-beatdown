@@ -22,6 +22,7 @@ offset_right = 411.0
 offset_bottom = 241.0
 button_pressed = true
 keep_pressed_outside = true
+selected = 0
 item_count = 6
 popup/item_0/text = "ARM YOURSELF"
 popup/item_0/id = 0
@@ -44,6 +45,7 @@ offset_right = 1050.0
 offset_bottom = 243.0
 button_pressed = true
 keep_pressed_outside = true
+selected = 0
 item_count = 6
 popup/item_0/text = "ARM YOURSELF"
 popup/item_0/id = 0
@@ -80,6 +82,28 @@ offset_right = 702.0
 offset_bottom = 467.0
 text = "Exit"
 
+[node name="SensitivitySlider" type="HSlider" parent="." unique_id=1881222378]
+offset_left = 408.0
+offset_top = 49.0
+offset_right = 775.0
+offset_bottom = 147.0
+min_value = 0.1
+max_value = 4.0
+step = 0.1
+value = 1.0
+tick_count = 40
+ticks_position = 3
+
+[node name="SensitivityLabel" type="Label" parent="." unique_id=544741893]
+offset_left = 536.0
+offset_top = 68.0
+offset_right = 647.0
+offset_bottom = 91.0
+text = "Sensitivity: 1.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]
