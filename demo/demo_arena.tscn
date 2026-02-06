@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bwi5vwavkqhot" path="res://demo/enemy.tscn" id="2_igoa8"]
 [ext_resource type="Script" uid="uid://cfwda0euuja1g" path="res://demo/player_health.gd" id="2_mj8rb"]
 [ext_resource type="Script" uid="uid://da7u0y2h0f6iq" path="res://demo/enemy_health.gd" id="3_57bbd"]
+[ext_resource type="Script" uid="uid://b13dm0di6kc61" path="res://demo/sprint_meter.gd" id="4_xqphr"]
 [ext_resource type="Script" uid="uid://bxv4giyhx4fgd" path="res://demo/return.gd" id="5_xqphr"]
 [ext_resource type="Texture2D" uid="uid://duln22rey0qxs" path="res://assets/environments/arena1_skatepark/arena1_concretewalls_concrete_texture_large.png" id="6_slg55"]
 [ext_resource type="Texture2D" uid="uid://d035ht43jmm78" path="res://assets/environments/arena1_skatepark/arena_bits_skatepark_concrete_texture.png" id="7_rxdt8"]
@@ -328,6 +329,18 @@ theme_override_colors/font_color = Color(4.0670484e-06, 0.5695745, 0.1542531, 1)
 rounded = true
 allow_greater = true
 script = ExtResource("2_mj8rb")
+
+[node name="Sprint Meter" type="ProgressBar" parent="interface" unique_id=1996381821]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -35.0
+offset_right = 279.0
+grow_vertical = 0
+theme = SubResource("Theme_apafh")
+theme_override_colors/font_color = Color(1, 0.5686275, 0.15294118, 1)
+script = ExtResource("4_xqphr")
 
 [node name="Enemy Health" type="ProgressBar" parent="interface" unique_id=844071276]
 layout_mode = 0

@@ -8,6 +8,9 @@ class_name Player
 const HURT_DURATION = 0.25
 const SPEED = 5.0
 const SPRINT_SPEED = 10.0
+const SPRINT_ACCEL = 1.0
+const MAX_SPRINT = 5.0
+const SPRINT_REGEN = 0.5
 const JUMP_SPEED = 9.0
 const GRAVITY = -30.0
 const CAMLOCK_BASE_SPEED = 12.0
@@ -39,6 +42,9 @@ var slow_speed = 0.0
 var ms_timer = 0.0
 var movement_locked = false
 var ml_timer = 0.0
+
+signal change_sprint
+var sprint_meter = MAX_SPRINT
 
 var left_attachment = null
 var right_attachment = null
@@ -115,6 +121,12 @@ func _process(delta):
 		if special_attachment and Input.is_action_pressed("special_ability"):
 			pass
 		
+		## Sprint Meter
+		if sprint_meter < MAX_SPRINT:
+			if Vector2(velocity.x, velocity.z).length() <= SPEED + SPRINT_ACCEL:
+				sprint_meter += SPRINT_REGEN * delta
+				change_sprint.emit(sprint_meter)
+		
 		## Timers
 		## Movement slow
 		if movement_slowed:
@@ -157,14 +169,18 @@ func _physics_process(delta):
 				velocity.y = 0
 		if move_direction:
 			if is_on_floor() and Input.is_action_pressed("sprint") and input_dir.y > 0 and not movement_slowed:
-				velocity.x = move_toward(velocity.x, move_direction.x * SPRINT_SPEED, SPEED)
-				velocity.z = move_toward(velocity.z, move_direction.z * SPRINT_SPEED, SPEED)
+				if sprint_meter > 0.0:
+					velocity = Vector3(move_direction.x, 0, move_direction.z).normalized() * move_toward(velocity.length(), SPRINT_SPEED, SPRINT_ACCEL)
+					sprint_meter -= delta
+					change_sprint.emit(sprint_meter)
+					if sprint_meter <= 0.0:
+						sprint_meter = -1 # sprint exhaustion TODO: make this better
+				else:
+					velocity = Vector3(move_direction.x, 0, move_direction.z).normalized() * SPEED
 			elif is_on_floor() and not movement_slowed:
-				velocity.x = move_direction.x * SPEED
-				velocity.z = move_direction.z * SPEED
+				velocity = Vector3(move_direction.x, 0, move_direction.z).normalized() * SPEED
 			elif is_on_floor() and movement_slowed:
-				velocity.x = move_direction.x * slow_speed
-				velocity.z = move_direction.z * slow_speed
+				velocity = Vector3(move_direction.x, 0, move_direction.z).normalized() * slow_speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
