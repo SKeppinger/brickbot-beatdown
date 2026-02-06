@@ -9,4 +9,3 @@ func _ready():
 
 func _on_player_change_sprint(new_meter_value: float):
 	value = new_meter_value
-	print(value)
