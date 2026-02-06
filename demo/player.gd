@@ -34,6 +34,9 @@ var move_direction = Vector3.ZERO
 var jump_direction = Vector3.ZERO
 var locked_on = false
 var target = null
+var movement_slowed = false
+var slow_speed = 0.0
+var ms_timer = 0.0
 var movement_locked = false
 var ml_timer = 0.0
 
@@ -147,12 +150,15 @@ func _physics_process(delta):
 				jump_direction = Vector3.ZERO
 				velocity.y = 0
 		if move_direction:
-			if is_on_floor() and Input.is_action_pressed("sprint") and input_dir.y > 0:
+			if is_on_floor() and Input.is_action_pressed("sprint") and input_dir.y > 0 and not movement_slowed:
 				velocity.x = move_toward(velocity.x, move_direction.x * SPRINT_SPEED, SPEED)
 				velocity.z = move_toward(velocity.z, move_direction.z * SPRINT_SPEED, SPEED)
-			else:
+			elif is_on_floor() and not movement_slowed:
 				velocity.x = move_direction.x * SPEED
 				velocity.z = move_direction.z * SPEED
+			elif is_on_floor() and movement_slowed:
+				velocity.x = move_direction.x * slow_speed
+				velocity.z = move_direction.z * slow_speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -182,6 +188,12 @@ func _physics_process(delta):
 			camera_pivot.rotation.x = lerp(camera_pivot.rotation.x, height_diff * CAMLOCK_VRATIO, delta * cam_speed)
 			if abs(camera_pivot.rotation.x) > VCAM_RANGE:
 				camera_pivot.rotation.x = sign(camera_pivot.rotation.x) * VCAM_RANGE
+
+## Slow movement (for attachments that slow movement)
+func slow_movement(speed, duration):
+	movement_slowed = true
+	slow_speed = speed
+	ms_timer = duration
 
 ## Lock movement (for attachments that interrupt movement)
 func lock_movement(duration):
