@@ -197,7 +197,6 @@ func _physics_process(delta):
 
 ## Slow movement (for attachments that slow movement)
 func slow_movement(speed, duration):
-	print("movement slowed")
 	movement_slowed = true
 	slow_speed = speed
 	ms_timer = duration
