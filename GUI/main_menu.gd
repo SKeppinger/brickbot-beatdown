@@ -67,5 +67,5 @@ func _on_exit_pressed() -> void:
 
 
 func _on_sensitivity_slider_value_changed(value):
-	$SensitivityLabel.text = "Sensitivity: " + str(value)
+	$SensitivityLabel.text = "Camera Sensitivity: " + str(value)
 	GameState.sensitivity = value
