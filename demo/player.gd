@@ -45,6 +45,7 @@ var ml_timer = 0.0
 
 signal change_sprint
 var sprint_meter = MAX_SPRINT
+var sprint_started_on_ground = true
 
 var left_attachment = null
 var right_attachment = null
@@ -170,9 +171,16 @@ func _physics_process(delta):
 				velocity.y = 0
 		if move_direction:
 			var y_vel = velocity.y
-			if Input.is_action_pressed("sprint") and input_dir.y > 0 and not movement_slowed:
+			if Input.is_action_just_pressed("sprint"):
+				if not is_on_floor():
+					sprint_started_on_ground = false
+				else:
+					sprint_started_on_ground = true
+			elif not sprint_started_on_ground and is_on_floor():
+				sprint_started_on_ground = true
+			if sprint_started_on_ground and Input.is_action_pressed("sprint") and input_dir.y > 0 and not movement_slowed:
 				if sprint_meter > 0.0:
-					velocity = Vector3(move_direction.x, 0, move_direction.z).normalized() * move_toward(velocity.length(), SPRINT_SPEED, SPRINT_ACCEL)
+					velocity = Vector3(move_direction.x, 0, move_direction.z).normalized() * move_toward(Vector2(velocity.x, velocity.z).length(), SPRINT_SPEED, SPRINT_ACCEL)
 					velocity.y = y_vel
 					sprint_meter -= delta
 					change_sprint.emit(sprint_meter)
