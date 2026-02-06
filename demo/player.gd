@@ -145,6 +145,7 @@ func _process(delta):
 			is_hurt = false
 		else:
 			hurt_timer -= delta
+
 ## Physics process
 func _physics_process(delta):
 	if not GameState.paused:
@@ -158,7 +159,7 @@ func _physics_process(delta):
 		move_direction = direction_fb + direction_strafe
 		
 		if not is_on_floor():
-			move_direction = jump_direction + direction_strafe
+			#move_direction = jump_direction + direction_strafe
 			velocity.y += GRAVITY * delta
 		else:
 			if Input.is_action_just_pressed("jump"):
@@ -168,19 +169,23 @@ func _physics_process(delta):
 				jump_direction = Vector3.ZERO
 				velocity.y = 0
 		if move_direction:
-			if is_on_floor() and Input.is_action_pressed("sprint") and input_dir.y > 0 and not movement_slowed:
+			var y_vel = velocity.y
+			if Input.is_action_pressed("sprint") and input_dir.y > 0 and not movement_slowed:
 				if sprint_meter > 0.0:
 					velocity = Vector3(move_direction.x, 0, move_direction.z).normalized() * move_toward(velocity.length(), SPRINT_SPEED, SPRINT_ACCEL)
+					velocity.y = y_vel
 					sprint_meter -= delta
 					change_sprint.emit(sprint_meter)
 					if sprint_meter <= 0.0:
 						sprint_meter = -0.5 # sprint exhaustion TODO: make this better
 				else:
 					velocity = Vector3(move_direction.x, 0, move_direction.z).normalized() * SPEED
-			elif is_on_floor() and not movement_slowed:
+			elif not movement_slowed:
 				velocity = Vector3(move_direction.x, 0, move_direction.z).normalized() * SPEED
-			elif is_on_floor() and movement_slowed:
+				velocity.y = y_vel
+			else:
 				velocity = Vector3(move_direction.x, 0, move_direction.z).normalized() * slow_speed
+				velocity.y = y_vel
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
