@@ -9,8 +9,8 @@ const HURT_DURATION = 0.25
 const SPEED = 5.0
 const SPRINT_SPEED = 10.0
 const SPRINT_ACCEL = 1.0
-const MAX_SPRINT = 5.0
-const SPRINT_REGEN = 0.5
+const MAX_SPRINT = 3.0
+const SPRINT_REGEN = 0.2
 const JUMP_SPEED = 9.0
 const GRAVITY = -30.0
 const CAMLOCK_BASE_SPEED = 12.0
@@ -174,7 +174,7 @@ func _physics_process(delta):
 					sprint_meter -= delta
 					change_sprint.emit(sprint_meter)
 					if sprint_meter <= 0.0:
-						sprint_meter = -1 # sprint exhaustion TODO: make this better
+						sprint_meter = -0.5 # sprint exhaustion TODO: make this better
 				else:
 					velocity = Vector3(move_direction.x, 0, move_direction.z).normalized() * SPEED
 			elif is_on_floor() and not movement_slowed:
