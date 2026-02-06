@@ -4,6 +4,9 @@ class_name MeleeAttachment
 ## The animation duration
 @export var animation_duration = 0.25
 
+## The movement speed while attacking
+@export var move_speed = 8.0
+
 ## The cooldown (this includes the animation duration!)
 @export var attack_cooldown = 0.4
 
@@ -64,8 +67,8 @@ func do_action():
 	action_held = true
 	## If the cooldown is over
 	if cooldown <= 0.0:
-		## Lock movement
-		player.lock_movement(animation_duration)
+		## Slow movement
+		player.slow_movement(move_speed, animation_duration)
 		## Spawn melee attack
 		var atk = attack.instantiate()
 		#atk.source = Reference.Source.Player

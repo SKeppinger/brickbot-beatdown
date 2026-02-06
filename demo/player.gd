@@ -6,9 +6,9 @@ class_name Player
 
 
 const HURT_DURATION = 0.25
-const SPEED = 10.0
-const SPRINT_SPEED = 18.0
-const JUMP_SPEED = 15.0
+const SPEED = 5.0
+const SPRINT_SPEED = 10.0
+const JUMP_SPEED = 9.0
 const GRAVITY = -30.0
 const CAMLOCK_BASE_SPEED = 12.0
 const CAMLOCK_DBOOST = 5.0
