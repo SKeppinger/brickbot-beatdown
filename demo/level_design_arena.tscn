@@ -10,9 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://d035ht43jmm78" path="res://assets/environments/arena1_skatepark/arena_bits_skatepark_concrete_texture.png" id="7_selt2"]
 [ext_resource type="Texture2D" uid="uid://d2x3gbh3xxsbk" path="res://assets/environments/arena1_skatepark/arena_bits_skatepark_metal_texture-export.png" id="8_vidob"]
 [ext_resource type="Material" uid="uid://cxh7mvg85xiub" path="res://assets/environments/arena1_skatepark/metal1.tres" id="9_p8sfi"]
-[ext_resource type="Material" uid="uid://b41rktaygussn" path="res://assets/environments/arena1_skatepark/chain_fence1.tres" id="11_3f5qt"]
-[ext_resource type="Material" uid="uid://dbti17senbi3b" path="res://assets/environments/arena1_skatepark/chain_fence.tres" id="12_gbpf2"]
-[ext_resource type="PackedScene" uid="uid://cmt4ia2geg5i7" path="res://assets/environments/arena1_skatepark/chain_fence.blend" id="13_2fxtx"]
 
 [sub_resource type="Theme" id="Theme_apafh"]
 
@@ -262,38 +259,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hh5y3")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_v6p85"]
-_surfaces = [{
-"aabb": AABB(-0.99999994, -0.0028447274, -0.039485198, 1.9999999, 2.000025, 0.08333866),
-"format": 34896613377,
-"index_count": 90,
-"index_data": PackedByteArray("AAABAAIAAQADAAIAAQAEAAMABQAEAAEABQAGAAQABwAFAAEABwABAAAAAAACAAgACQAAAAcABwAKAAkACwAJAAoAAAAJAAsAAAALAAgACwAKAAwADQAKAAcADQAMAAoADgALAAwACAALAA4ADAANAA4ACAAOAA8ADgANAA8AEAAAAAgACAAPABAAAAARAAcADQAHABEAAAAQABEADwANABIAEgAQAA8ADQARABIAEgARABAA"),
-"name": "chain_fence_alpha",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 19,
-"vertex_data": PackedByteArray("NfX/f0l5AACaev9/SXkAAJp6/v/MeQAAAAD+/8x5AAAAAP9/SXkAAJp6AADHeAAAAAAAAMd4AAA19QAAx3gAADX1/v/MeQAANfUAAAAAAAD//wAAAAAAADX1//8FAQAA/////wUBAAD//wAAx3gAAP///v/MeQAA///+////AAA19f7///8AADX1AAD5/gAA//8AAPn+AAA=")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_3k6j5"]
-resource_name = "chain_fence_Plane"
-_surfaces = [{
-"aabb": AABB(-0.99999994, -0.0028447274, -0.039485198, 1.9999999, 2.000025, 0.08333866),
-"attribute_data": PackedByteArray("hK0C6PiDMcCBrbqXQte+v/////9u+v//bvr/f////38L/f+/Jvr/fyv6//8I/f9/Dv3+/6H//3+m//7////nv///Y71u+ue/bvpjvW767b9u+mm9///tv///ab1u+v9/bvr+/////v////9/Dv3+/6H//3+m//7/CP3/fyb6/38r+v//SMYH2PCcA7BFxr+HyrUK0H2MCqi4tfN/4N4BqInOguh7pSDARs7tl///579u+rPC//+zwm76579u+u2///+5wm76ucL//+2/SMYH2EXGv4ec7/avic6C6EbO7Zen96DA"),
-"format": 34896613399,
-"index_count": 90,
-"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACQAIAAsACAAKAAwACAANAAsADgAIAAwACAAOAA0ADwAQABEAEQAQABIAEwAUABUAFQAUABYAFwAYABkAFwAZABoAGwAcAB0AHAAbAB4AHgAbAB8AHwAbACAAIQAiACMAJAAlACYAJAAmACcAKAApACoAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUANgA3ADgA"),
-"material": ExtResource("11_3f5qt"),
-"name": "chain_fence1",
-"primitive": 3,
-"uv_scale": Vector4(1.9388742, 2.0000021, 0, 0),
-"vertex_count": 57,
-"vertex_data": PackedByteArray("NfX/f0l5pKCaev9/SXmMoJp6/v/MeaagNfX+/8x5v6D//wAA+f4AgDX1AAD5/gCANfX+////AID///7///8AgDX1/39JeQAANfX+////AAA19QAA+f4AADX1/v/MeQAANfUAAMd4AAA19f//BQEAADX1AAAAAAAA//8AAMd4/T///wAAAAD9PzX1AADHeP0/NfUAAAAA/T819f7/zHn9vzX1//8FAf2////+/8x5/b//////BQH9vzX1//8FAQAANfUAAAAAAAD//wAAAAAAAP////8FAQAA//8AAMd4/7//////BQH/v///AAAAAP+////+/8x5/7////7/////v///AAD5/v+/mnr/f0l5v6AAAP9/SXm/oAAA/v/Meb+gmnoAAMd42qAAAAAAx3jUoAAA/39Jedugmnr/f0l54aA19QAAx3j3oJp6AADHePegmnr/f0l596D//wAAx3j7PzX1AAD5/vs///8AAPn++z819QAAx3j7PzX1/v/Mefu////+////+7819f7////7v////v/Mefu/mnr/f0l58qAAAP7/zHnyoJp6/v/MefKgNfUAAMd4SaGaev9/SXlJoTX1/39JeUmhAgD3/wIA9/8CAPf/AgD3/wAA/38AAP9/AAD/fwAA/3//P/9//z//f/8//3//P/9//z//f/8//3//P/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3////9/////f////3////9//38AAP9/AAD/fwAA/38AAP9/AAD/fwAAAgD3/wIA9/8CAPf/AgD3/wIA9/8CAPf/AgD3/wIA9/8CAPf/AgD3/wAA/38AAP9/AAD/fwAA/3////9/////f////3////9/AgD3/wIA9/8CAPf/AgD3/wIA9/8CAPf/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_v6p85")
 
 [node name="DemoArena" type="Node3D" unique_id=1621715514]
 
@@ -874,12 +839,3 @@ transform = Transform3D(0.19322407, 0, 0, 0, 0.19322407, 0, 0, 0, 0.19322407, -1
 mesh = SubResource("ArrayMesh_2fxtx")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("9_p8sfi")
-
-[node name="Plane2" type="MeshInstance3D" parent="." unique_id=1666623751]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8103447, 0.20124269, 13.023205)
-mesh = SubResource("ArrayMesh_3k6j5")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("12_gbpf2")
-
-[node name="chain_fence" parent="." unique_id=1891359323 instance=ExtResource("13_2fxtx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8167934, 0.0028442505, 12.451784)
