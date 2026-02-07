@@ -23,7 +23,7 @@ func fade() -> void:
 	tween.tween_interval(out_time)
 	await tween.finished
 	get_tree().change_scene_to_packed(load_scene)
-	get_tree().change_scene_to_file(\"res://GUI/main_menu.tscn\")
+	get_tree().change_scene_to_file(\"res://GUI/Title screen/title_screen.tscn\")
 
 func _ready() -> void:
 	fade()
@@ -35,7 +35,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = SubResource("GDScript_vwl2n")
-load_scene = null
 splash_screen = NodePath("CenterContainer/TextureRect")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1929375073]

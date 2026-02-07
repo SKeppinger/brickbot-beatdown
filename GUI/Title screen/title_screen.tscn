@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ctt7mohb2u0a2"]
+
+[ext_resource type="Script" uid="uid://dgp1w4hxg2cak" path="res://GUI/Title screen/title_screen.gd" id="1_32odv"]
+[ext_resource type="Texture2D" uid="uid://f5fkj45sou2" path="res://GUI/Title screen/brickbotwiptitle.png" id="2_mxjlh"]
+
+[node name="Title Screen" type="Control" unique_id=854692452]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_32odv")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1514174382]
+position = Vector2(569, 321)
+scale = Vector2(0.92, 0.92)
+texture = ExtResource("2_mxjlh")
+
+[node name="Button" type="Button" parent="." unique_id=578634597]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.47699654
+anchor_top = 0.9305556
+anchor_right = 0.57595485
+anchor_bottom = 0.97530866
+offset_left = -94.5
+offset_top = -76.0
+offset_right = 94.5
+grow_horizontal = 2
+grow_vertical = 0
+button_mask = 3
+text = "Click here to get started!"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
