@@ -246,6 +246,10 @@ func hurt(damage):
 	if not is_hurt:
 		hp -= damage
 		player_health.emit(get_health())
+		if hp <= 0:
+			GameState.paused = true
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			get_tree().change_scene_to_file("res://GUI/end_screen.tscn")
 		is_hurt = true
 		hurt_timer = HURT_DURATION
 

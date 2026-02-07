@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dj54ynwr7c4b8"]
+
+[ext_resource type="Script" uid="uid://dhbouljqqe0wk" path="res://GUI/end_screen.gd" id="1_5t7u3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wq2gm"]
+font_size = 56
+
+[node name="EndScreen" type="Control" unique_id=824203775]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5t7u3")
+
+[node name="Button" type="Button" parent="." unique_id=880117972]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to Main Menu"
+
+[node name="Label" type="Label" parent="." unique_id=472235066]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -111.5
+offset_right = 161.0
+offset_bottom = -34.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_wq2gm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -98,6 +98,10 @@ func hurt(damage):
 		hp -= damage
 		if hp <= 0:
 			queue_free()
+			GameState.victory = true
+			GameState.paused = true
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			get_tree().change_scene_to_file("res://GUI/end_screen.tscn")
 		enemy_health.emit(get_health())
 		hurt_mesh.visible = true
 		normal_mesh.visible = false
