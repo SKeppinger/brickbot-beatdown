@@ -7,5 +7,5 @@ func _ready():
 		value = enemy_node.get_health() # initialize progress bar value to player health
 		max_value = enemy_node.get_health()
 
-func _on_enemy_health_changed(new_health_value: int):
+func _on_enemy_health_changed(new_health_value: float):
 	value = new_health_value
