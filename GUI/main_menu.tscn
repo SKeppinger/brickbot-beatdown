@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bsxw3rsifs8f2" path="res://attachments/big_melee_attachment.tscn" id="4_s7n8e"]
 [ext_resource type="PackedScene" uid="uid://debxgxhqpgpf1" path="res://attachments/melee_attachment.tscn" id="5_w0c01"]
 [ext_resource type="PackedScene" uid="uid://cf2tch766jqhv" path="res://attachments/shield_attachment.tscn" id="6_w0c01"]
-[ext_resource type="PackedScene" uid="uid://cq1l8wjowc4tk" path="res://GUI/Splash screen manager bootup/splash_screen_manager.tscn" id="7_ibxkv"]
-[ext_resource type="Texture2D" uid="uid://cf67axfv1yykl" path="res://GUI/Splash screen pngs/logo_large_color_dark.png" id="8_bfvk1"]
 
 [node name="Main Menu" type="Node2D" unique_id=1178264397]
 script = ExtResource("1_06t4h")
@@ -104,33 +102,6 @@ offset_bottom = 91.0
 text = "Camera Sensitivity: 1.0"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Splash Screen Manager" parent="." unique_id=147657186 instance=ExtResource("7_ibxkv")]
-
-[node name="ColorRect2" type="ColorRect" parent="Splash Screen Manager" unique_id=2064732514]
-layout_mode = 0
-offset_right = 1146.0
-offset_bottom = 644.0
-color = Color(0, 0, 0, 1)
-
-[node name="CenterContainer" type="CenterContainer" parent="Splash Screen Manager/ColorRect2" unique_id=214962874]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 13.874001
-anchor_top = 7.59
-anchor_right = 13.874001
-anchor_bottom = 7.59
-offset_left = -379.96002
-offset_top = -153.6
-offset_right = 2153.04
-offset_bottom = 870.4
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-
-[node name="TextureRect" type="TextureRect" parent="Splash Screen Manager/ColorRect2/CenterContainer" unique_id=1188854132]
-layout_mode = 2
-texture = ExtResource("8_bfvk1")
 
 [connection signal="pressed" from="Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
