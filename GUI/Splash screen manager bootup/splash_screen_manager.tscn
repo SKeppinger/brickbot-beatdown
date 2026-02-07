@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cq1l8wjowc4tk"]
+
+[ext_resource type="Texture2D" uid="uid://cf67axfv1yykl" path="res://GUI/Splash screen pngs/logo_large_color_dark.png" id="1_vwl2n"]
+
+[sub_resource type="GDScript" id="GDScript_vwl2n"]
+script/source = "extends Control
+
+@export var load_scene : PackedScene
+@export var in_time : float = 0.5
+@export var fade_in_time : float = 1.5
+@export var pause_time : float = 1.5
+@export var fade_out_time : float = 1.5
+@export var out_time : float = 1.5
+@export var splash_screen : TextureRect
+
+func fade() -> void:
+	splash_screen.modulate.a = 0.0
+	var tween = self.create_tween()
+	tween.tween_interval(in_time)
+	tween.tween_property(splash_screen, \"modulate:a\", 1.0, fade_in_time)
+	tween.tween_interval(pause_time)
+	tween.tween_property(splash_screen, \"modulate:a\", 0.0, fade_out_time)
+	tween.tween_interval(out_time)
+	await tween.finished
+	get_tree().change_scene_to_packed(load_scene)
+
+func _ready() -> void:
+	fade()
+"
+
+[node name="Splash Screen Manager" type="Control" unique_id=147657186 node_paths=PackedStringArray("splash_screen")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_vwl2n")
+load_scene = null
+splash_screen = NodePath("CenterContainer/TextureRect")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1929375073]
+layout_mode = 0
+offset_right = 1146.0
+offset_bottom = 644.0
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=109561021]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 13.874001
+anchor_top = 7.59
+anchor_right = 13.874001
+anchor_bottom = 7.59
+offset_left = -379.96002
+offset_top = -153.6
+offset_right = 2153.04
+offset_bottom = 870.4
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=277282019]
+layout_mode = 2
+texture = ExtResource("1_vwl2n")

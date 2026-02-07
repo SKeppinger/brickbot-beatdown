@@ -15,11 +15,11 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Brickbot Beatdown"
-run/main_scene="uid://hwwble31n3j5"
+run/main_scene="uid://cq1l8wjowc4tk"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-boot_splash/image="uid://cgkr0t4ypicfw"
+boot_splash/show_image=false
 config/icon="res://icon.svg"
-boot_splash/minimum_display_time=10
+boot_splash/minimum_display_time=100
 
 [autoload]
 
