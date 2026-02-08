@@ -13,3 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://GUI/main_menu.tscn")
+
+func _on_sensitivity_slider_value_changed(value):
+	$SensitivityLabel.text = "Camera Sensitivity: " + str(value)
+	GameState.sensitivity = value

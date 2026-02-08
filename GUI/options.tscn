@@ -1,15 +1,43 @@
 [gd_scene format=3 uid="uid://cw287ac7uqk70"]
 
-[ext_resource type="Script" uid="uid://de8fy2rdnsefk" path="res://options.gd" id="1_5v8ap"]
+[ext_resource type="Script" uid="uid://de8fy2rdnsefk" path="res://GUI/options.gd" id="1_5v8ap"]
+[ext_resource type="Texture2D" uid="uid://fkbtfje85cyd" path="res://GUI/options.png" id="2_f8knf"]
 
 [node name="Options" type="Node2D" unique_id=1686654684]
 script = ExtResource("1_5v8ap")
 
+[node name="options background" type="Sprite2D" parent="." unique_id=414517457]
+position = Vector2(545, 295)
+texture = ExtResource("2_f8knf")
+
 [node name="Main Menu" type="Button" parent="." unique_id=1994071799]
-offset_left = 351.0
-offset_top = 301.0
-offset_right = 857.0
-offset_bottom = 384.0
-text = "Options is still under construction. Click to return to Main menu."
+offset_left = 24.0
+offset_top = 519.0
+offset_right = 382.0
+offset_bottom = 618.0
+size_flags_vertical = 4
+text = "return to Main menu"
+
+[node name="SensitivitySlider" type="HSlider" parent="." unique_id=677665293]
+offset_left = 34.0
+offset_top = 108.0
+offset_right = 401.0
+offset_bottom = 206.0
+min_value = 0.1
+max_value = 4.0
+step = 0.1
+value = 1.0
+tick_count = 40
+ticks_position = 3
+
+[node name="SensitivityLabel" type="Label" parent="." unique_id=1873666579]
+offset_left = 128.0
+offset_top = 93.0
+offset_right = 303.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Camera Sensitivity: 1.0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Main Menu" to="." method="_on_main_menu_pressed"]
