@@ -51,6 +51,11 @@ var left_attachment = null
 var right_attachment = null
 var special_attachment = null
 
+## Animation flags
+var isAttacking = false
+var leftAttack = false
+var rightAttack = false
+
 ## CONTROL
 
 ## Load attachments
@@ -61,6 +66,12 @@ func load_attachments():
 	right_attachment = $RightArmAttachment.get_child(0)
 	right_attachment.type = Reference.AttachmentType.RightArm
 	## TODO: special attachment and maybe a cleaner way to do this
+	
+	print("right attachment:")
+	print(right_attachment)
+	print(right_attachment.type)
+	print("and the type is above me")
+
 
 ## Ready (capture mouse)
 func _ready():
@@ -115,9 +126,11 @@ func _process(delta):
 		## Left Arm
 		if left_attachment and Input.is_action_pressed("left_ability"):
 			left_attachment.do_action()
+			leftAttack = true
 		## Right Arm
 		if right_attachment and Input.is_action_pressed("right_ability"):
 			right_attachment.do_action()
+			rightAttack = true
 		## Special
 		if special_attachment and Input.is_action_pressed("special_ability"):
 			pass
@@ -146,6 +159,10 @@ func _process(delta):
 			is_hurt = false
 		else:
 			hurt_timer -= delta
+		
+		## Reset Animation Flags
+		leftAttack = false;
+		rightAttack = false;
 
 ## Physics process
 func _physics_process(delta):

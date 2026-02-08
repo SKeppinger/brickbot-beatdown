@@ -78,11 +78,19 @@ advance_expression = "!velocity"
 break_loop_at_end = true
 switch_mode = 2
 advance_mode = 2
-advance_expression = "!attackingAnim"
+advance_expression = "!leftAttack"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0il8d"]
 advance_mode = 2
 advance_expression = "!attackingAnim"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yji6d"]
+advance_mode = 2
+advance_expression = "velocity.x != 0 and rightAttack == true "
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uuw2b"]
+advance_mode = 2
+advance_expression = "rightAttack"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0il8d"]
 states/End/position = Vector2(937, 147)
@@ -95,7 +103,7 @@ states/Frozen/position = Vector2(479, 210)
 states/RuningBlend/node = SubResource("AnimationNodeBlendSpace2D_8dfyg")
 states/RuningBlend/position = Vector2(479, 102)
 states/Start/position = Vector2(279, 210)
-transitions = ["Start", "RuningBlend", SubResource("AnimationNodeStateMachineTransition_s4nun"), "Frozen", "RuningBlend", SubResource("AnimationNodeStateMachineTransition_yb033"), "RuningBlend", "Frozen", SubResource("AnimationNodeStateMachineTransition_0j7tx"), "Melee-Left Still", "Frozen", SubResource("AnimationNodeStateMachineTransition_pdims"), "Melee-Left Runn", "RuningBlend", SubResource("AnimationNodeStateMachineTransition_0il8d")]
+transitions = ["Start", "RuningBlend", SubResource("AnimationNodeStateMachineTransition_s4nun"), "Frozen", "RuningBlend", SubResource("AnimationNodeStateMachineTransition_yb033"), "RuningBlend", "Frozen", SubResource("AnimationNodeStateMachineTransition_0j7tx"), "Melee-Left Still", "Frozen", SubResource("AnimationNodeStateMachineTransition_pdims"), "Melee-Left Runn", "RuningBlend", SubResource("AnimationNodeStateMachineTransition_0il8d"), "RuningBlend", "Melee-Left Runn", SubResource("AnimationNodeStateMachineTransition_yji6d"), "Frozen", "Melee-Left Still", SubResource("AnimationNodeStateMachineTransition_uuw2b")]
 graph_offset = Vector2(45, 16)
 
 [node name="Player" type="CharacterBody3D" unique_id=1046148302 groups=["player"]]
@@ -127,14 +135,14 @@ animation_tree = NodePath("../char_brickbot_2/AnimationTree")
 [node name="char_brickbot_2" parent="." unique_id=496472428 instance=ExtResource("5_pdims")]
 transform = Transform3D(-0.75, 0, -1.13246855e-07, 0, 0.75, 0, 1.13246855e-07, 0, -0.75, 0, -0.75, 0)
 
-[node name="Skeleton3D" parent="char_brickbot_2/metarig" parent_id_path=PackedInt32Array(496472428, 1819955316) index="0" unique_id=1524123626]
+[node name="Skeleton3D" parent="char_brickbot_2/metarig" parent_id_path=PackedInt32Array(496472428, 1086040228) index="0" unique_id=649960190]
 bones/0/position = Vector3(-2.7755582e-17, 1.0639584, -0.001308287)
 bones/3/rotation = Quaternion(-0.0016382344, 0.013940774, -0.9897335, 0.14223386)
 bones/4/rotation = Quaternion(0.015960254, -0.0068363296, -0.0059620775, 0.9998315)
 bones/5/rotation = Quaternion(-0.072738804, 0.9544648, 0.017236829, -0.28880617)
-bones/6/rotation = Quaternion(-0.0016780565, -0.013922628, 0.9887918, 0.14864105)
-bones/7/rotation = Quaternion(0.058677543, 0.0727655, 0.1082252, 0.98972195)
-bones/8/rotation = Quaternion(0.19054742, 0.90246534, -0.048702113, 0.3832443)
+bones/6/rotation = Quaternion(-0.00994659, -0.012223715, 0.98803806, 0.15340316)
+bones/7/rotation = Quaternion(0.05908436, 0.055539567, 0.108462885, 0.99078774)
+bones/8/rotation = Quaternion(0.18456471, 0.90624774, -0.054698233, 0.37637627)
 bones/9/rotation = Quaternion(0.9999852, -0.00021410994, -9.582519e-05, -0.0054339655)
 bones/10/rotation = Quaternion(-0.009639912, 0.0020695697, -0.0051850216, 0.99993795)
 bones/11/rotation = Quaternion(-0.4815445, -0.04324796, -0.02641112, 0.8749554)
