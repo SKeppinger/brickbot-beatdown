@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cul1wwpi1x1ni"]
+
+[ext_resource type="Texture2D" uid="uid://ctts1shekd3y1" path="res://assets/environments/arena1_skatepark/arena_dirt.png" id="1_socuv"]
+
+[resource]
+resource_name = "dirt"
+cull_mode = 2
+albedo_texture = ExtResource("1_socuv")
+metallic_specular = 0.0
+texture_filter = 2
