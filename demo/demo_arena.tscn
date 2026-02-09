@@ -486,6 +486,8 @@ shape = SubResource("WorldBoundaryShape3D_p5ojx")
 
 [node name="Decoration_Colliders" type="StaticBody3D" parent="NavigationRegion3D/Level" unique_id=741693013]
 transform = Transform3D(0.7550468, 0, 0, 0, 0.3650198, 0, 0, 0, 1, 11.097414, 0.3821965, -5.0682526)
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/Level/Decoration_Colliders" unique_id=489315678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0026807785, 0, 2.0040755)

@@ -25,7 +25,8 @@ const VCAM_RANGE = PI / 4 # This is the maximum vertical camera rotation, in rad
 
 @onready var facing_ray = $CollisionShape3D/FacingDirection
 @onready var camera_pivot = $CameraPivot
-@onready var camera = $CameraPivot/Camera3D
+@onready var camera_edge_arm = $CameraPivot/EdgeSpringArm
+@onready var camera_rear_arm = $CameraPivot/EdgeSpringArm/RearSpringArm
 @onready var default_camera_pivot = camera_pivot.rotation
 
 signal player_health
@@ -122,7 +123,8 @@ func _process(delta):
 				lock_on()
 		## Change Shoulder
 		if Input.is_action_just_pressed("change_shoulder"):
-			camera.position.x *= -1
+			camera_edge_arm.rotation.y *= -1
+			camera_rear_arm.rotation.y *= -1
 		## Left Arm
 		if left_attachment and Input.is_action_pressed("left_ability"):
 			left_attachment.do_action()
