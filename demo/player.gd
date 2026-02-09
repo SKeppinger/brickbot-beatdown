@@ -25,7 +25,8 @@ const VCAM_RANGE = PI / 4 # This is the maximum vertical camera rotation, in rad
 
 @onready var facing_ray = $CollisionShape3D/FacingDirection
 @onready var camera_pivot = $CameraPivot
-@onready var camera = $CameraPivot/Camera3D
+@onready var camera_edge_arm = $CameraPivot/EdgeSpringArm
+@onready var camera_rear_arm = $CameraPivot/EdgeSpringArm/RearSpringArm
 @onready var default_camera_pivot = camera_pivot.rotation
 
 signal player_health
@@ -51,6 +52,12 @@ var left_attachment = null
 var right_attachment = null
 var special_attachment = null
 
+## Animation flags
+var isAttacking = false
+var leftAttack = false
+var rightAttack = false
+var isMoving = false
+
 ## CONTROL
 
 ## Load attachments
@@ -61,6 +68,12 @@ func load_attachments():
 	right_attachment = $RightArmAttachment.get_child(0)
 	right_attachment.type = Reference.AttachmentType.RightArm
 	## TODO: special attachment and maybe a cleaner way to do this
+	
+	print("right attachment:")
+	print(right_attachment)
+	print(right_attachment.type)
+	print("and the type is above me")
+
 
 ## Ready (capture mouse)
 func _ready():
@@ -111,13 +124,16 @@ func _process(delta):
 				lock_on()
 		## Change Shoulder
 		if Input.is_action_just_pressed("change_shoulder"):
-			camera.position.x *= -1
+			camera_edge_arm.rotation.y *= -1
+			camera_rear_arm.rotation.y *= -1
 		## Left Arm
 		if left_attachment and Input.is_action_pressed("left_ability"):
 			left_attachment.do_action()
+			leftAttack = true
 		## Right Arm
 		if right_attachment and Input.is_action_pressed("right_ability"):
 			right_attachment.do_action()
+			rightAttack = true
 		## Special
 		if special_attachment and Input.is_action_pressed("special_ability"):
 			pass
@@ -146,6 +162,10 @@ func _process(delta):
 			is_hurt = false
 		else:
 			hurt_timer -= delta
+		
+		## Reset Animation Flags
+		leftAttack = false;
+		rightAttack = false;
 
 ## Physics process
 func _physics_process(delta):

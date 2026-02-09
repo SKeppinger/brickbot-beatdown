@@ -25,6 +25,12 @@ boot_splash/minimum_display_time=100
 
 GameState="*res://game_state.gd"
 Reference="*res://reference.gd"
+Settings="*uid://c0p0en18cqnd7"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [global_group]
 

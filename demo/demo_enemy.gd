@@ -3,11 +3,12 @@ class_name DemoEnemy
 
 @onready var normal_mesh = $NormalMesh
 @onready var hurt_mesh = $HurtMesh
+@onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
+
 #this means every enemy requires player to be assigned in the editor, find a better solution
 @export var player: Player
 @export var max_hp = 10
 @export var projectile: PackedScene
-
 
 
 const SPEED = 2.5
@@ -32,8 +33,17 @@ var attack_cooldown = 1.0
 var attack_timer = attack_cooldown
 var close_attack_rotation = PI/30
 var y_axis = Vector3(0,1,0)
+var far_direction_cooldown = 5
 @onready var proj_angle = (position.direction_to(player.position)).rotated( y_axis, (PI/4))
 
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event.is_action_pressed("ui_accept"):
+		#var random_position := Vector3.ZERO
+		#random_position.x = randf_range(-5,5)
+		#random_position.y = randf_range(-5,5)
+		#navigation_agent_3d.set_target_position(random_position)
+		
+		
 func _process(delta):
 	#Current desired behaviors: Pick between wanting to be close or far, then attempt to move to that range. Recheck and change every 15? sec
 	if dir_change_timer <= 0.0:
@@ -47,13 +57,25 @@ func _process(delta):
 			#for far distance, moves in a direction perpendicular to the line between it and player, in order to be predictable. this is shitass but should work.
 			desired_range = "far"
 			attack_cooldown = 1
-			direction.x = position.direction_to(player.position).z
-			direction.z = sign(randf_range(-1,1))*position.direction_to(player.position).x
-		print(desired_range)
+			var far_direction_cooldown = 5
+			var random_position := Vector3.ZERO
+			random_position.x = randf_range(-5,5) * SPEED
+			random_position.y = randf_range(-5,5) * SPEED
+			navigation_agent_3d.set_target_position(random_position)
+		#print(desired_range)
 	else:
 		#if desired_range == "close":
 			#close_attack_rotation += (PI/8)*delta
 		dir_change_timer -= delta
+	if desired_range == "far":
+		if far_direction_cooldown == 0:
+			far_direction_cooldown = 5
+			var random_position = Vector3.ZERO
+			random_position.x = randf_range(-5,5) * SPEED
+			random_position.y = randf_range(-5,5) * SPEED
+			navigation_agent_3d.set_target_position(random_position)
+		else:
+			far_direction_cooldown -= delta
 	if attack_timer <= 0:
 		if desired_range == "far":
 			attack()
@@ -79,14 +101,20 @@ func _process(delta):
 		hurt_timer -= delta
 
 func _physics_process(delta):
+	if desired_range == "close":
+		navigation_agent_3d.set_target_position(player.position)
+
+	var destination = navigation_agent_3d.get_next_path_position()
+	var local_destination = destination - global_position
+	var direction = local_destination.normalized()
+	
+	
 	if is_hurt:
 		velocity.x = 0.0
 		velocity.z = 0.0
 	else:
 		#If staying at far, move to target point, otherwise move towards player.
-		if desired_range == "close":
-			direction = position.direction_to(player.position)
-			
+		
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	if not is_on_floor():
