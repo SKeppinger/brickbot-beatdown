@@ -129,7 +129,6 @@ func _process(delta):
 		## Left Arm
 		if left_attachment and Input.is_action_pressed("left_ability"):
 			left_attachment.do_action()
-			leftAttack = true
 		## Right Arm
 		if right_attachment and Input.is_action_pressed("right_ability"):
 			right_attachment.do_action()
@@ -137,6 +136,11 @@ func _process(delta):
 		## Special
 		if special_attachment and Input.is_action_pressed("special_ability"):
 			pass
+		
+		## Reset Animation Flags
+		leftAttack = false;
+		rightAttack = false;
+		
 		
 		## Sprint Meter
 		if sprint_meter < MAX_SPRINT:
@@ -163,9 +167,6 @@ func _process(delta):
 		else:
 			hurt_timer -= delta
 		
-		## Reset Animation Flags
-		leftAttack = false;
-		rightAttack = false;
 
 ## Physics process
 func _physics_process(delta):
