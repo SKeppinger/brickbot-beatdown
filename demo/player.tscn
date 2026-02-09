@@ -245,7 +245,7 @@ states/Running-Blend/position = Vector2(479, 110)
 "states/Shoot - R - Run/position" = Vector2(758, 147)
 states/Start/position = Vector2(479, 4)
 transitions = ["Frozen", "Melee-Right", SubResource("AnimationNodeStateMachineTransition_uuw2b"), "Melee-Right", "Frozen", SubResource("AnimationNodeStateMachineTransition_pdims"), "Start", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_s4nun"), "Frozen", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_yb033"), "Running-Blend", "Frozen", SubResource("AnimationNodeStateMachineTransition_0j7tx"), "Running-Blend", "Melee - R - Run", SubResource("AnimationNodeStateMachineTransition_yji6d"), "Running-Blend", "Jump State Machine", SubResource("AnimationNodeStateMachineTransition_v8p82"), "Jump State Machine", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_8dfyg"), "Frozen", "Jump State Machine", SubResource("AnimationNodeStateMachineTransition_sctc2"), "Jump State Machine", "Frozen", SubResource("AnimationNodeStateMachineTransition_1ljby"), "Melee - R - Run", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_0il8d"), "Running-Blend", "Shoot - R - Run", SubResource("AnimationNodeStateMachineTransition_pnkql"), "Shoot - R - Run", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_teqhw")]
-graph_offset = Vector2(-5, 78)
+graph_offset = Vector2(3.056057, 0)
 
 [node name="Player" type="CharacterBody3D" unique_id=1046148302 groups=["player"]]
 collision_mask = 7

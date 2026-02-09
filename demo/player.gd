@@ -140,7 +140,7 @@ func _process(delta):
 		## Reset Animation Flags
 		leftAttack = false;
 		rightAttack = false;
-		
+
 		
 		## Sprint Meter
 		if sprint_meter < MAX_SPRINT:
