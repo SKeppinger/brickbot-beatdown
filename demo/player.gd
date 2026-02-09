@@ -56,6 +56,7 @@ var special_attachment = null
 var isAttacking = false
 var leftAttack = false
 var rightAttack = false
+var isMoving = false
 
 ## CONTROL
 
