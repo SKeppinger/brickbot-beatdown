@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 	## animation_tree.set("parameters/RuningBlend/blend_position", player.velocity.normalized())
 	animation_tree.set("Frozen", player.velocity.normalized())
 	animation_tree.set("Melee-Left Still", player.velocity.normalized())
-	animation_tree.set("parameters/Melee-Left Runn", player.velocity.normalized())
+	## animation_tree.set("parameters/Melee - R - Run/Blend2/blend_amount", player.velocity.normalized())

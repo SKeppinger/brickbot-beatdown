@@ -28,6 +28,7 @@ const VCAM_RANGE = PI / 4 # This is the maximum vertical camera rotation, in rad
 @onready var camera_edge_arm = $CameraPivot/EdgeSpringArm
 @onready var camera_rear_arm = $CameraPivot/EdgeSpringArm/RearSpringArm
 @onready var default_camera_pivot = camera_pivot.rotation
+@onready var animation_tree = $char_brickbot_3/AnimationTree
 
 signal player_health
 var hp = max_hp

@@ -135,6 +135,25 @@ node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"Melee", &"Blend2", 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s4nun"]
 animation = &"Melee-Right"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hcwj4"]
+animation = &"Melee-Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1nvvv"]
+animation = &"Frozen"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_k5frw"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_e0xmq"]
+graph_offset = Vector2(-97.88431, -31.198349)
+nodes/output/position = Vector2(780, 100)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_k5frw")
+nodes/OneShot/position = Vector2(500, 40)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_1nvvv")
+nodes/Animation/position = Vector2(260, 40)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_hcwj4")
+"nodes/Animation 2/position" = Vector2(260, 220)
+node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 2"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uuw2b"]
 animation = &"Run"
 
@@ -165,11 +184,6 @@ blend_point_4/pos = Vector2(0, 0)
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1ljby"]
 animation = &"Shoot-Right"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uuw2b"]
-xfade_time = 0.02
-advance_mode = 2
-advance_expression = "rightAttack"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pdims"]
 xfade_time = 0.02
 break_loop_at_end = true
@@ -194,7 +208,7 @@ advance_expression = "!move_direction"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yji6d"]
 xfade_time = 0.02
 advance_mode = 2
-advance_expression = "rightAttack"
+advance_expression = "rightAttackInput.is_action_released(\"right_ability\")"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v8p82"]
 xfade_time = 0.05
@@ -229,6 +243,11 @@ advance_expression = "rightAttack"
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uuw2b"]
+xfade_time = 0.02
+advance_mode = 2
+advance_expression = "rightAttackInput.is_action_released(\"right_ability\")"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0il8d"]
 states/End/position = Vector2(937, 147)
 states/Frozen/node = SubResource("AnimationNodeAnimation_yji6d")
@@ -238,14 +257,16 @@ states/Frozen/position = Vector2(479, 210)
 "states/Melee - R - Run/node" = SubResource("AnimationNodeBlendTree_sctc2")
 "states/Melee - R - Run/position" = Vector2(758, 74)
 states/Melee-Right/node = SubResource("AnimationNodeAnimation_s4nun")
-states/Melee-Right/position = Vector2(689, 210)
+states/Melee-Right/position = Vector2(680, 405)
+states/Melee_Blend/node = SubResource("AnimationNodeBlendTree_e0xmq")
+states/Melee_Blend/position = Vector2(886.056, 250)
 states/Running-Blend/node = SubResource("AnimationNodeBlendSpace2D_8dfyg")
 states/Running-Blend/position = Vector2(479, 110)
 "states/Shoot - R - Run/node" = SubResource("AnimationNodeAnimation_1ljby")
 "states/Shoot - R - Run/position" = Vector2(758, 147)
 states/Start/position = Vector2(479, 4)
-transitions = ["Frozen", "Melee-Right", SubResource("AnimationNodeStateMachineTransition_uuw2b"), "Melee-Right", "Frozen", SubResource("AnimationNodeStateMachineTransition_pdims"), "Start", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_s4nun"), "Frozen", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_yb033"), "Running-Blend", "Frozen", SubResource("AnimationNodeStateMachineTransition_0j7tx"), "Running-Blend", "Melee - R - Run", SubResource("AnimationNodeStateMachineTransition_yji6d"), "Running-Blend", "Jump State Machine", SubResource("AnimationNodeStateMachineTransition_v8p82"), "Jump State Machine", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_8dfyg"), "Frozen", "Jump State Machine", SubResource("AnimationNodeStateMachineTransition_sctc2"), "Jump State Machine", "Frozen", SubResource("AnimationNodeStateMachineTransition_1ljby"), "Melee - R - Run", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_0il8d"), "Running-Blend", "Shoot - R - Run", SubResource("AnimationNodeStateMachineTransition_pnkql"), "Shoot - R - Run", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_teqhw")]
-graph_offset = Vector2(3.056057, 0)
+transitions = ["Melee-Right", "Frozen", SubResource("AnimationNodeStateMachineTransition_pdims"), "Start", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_s4nun"), "Frozen", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_yb033"), "Running-Blend", "Frozen", SubResource("AnimationNodeStateMachineTransition_0j7tx"), "Running-Blend", "Melee - R - Run", SubResource("AnimationNodeStateMachineTransition_yji6d"), "Running-Blend", "Jump State Machine", SubResource("AnimationNodeStateMachineTransition_v8p82"), "Jump State Machine", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_8dfyg"), "Frozen", "Jump State Machine", SubResource("AnimationNodeStateMachineTransition_sctc2"), "Jump State Machine", "Frozen", SubResource("AnimationNodeStateMachineTransition_1ljby"), "Melee - R - Run", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_0il8d"), "Running-Blend", "Shoot - R - Run", SubResource("AnimationNodeStateMachineTransition_pnkql"), "Shoot - R - Run", "Running-Blend", SubResource("AnimationNodeStateMachineTransition_teqhw"), "Frozen", "Melee_Blend", SubResource("AnimationNodeStateMachineTransition_uuw2b")]
+graph_offset = Vector2(89.05606, 48)
 
 [node name="Player" type="CharacterBody3D" unique_id=1046148302 groups=["player"]]
 collision_mask = 7
@@ -335,6 +356,9 @@ anim_player = NodePath("../AnimationPlayer")
 "parameters/Jump State Machine/JumpBlend/Blend2/blend_amount" = 0.06666667
 "parameters/Jump State Machine/Landing Blend/Add2/add_amount" = 0.00909090909090909
 "parameters/Melee - R - Run/Blend2/blend_amount" = 1.0
+parameters/Melee_Blend/OneShot/active = false
+parameters/Melee_Blend/OneShot/internal_active = false
+parameters/Melee_Blend/OneShot/request = 1
 parameters/Running-Blend/blend_position = Vector2(-0.10526317, 0.6018957)
 
 [editable path="old_char_brickbot_2"]
