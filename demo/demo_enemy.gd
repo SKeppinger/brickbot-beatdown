@@ -47,7 +47,7 @@ var far_direction_cooldown = 5
 func _process(delta):
 	#Current desired behaviors: Pick between wanting to be close or far, then attempt to move to that range. Recheck and change every 15? sec
 	if dir_change_timer <= 0.0:
-		dir_change_timer = 200
+		dir_change_timer = 15
 		if desired_range == "far":
 			desired_range = "close"
 			attack_cooldown = 0.2
@@ -84,13 +84,7 @@ func _process(delta):
 		attack_timer = attack_cooldown
 	else:
 		attack_timer -= delta
-	#if dir_change_timer <= 0.0:
-		#dir_duration = randf_range(0.5, 3.0)
-		#dir_change_timer = dir_duration
-		#direction.x = randf_range(-1, 1)
-		#direction.y = randf_range(-1, 1)
-	#else:
-		#dir_change_timer -= delta
+
 	
 	#Hurt color change
 	if hurt_timer <= 0.0:
