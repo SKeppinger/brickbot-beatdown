@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://bhb5nn2c51h61"]
 
-[ext_resource type="Script" uid="uid://11d7lp206w2v" path="res://attachments/projectile.gd" id="1_p6js5"]
+[ext_resource type="Script" uid="uid://88h4x2fk17xb" path="res://demo/demo_enemy_projectile.gd" id="1_p6js5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b2qwp"]
+radius = 0.3
 
 [sub_resource type="SphereMesh" id="SphereMesh_t2c0f"]
+radius = 0.3
+height = 0.6
 
 [node name="demo_enemy_projectile" type="StaticBody3D" unique_id=1462585374]
 collision_layer = 16
