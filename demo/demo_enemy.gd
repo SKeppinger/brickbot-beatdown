@@ -27,7 +27,7 @@ var dir_duration = 0.0
 var dir_change_timer = 0.0
 var is_hurt = false
 var hurt_timer = 0.0
-var desired_range = "close"
+var desired_range = "far"
 var target_position = Vector3.ZERO
 var attack_cooldown = 1.0
 var attack_timer = attack_cooldown
@@ -47,7 +47,7 @@ var far_direction_cooldown = 5
 func _process(delta):
 	#Current desired behaviors: Pick between wanting to be close or far, then attempt to move to that range. Recheck and change every 15? sec
 	if dir_change_timer <= 0.0:
-		dir_change_timer = 15
+		dir_change_timer = 200
 		if desired_range == "far":
 			desired_range = "close"
 			attack_cooldown = 0.2
@@ -112,10 +112,12 @@ func _physics_process(delta):
 	if is_hurt:
 		velocity.x = 0.0
 		velocity.z = 0.0
+		velocity.y = 0.0
 	else:
 		#If staying at far, move to target point, otherwise move towards player.
 		
 		velocity.x = direction.x * SPEED
+		velocity.y = direction.y * SPEED * 5
 		velocity.z = direction.z * SPEED
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta

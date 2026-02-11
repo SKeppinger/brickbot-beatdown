@@ -4,12 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://bhb5nn2c51h61" path="res://demo/demo_enemy_projectile.tscn" id="2_4us2m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h17gs"]
+height = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xm18p"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xm18p"]
 material = SubResource("StandardMaterial3D_xm18p")
+height = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4us2m"]
 albedo_color = Color(1, 0.599933, 0.540393, 1)
