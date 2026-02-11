@@ -58,6 +58,8 @@ var isAttacking = false
 var leftAttack = false
 var rightAttack = false
 var isMoving = false
+var attackTimer = 0.0
+var attachmentTypeRight = "Right nothing"
 
 ## CONTROL
 
@@ -70,10 +72,8 @@ func load_attachments():
 	right_attachment.type = Reference.AttachmentType.RightArm
 	## TODO: special attachment and maybe a cleaner way to do this
 	
-	print("right attachment:")
-	print(right_attachment)
-	print(right_attachment.type)
-	print("and the type is above me")
+	attachmentTypeRight = str(right_attachment)
+	print(attachmentTypeRight)
 
 
 ## Ready (capture mouse)
@@ -134,14 +134,12 @@ func _process(delta):
 		if right_attachment and Input.is_action_pressed("right_ability"):
 			right_attachment.do_action()
 			rightAttack = true
+			attackTimer = 0.01 
+			##it seems how long this is doesnt matter, as long as it ticks
+			##would be cleaner if we could import it directly from the attack scripts
 		## Special
 		if special_attachment and Input.is_action_pressed("special_ability"):
 			pass
-		
-		## Reset Animation Flags
-		leftAttack = false;
-		rightAttack = false;
-
 		
 		## Sprint Meter
 		if sprint_meter < MAX_SPRINT:
@@ -167,7 +165,13 @@ func _process(delta):
 			is_hurt = false
 		else:
 			hurt_timer -= delta
+		## Attack Timer
+		if attackTimer <= 0.0:
+			rightAttack = false
+		else:
+			attackTimer -= delta
 		
+
 
 ## Physics process
 func _physics_process(delta):
