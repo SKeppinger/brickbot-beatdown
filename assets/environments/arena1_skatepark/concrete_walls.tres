@@ -6,6 +6,6 @@
 resource_name = "concrete_walls"
 cull_mode = 2
 albedo_texture = ExtResource("1_ve8jx")
-metallic_specular = 0.07
+metallic_specular = 0.0
 roughness_texture_channel = 4
 texture_filter = 2

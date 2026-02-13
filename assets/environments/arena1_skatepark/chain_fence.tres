@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dbti17senbi3b"]
+
+[ext_resource type="Texture2D" uid="uid://dshpck0tyn15v" path="res://assets/environments/arena1_skatepark/chain_fence.png" id="1_ae3u3"]
+
+[resource]
+resource_name = "chain_fence"
+transparency = 2
+alpha_scissor_threshold = 0.495
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_ae3u3")
+roughness = 0.5
+texture_filter = 2

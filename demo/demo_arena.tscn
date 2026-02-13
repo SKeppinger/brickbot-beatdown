@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ctts1shekd3y1" path="res://assets/environments/arena1_skatepark/arena_dirt.png" id="9_cqhpu"]
 [ext_resource type="Material" uid="uid://cul1wwpi1x1ni" path="res://assets/environments/arena1_skatepark/dirt.tres" id="11_xl7b5"]
 [ext_resource type="Material" uid="uid://bedv770c7rt8r" path="res://assets/environments/arena1_skatepark/concrete_walls.tres" id="12_p5ojx"]
+[ext_resource type="Material" uid="uid://dbti17senbi3b" path="res://assets/environments/arena1_skatepark/chain_fence.tres" id="13_p5ojx"]
 
 [sub_resource type="Theme" id="Theme_apafh"]
 
@@ -170,6 +171,38 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3thfo")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_v6p85"]
+_surfaces = [{
+"aabb": AABB(-0.99999994, -0.0028447274, -0.039485198, 1.9999999, 2.000025, 0.08333866),
+"format": 34896613377,
+"index_count": 90,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAQAEAAMABQAEAAEABQAGAAQABwAFAAEABwABAAAAAAACAAgACQAAAAcABwAKAAkACwAJAAoAAAAJAAsAAAALAAgACwAKAAwADQAKAAcADQAMAAoADgALAAwACAALAA4ADAANAA4ACAAOAA8ADgANAA8AEAAAAAgACAAPABAAAAARAAcADQAHABEAAAAQABEADwANABIAEgAQAA8ADQARABIAEgARABAA"),
+"name": "chain_fence",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 19,
+"vertex_data": PackedByteArray("NfX/f0l5AACaev9/SXkAAJp6/v/MeQAAAAD+/8x5AAAAAP9/SXkAAJp6AADHeAAAAAAAAMd4AAA19QAAx3gAADX1/v/MeQAANfUAAAAAAAD//wAAAAAAADX1//8FAQAA/////wUBAAD//wAAx3gAAP///v/MeQAA///+////AAA19f7///8AADX1AAD5/gAA//8AAPn+AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_78257"]
+resource_name = "chain_fence_Plane"
+_surfaces = [{
+"aabb": AABB(-0.99999994, -0.0028447274, -0.039485198, 1.9999999, 2.000025, 0.08333866),
+"attribute_data": PackedByteArray("hK0C6PiDMcCBrbqXQte+v/////9u+v//bvr/f////38L/f+/Jvr/fyv6//8I/f9/Dv3+/6H//3+m//7////nv///Y71u+ue/bvpjvW767b9u+mm9///tv///ab1u+v9/bvr+/////v////9/Dv3+/6H//3+m//7/CP3/fyb6/38r+v//SMYH2PCcA7BFxr+HyrUK0H2MCqi4tfN/4N4BqInOguh7pSDARs7tl///579u+rPC//+zwm76579u+u2///+5wm76ucL//+2/SMYH2EXGv4ec7/avic6C6EbO7Zen96DA"),
+"format": 34896613399,
+"index_count": 90,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACQAIAAsACAAKAAwACAANAAsADgAIAAwACAAOAA0ADwAQABEAEQAQABIAEwAUABUAFQAUABYAFwAYABkAFwAZABoAGwAcAB0AHAAbAB4AHgAbAB8AHwAbACAAIQAiACMAJAAlACYAJAAmACcAKAApACoAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUANgA3ADgA"),
+"material": ExtResource("13_p5ojx"),
+"name": "chain_fence",
+"primitive": 3,
+"uv_scale": Vector4(1.9388742, 2.0000021, 0, 0),
+"vertex_count": 57,
+"vertex_data": PackedByteArray("NfX/f0l5pKCaev9/SXmMoJp6/v/MeaagNfX+/8x5v6D//wAA+f4AgDX1AAD5/gCANfX+////AID///7///8AgDX1/39JeQAANfX+////AAA19QAA+f4AADX1/v/MeQAANfUAAMd4AAA19f//BQEAADX1AAAAAAAA//8AAMd4/T///wAAAAD9PzX1AADHeP0/NfUAAAAA/T819f7/zHn9vzX1//8FAf2////+/8x5/b//////BQH9vzX1//8FAQAANfUAAAAAAAD//wAAAAAAAP////8FAQAA//8AAMd4/7//////BQH/v///AAAAAP+////+/8x5/7////7/////v///AAD5/v+/mnr/f0l5v6AAAP9/SXm/oAAA/v/Meb+gmnoAAMd42qAAAAAAx3jUoAAA/39Jedugmnr/f0l54aA19QAAx3j3oJp6AADHePegmnr/f0l596D//wAAx3j7PzX1AAD5/vs///8AAPn++z819QAAx3j7PzX1/v/Mefu////+////+7819f7////7v////v/Mefu/mnr/f0l58qAAAP7/zHnyoJp6/v/MefKgNfUAAMd4SaGaev9/SXlJoTX1/39JeUmhAgD3/wIA9/8CAPf/AgD3/wAA/38AAP9/AAD/fwAA/3//P/9//z//f/8//3//P/9//z//f/8//3//P/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3////9/////f////3////9//38AAP9/AAD/fwAA/38AAP9/AAD/fwAAAgD3/wIA9/8CAPf/AgD3/wIA9/8CAPf/AgD3/wIA9/8CAPf/AgD3/wAA/38AAP9/AAD/fwAA/3////9/////f////3////9/AgD3/wIA9/8CAPf/AgD3/wIA9/8CAPf/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_v6p85")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1tbbw"]
 resource_name = "concrete1"
@@ -414,8 +447,7 @@ omni_range = 60.0
 omni_attenuation = 0.2
 
 [node name="Light3" type="OmniLight3D" parent="." unique_id=802817677]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 25, 19)
-visible = false
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 25, -10.584351)
 light_color = Color(0.9969266, 0.9439155, 0.9240424, 1)
 light_energy = 0.815
 light_indirect_energy = 16.0
@@ -450,7 +482,7 @@ collision_mask = 3
 shape = SubResource("WorldBoundaryShape3D_d6po2")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=887323571]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8288786, 0.41576815, 1.6773605)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5536797, 0.378716, 1.656847)
 navigation_mesh = SubResource("NavigationMesh_xl7b5")
 
 [node name="Enemy" parent="NavigationRegion3D" unique_id=783461347 node_paths=PackedStringArray("player") instance=ExtResource("2_igoa8")]
@@ -734,6 +766,128 @@ transform = Transform3D(31.362772, 0.006773701, 3.087249, -0.36809108, 0.9999487
 mesh = SubResource("ArrayMesh_8k1se")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("12_p5ojx")
+
+[node name="fences" type="Node3D" parent="NavigationRegion3D/Level/Decoration" unique_id=1992959234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.737418, 0.039896876, 12.459849)
+
+[node name="Plane2" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=171501009]
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane3" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=458914696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9582825, 0, 0)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane4" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=2041447338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9417486, 0, 0)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane5" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=1566564968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.932072, 0, 0)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane6" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=961978337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9353976, 0, 0)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane7" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=1678557081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.918875, 0, 0)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane8" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=1608513549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.920687, 0, 0)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane9" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=1771372782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.896862, 0, 0)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane10" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=907518669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.863504, 0, 0)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane11" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=511364539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.849747, 0, 0)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane12" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=129859572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.826715, 0, 0)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane13" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=1381071010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.820482, -0.037052155, -0.020513535)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane14" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=1557248743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.786827, -0.037052155, -0.020513535)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane15" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=780972557]
+transform = Transform3D(-0.006859105, 0, 0.9999765, 0, 1, 0, -0.9999765, 0, -0.006859105, 24.743816, -0.037052155, -1.0269871)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane16" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=1527368059]
+transform = Transform3D(-0.006859105, 0, 0.9999765, 0, 1, 0, -0.9999765, 0, -0.006859105, 24.743816, -0.037052155, -2.9947605)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane17" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=1623232631]
+transform = Transform3D(-0.006859105, 0, 0.9999765, 0, 1, 0, -0.9999765, 0, -0.006859105, 24.743816, -0.037052155, -4.9510336)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane18" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=1191715145]
+transform = Transform3D(-0.006859105, 0, 0.9999765, 0, 1, 0, -0.9999765, 0, -0.006859105, 24.743816, -0.037052155, -6.930724)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane19" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=878499959]
+transform = Transform3D(-0.006859105, 0, 0.9999765, 0, 1, 0, -0.9999765, 0, -0.006859105, 24.743816, -0.037052155, -8.894643)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane20" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=1053998222]
+transform = Transform3D(-0.006859105, 0, 0.9999765, 0, 1, 0, -0.9999765, 0, -0.006859105, 24.743816, -0.037052155, -10.852618)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
+
+[node name="Plane21" type="MeshInstance3D" parent="NavigationRegion3D/Level/Decoration/fences" unique_id=1070432888]
+transform = Transform3D(-0.006859105, 0, 0.9999765, 0, 1, 0, -0.9999765, 0, -0.006859105, 24.743816, -0.037052155, -12.8319025)
+mesh = SubResource("ArrayMesh_78257")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_p5ojx")
 
 [node name="Decor_inside_arena" type="Node3D" parent="NavigationRegion3D/Level" unique_id=854167076]
 transform = Transform3D(0.7550468, 0, 0, 0, 0.3650198, 0, 0, 0, 1, 11.097414, 0.3821965, -5.0682526)
