@@ -368,57 +368,69 @@ visible = false
 [node name="char_brickbot_3" parent="." unique_id=1412697939 instance=ExtResource("4_uuw2b")]
 transform = Transform3D(-0.75, 0, -1.13246855e-07, 0, 0.75, 0, 1.13246855e-07, 0, -0.75, 0, -0.8323939, 0)
 
-[node name="metarig" parent="char_brickbot_3" index="0" unique_id=90469842]
+[node name="metarig" parent="char_brickbot_3" index="0" unique_id=1555615265]
 transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, -0.020198822, 0, -3.0499374e-09)
 
-[node name="Skeleton3D" parent="char_brickbot_3/metarig" index="0" unique_id=2081990569]
-bones/0/position = Vector3(-5.8912875e-12, 0.9806436, -0.0013082864)
-bones/0/rotation = Quaternion(-0.008407199, 1.1920506e-07, -1.0022156e-09, 0.99996465)
-bones/1/rotation = Quaternion(0.0044549946, 3.5272574e-15, 1.0621533e-09, 0.99999017)
-bones/3/rotation = Quaternion(0.0114130145, 0.46213707, -0.87448907, 0.14686044)
-bones/4/rotation = Quaternion(0.4168352, -0.12169744, -0.009297296, 0.9007507)
-bones/5/rotation = Quaternion(-0.072738804, 0.9544648, 0.017236825, -0.2888062)
-bones/6/rotation = Quaternion(-0.0049773967, 0.074675635, 0.98604727, 0.14869346)
-bones/7/rotation = Quaternion(0.53299284, 0.15899028, 0.04329715, 0.82991934)
-bones/8/rotation = Quaternion(0.10762185, 0.94213384, -0.0021075287, 0.31748515)
-bones/9/rotation = Quaternion(0.98209983, -0.00022866228, -5.253816e-05, 0.18836084)
-bones/10/rotation = Quaternion(0.013204357, 0.0021777083, -0.0051408173, 0.9998973)
-bones/11/rotation = Quaternion(-0.47928154, -0.043162175, -0.02650135, 0.87619853)
-bones/12/rotation = Quaternion(0.93400794, 0.00016664596, 0.0001653104, -0.35725233)
-bones/13/rotation = Quaternion(0.41243267, -0.0038809453, 0.0039125183, 0.9109715)
-bones/14/rotation = Quaternion(-0.47250423, 0.04290428, 0.026769774, 0.8798764)
+[node name="Skeleton3D" parent="char_brickbot_3/metarig" index="0" unique_id=1047521464]
+bones/0/position = Vector3(-2.7755582e-17, 1.0639584, -0.001308287)
+bones/0/rotation = Quaternion(-0.008407199, 1.1920506e-07, -1.0022155e-09, 0.99996465)
+bones/1/rotation = Quaternion(0.0044549946, 3.527257e-15, 1.0621533e-09, 0.99999017)
+bones/3/rotation = Quaternion(-0.0016382344, 0.013940774, -0.9897335, 0.14223386)
+bones/4/rotation = Quaternion(0.015960254, -0.0068363296, -0.0059620775, 0.9998315)
+bones/5/rotation = Quaternion(-0.072738804, 0.9544648, 0.017236829, -0.28880617)
+bones/6/rotation = Quaternion(-0.0016780565, -0.013922628, 0.9887918, 0.14864105)
+bones/7/rotation = Quaternion(0.058677543, 0.0727655, 0.1082252, 0.98972195)
+bones/8/rotation = Quaternion(0.19054742, 0.90246534, -0.048702113, 0.3832443)
+bones/9/rotation = Quaternion(0.9999852, -0.00021410994, -9.582519e-05, -0.0054339655)
+bones/10/rotation = Quaternion(-0.009639912, 0.0020695697, -0.0051850216, 0.99993795)
+bones/11/rotation = Quaternion(-0.4815445, -0.04324796, -0.02641112, 0.8749554)
+bones/12/rotation = Quaternion(0.9999852, 0.00021410857, 9.606176e-05, -0.005433965)
+bones/13/rotation = Quaternion(-0.009639913, -0.0020695697, 0.0051850183, 0.99993795)
+bones/14/rotation = Quaternion(-0.4815446, 0.043247964, 0.026411124, 0.87495536)
 
-[node name="arml_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="1" unique_id=1799358943]
+[node name="arml_biggun" parent="char_brickbot_3/metarig/Skeleton3D" index="0" unique_id=1322695061]
 visible = false
 
-[node name="armr_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="4" unique_id=922122033]
+[node name="arml_biggun_inside" parent="char_brickbot_3/metarig/Skeleton3D" index="1" unique_id=2067819483]
 visible = false
 
-[node name="core_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="7" unique_id=2099470692]
+[node name="arml_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="3" unique_id=32076508]
 visible = false
 
-[node name="hanl_bigsword" parent="char_brickbot_3/metarig/Skeleton3D" index="9" unique_id=1993133718]
+[node name="armr_biggun" parent="char_brickbot_3/metarig/Skeleton3D" index="5" unique_id=1729328884]
 visible = false
 
-[node name="hanl_pipe" parent="char_brickbot_3/metarig/Skeleton3D" index="10" unique_id=363828204]
+[node name="armr_biggun_inside" parent="char_brickbot_3/metarig/Skeleton3D" index="6" unique_id=110022826]
 visible = false
 
-[node name="hanl_sword" parent="char_brickbot_3/metarig/Skeleton3D" index="11" unique_id=1366233089]
+[node name="armr_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="8" unique_id=514448958]
 visible = false
 
-[node name="hanr_bigsword" parent="char_brickbot_3/metarig/Skeleton3D" index="12" unique_id=232905928]
+[node name="core_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="11" unique_id=771214599]
 visible = false
 
-[node name="hanr_pipe" parent="char_brickbot_3/metarig/Skeleton3D" index="13" unique_id=867792972]
+[node name="hanl_bigsword" parent="char_brickbot_3/metarig/Skeleton3D" index="13" unique_id=298965342]
 visible = false
 
-[node name="hanr_sword" parent="char_brickbot_3/metarig/Skeleton3D" index="14" unique_id=1335258756]
+[node name="hanl_pipe" parent="char_brickbot_3/metarig/Skeleton3D" index="14" unique_id=1695973744]
 visible = false
 
-[node name="hitbox" parent="char_brickbot_3/metarig/Skeleton3D" index="15" unique_id=1566144472]
+[node name="hanl_sword" parent="char_brickbot_3/metarig/Skeleton3D" index="15" unique_id=2097233434]
 visible = false
 
-[node name="legs_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="17" unique_id=1147679057]
+[node name="hanr_bigsword" parent="char_brickbot_3/metarig/Skeleton3D" index="16" unique_id=890183777]
+visible = false
+
+[node name="hanr_pipe" parent="char_brickbot_3/metarig/Skeleton3D" index="17" unique_id=1620931813]
+visible = false
+
+[node name="hanr_sword" parent="char_brickbot_3/metarig/Skeleton3D" index="18" unique_id=60321164]
+visible = false
+
+[node name="hitbox" parent="char_brickbot_3/metarig/Skeleton3D" index="19" unique_id=400258932]
+visible = false
+
+[node name="legs_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="21" unique_id=970581618]
 visible = false
 
 [node name="AnimationTree" type="AnimationTree" parent="char_brickbot_3" unique_id=897100888]
