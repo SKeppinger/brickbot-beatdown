@@ -139,7 +139,7 @@ func attack():
 	#what does this do? did i do this right? we just dont know
 	proj.source = Reference.Source.Enemy
 	get_tree().root.add_child(proj)
-	proj.global_position = position
+	proj.global_position = global_position
 func attack_close():
 	proj_angle = proj_angle.rotated(y_axis, close_attack_rotation)
 	for i in range(4):
@@ -148,7 +148,7 @@ func attack_close():
 		proj.direction = proj_angle
 		proj.source = Reference.Source.Enemy
 		get_tree().root.add_child(proj)
-		proj.global_position = position
+		proj.global_position = global_position
 		proj_angle = proj_angle.rotated( y_axis, PI/2)
 func bounced():
 	direction = -direction
