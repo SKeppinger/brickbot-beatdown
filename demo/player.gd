@@ -54,6 +54,8 @@ signal change_sprint
 var sprint_meter = MAX_SPRINT
 var sprint_started_on_ground = true
 
+signal change_fuel
+
 var left_attachment = null
 var right_attachment = null
 var special_attachment = null
@@ -88,8 +90,10 @@ func _ready():
 	if GameState.left_arm and GameState.right_arm:
 		var l = GameState.left_arm.instantiate()
 		var r = GameState.right_arm.instantiate()
+		var s = GameState.special_attachment.instantiate()
 		$LeftArmAttachment.add_child(l)
 		$RightArmAttachment.add_child(r)
+		$SpecialAttachment.add_child(s)
 		load_attachments() ## TEMPORARY FOR TESTING
 
 

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://d1d35a4aiirdi"]
 
 [ext_resource type="Script" uid="uid://bbhrg8i6qpd4i" path="res://demo/player.gd" id="1_euw2q"]
-[ext_resource type="PackedScene" uid="uid://c35gco400med4" path="res://attachments/special/jetpack.tscn" id="2_s4nun"]
 [ext_resource type="Script" uid="uid://cuu8fg0sd6wrw" path="res://player-semilockedcam/player_animation_tree.gd" id="2_yji6d"]
 [ext_resource type="PackedScene" uid="uid://bce2wsqbhhw17" path="res://assets/character/brickbot/char_brickbot_3.glb" id="4_uuw2b"]
 [ext_resource type="PackedScene" uid="uid://bvqb4ofwl2w84" path="res://assets/character/brickbot/char_brickbot_2.glb" id="5_pdims"]
@@ -387,8 +386,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 
 [node name="SpecialAttachment" type="Node3D" parent="." unique_id=1328288580]
 
-[node name="Jetpack" parent="SpecialAttachment" unique_id=1697148390 instance=ExtResource("2_s4nun")]
-
 [node name="Animation" type="Node3D" parent="." unique_id=1356760414 node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("2_yji6d")
 animation_tree = NodePath("../char_brickbot_3/AnimationTree")
@@ -404,21 +401,21 @@ transform = Transform3D(-0.75, 0, -1.13246855e-07, 0, 0.75, 0, 1.13246855e-07, 0
 transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, -0.020198822, 0, -3.0499374e-09)
 
 [node name="Skeleton3D" parent="char_brickbot_3/metarig" index="0" unique_id=1042694602]
-bones/0/position = Vector3(-3.6524568e-11, 0.9677639, -0.0013082861)
+bones/0/position = Vector3(8.883836e-11, 1.0689716, -0.0013082863)
 bones/0/rotation = Quaternion(-0.008407199, 1.1920506e-07, -1.0022156e-09, 0.99996465)
 bones/1/rotation = Quaternion(0.0044549946, 3.5272574e-15, 1.0621533e-09, 0.99999017)
-bones/3/rotation = Quaternion(0.010211725, 0.42123657, -0.89506793, 0.1459758)
-bones/4/rotation = Quaternion(0.41284648, -0.12055686, -0.009269934, 0.90273917)
-bones/5/rotation = Quaternion(-0.072738804, 0.9544648, 0.017236827, -0.2888062)
-bones/6/rotation = Quaternion(0.0015745058, -0.10082241, 0.98378384, 0.14832997)
-bones/7/rotation = Quaternion(0.53299284, 0.15899026, 0.04329715, 0.82991934)
+bones/3/rotation = Quaternion(-0.0031522803, -0.03895895, -0.98906595, 0.14220041)
+bones/4/rotation = Quaternion(0.31222862, -0.09176757, -0.00853691, 0.9455259)
+bones/5/rotation = Quaternion(-0.0727388, 0.9544648, 0.017236823, -0.28880617)
+bones/6/rotation = Quaternion(0.012327189, -0.38741317, 0.9093561, 0.15109757)
+bones/7/rotation = Quaternion(0.37574223, 0.118259974, 0.04228035, 0.9181747)
 bones/8/rotation = Quaternion(0.10762185, 0.94213384, -0.0021075287, 0.31748515)
-bones/9/rotation = Quaternion(0.95612884, -0.0002330132, -2.7632695e-05, 0.29294643)
-bones/10/rotation = Quaternion(0.24762882, 0.0032225961, -0.00452889, 0.968839)
-bones/11/rotation = Quaternion(-0.49453136, -0.04373698, -0.025887365, 0.86767256)
-bones/12/rotation = Quaternion(0.9726079, -0.00015254864, 0.001188063, -0.2324488)
-bones/13/rotation = Quaternion(0.43804052, -0.0025577536, 0.002222246, 0.8989489)
-bones/14/rotation = Quaternion(-0.39749953, 0.039955266, 0.029567305, 0.9162552)
+bones/9/rotation = Quaternion(0.99607563, -0.00020409079, -0.000116178155, -0.08850589)
+bones/10/rotation = Quaternion(0.042268343, 0.0022618985, -0.005029968, 0.99909115)
+bones/11/rotation = Quaternion(-0.48723587, -0.04346296, -0.02618283, 0.87179506)
+bones/12/rotation = Quaternion(0.91759187, 0.000234959, 8.8642804e-07, 0.39752376)
+bones/13/rotation = Quaternion(0.51906204, -0.0042671096, 0.0034165257, 0.85471916)
+bones/14/rotation = Quaternion(-0.47478247, 0.04299115, 0.026679846, 0.8786476)
 
 [node name="arml_biggun" parent="char_brickbot_3/metarig/Skeleton3D" index="0" unique_id=1823190106]
 visible = false

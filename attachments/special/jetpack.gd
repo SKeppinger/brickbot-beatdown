@@ -9,9 +9,10 @@ var flying = false
 
 func _process(delta):
 	if not flying:
-		current_fuel += delta
+		current_fuel += delta / 2.0
 		if current_fuel > max_fuel:
 			current_fuel = max_fuel
+		player.change_fuel.emit(current_fuel)
 	else:
 		flying = false
 
@@ -20,3 +21,4 @@ func do_action():
 	if current_fuel > 0.0:
 		current_fuel -= get_process_delta_time()
 		player.fly(fly_speed)
+		player.change_fuel.emit(current_fuel)
