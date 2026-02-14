@@ -15,6 +15,7 @@
 [ext_resource type="Material" uid="uid://cul1wwpi1x1ni" path="res://assets/environments/arena1_skatepark/dirt.tres" id="11_xl7b5"]
 [ext_resource type="Material" uid="uid://bedv770c7rt8r" path="res://assets/environments/arena1_skatepark/concrete_walls.tres" id="12_p5ojx"]
 [ext_resource type="Material" uid="uid://dbti17senbi3b" path="res://assets/environments/arena1_skatepark/chain_fence.tres" id="13_p5ojx"]
+[ext_resource type="AudioStream" uid="uid://brmy5xkfimiel" path="res://music/Rhinoceros.mp3" id="16_8k1se"]
 
 [sub_resource type="Theme" id="Theme_apafh"]
 
@@ -1150,5 +1151,10 @@ skeleton = NodePath("")
 transform = Transform3D(1.5793566e-08, -1.3244213, 5.7892294e-08, 0, -1.1975074e-07, -2.7395775, 1, 1.1924881e-08, -5.2125306e-16, -23.9305, 1.7476776, 9.410703)
 mesh = SubResource("ArrayMesh_i6f1c")
 skeleton = NodePath("")
+
+[node name="AudioStreamPlayer_music" type="AudioStreamPlayer2D" parent="." unique_id=1685325314]
+stream = ExtResource("16_8k1se")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="interface/Return" to="interface" method="_on_return_pressed"]

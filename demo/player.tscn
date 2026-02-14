@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cuu8fg0sd6wrw" path="res://player-semilockedcam/player_animation_tree.gd" id="2_yji6d"]
 [ext_resource type="PackedScene" uid="uid://bce2wsqbhhw17" path="res://assets/character/brickbot/char_brickbot_3.glb" id="4_uuw2b"]
 [ext_resource type="PackedScene" uid="uid://bvqb4ofwl2w84" path="res://assets/character/brickbot/char_brickbot_2.glb" id="5_pdims"]
+[ext_resource type="AudioStream" uid="uid://cbg0n1idhe64y" path="res://player sfx/advikgam-jump-up-245782.mp3" id="5_s4nun"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kegl3"]
 radius = 0.375
@@ -392,69 +393,69 @@ visible = false
 [node name="char_brickbot_3" parent="." unique_id=1412697939 instance=ExtResource("4_uuw2b")]
 transform = Transform3D(-0.75, 0, -1.13246855e-07, 0, 0.75, 0, 1.13246855e-07, 0, -0.75, 0, -0.8323939, 0)
 
-[node name="metarig" parent="char_brickbot_3" index="0" unique_id=1493370144]
+[node name="metarig" parent="char_brickbot_3" index="0" unique_id=1754804493]
 transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, -0.020198822, 0, -3.0499374e-09)
 
-[node name="Skeleton3D" parent="char_brickbot_3/metarig" index="0" unique_id=1265165957]
-bones/0/position = Vector3(1.1902226e-13, 0.9646047, -0.0013082866)
+[node name="Skeleton3D" parent="char_brickbot_3/metarig" index="0" unique_id=2100642742]
+bones/0/position = Vector3(1.8938667e-10, 1.0673565, -0.0013082862)
 bones/0/rotation = Quaternion(-0.008407199, 1.1920506e-07, -1.0022156e-09, 0.99996465)
 bones/1/rotation = Quaternion(0.0044549946, 3.5272574e-15, 1.0621533e-09, 0.99999017)
-bones/3/rotation = Quaternion(0.008877731, 0.37569192, -0.91525704, 0.14519425)
-bones/4/rotation = Quaternion(0.41447186, -0.121021636, -0.009281108, 0.9019317)
+bones/3/rotation = Quaternion(0.00569011, 0.26695862, -0.9528977, 0.14382881)
+bones/4/rotation = Quaternion(0.44335467, -0.12927951, -0.009475756, 0.88692373)
 bones/5/rotation = Quaternion(-0.072738804, 0.9544648, 0.017236825, -0.2888062)
-bones/6/rotation = Quaternion(-0.0016288119, -0.015227045, 0.9887749, 0.14862649)
-bones/7/rotation = Quaternion(0.53299284, 0.15899026, 0.04329715, 0.82991934)
+bones/6/rotation = Quaternion(0.00069525844, 0.03158741, 0.9884878, 0.14796545)
+bones/7/rotation = Quaternion(0.31134313, 0.101387605, 0.041498393, 0.9439618)
 bones/8/rotation = Quaternion(0.10762185, 0.94213384, -0.0021075287, 0.31748515)
-bones/9/rotation = Quaternion(0.9562908, -0.00023299777, -2.776153e-05, 0.29241765)
-bones/10/rotation = Quaternion(0.26407483, 0.0032913014, -0.004474729, 0.9644863)
-bones/11/rotation = Quaternion(-0.45432654, -0.042205308, -0.027476486, 0.88941056)
-bones/12/rotation = Quaternion(0.98229706, 0.00019309472, 0.00013342328, -0.18732974)
-bones/13/rotation = Quaternion(0.466387, -0.004080692, 0.0036721688, 0.88456386)
-bones/14/rotation = Quaternion(-0.3703722, 0.038848262, 0.030505318, 0.92756927)
+bones/9/rotation = Quaternion(0.94215745, -0.00023402141, -1.7247088e-05, 0.33517075)
+bones/10/rotation = Quaternion(0.51906204, 0.0042671086, -0.0034165303, 0.85471916)
+bones/11/rotation = Quaternion(-0.46779886, -0.042724356, -0.026954545, 0.88239014)
+bones/12/rotation = Quaternion(0.999583, 0.00021180308, 0.00010105616, -0.028875003)
+bones/13/rotation = Quaternion(0.14413232, -0.002776077, 0.0048351726, 0.9895427)
+bones/14/rotation = Quaternion(-0.4970205, 0.04383009, 0.025785785, 0.8662475)
 
-[node name="arml_biggun" parent="char_brickbot_3/metarig/Skeleton3D" index="0" unique_id=1084039548]
+[node name="arml_biggun" parent="char_brickbot_3/metarig/Skeleton3D" index="0" unique_id=176130533]
 visible = false
 
-[node name="arml_biggun_inside" parent="char_brickbot_3/metarig/Skeleton3D" index="1" unique_id=506911437]
+[node name="arml_biggun_inside" parent="char_brickbot_3/metarig/Skeleton3D" index="1" unique_id=1391218904]
 visible = false
 
-[node name="arml_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="3" unique_id=358856327]
+[node name="arml_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="3" unique_id=1225421110]
 visible = false
 
-[node name="armr_biggun" parent="char_brickbot_3/metarig/Skeleton3D" index="5" unique_id=1403341037]
+[node name="armr_biggun" parent="char_brickbot_3/metarig/Skeleton3D" index="5" unique_id=1835052163]
 visible = false
 
-[node name="armr_biggun_inside" parent="char_brickbot_3/metarig/Skeleton3D" index="6" unique_id=970401015]
+[node name="armr_biggun_inside" parent="char_brickbot_3/metarig/Skeleton3D" index="6" unique_id=454218721]
 visible = false
 
-[node name="armr_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="8" unique_id=1255904714]
+[node name="armr_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="8" unique_id=1511480897]
 visible = false
 
-[node name="core_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="11" unique_id=524463443]
+[node name="core_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="11" unique_id=1147412875]
 visible = false
 
-[node name="hanl_bigsword" parent="char_brickbot_3/metarig/Skeleton3D" index="13" unique_id=171638979]
+[node name="hanl_bigsword" parent="char_brickbot_3/metarig/Skeleton3D" index="13" unique_id=1668146797]
 visible = false
 
-[node name="hanl_pipe" parent="char_brickbot_3/metarig/Skeleton3D" index="14" unique_id=914151524]
+[node name="hanl_pipe" parent="char_brickbot_3/metarig/Skeleton3D" index="14" unique_id=638347108]
 visible = false
 
-[node name="hanl_sword" parent="char_brickbot_3/metarig/Skeleton3D" index="15" unique_id=709264016]
+[node name="hanl_sword" parent="char_brickbot_3/metarig/Skeleton3D" index="15" unique_id=117452992]
 visible = false
 
-[node name="hanr_bigsword" parent="char_brickbot_3/metarig/Skeleton3D" index="16" unique_id=430899687]
+[node name="hanr_bigsword" parent="char_brickbot_3/metarig/Skeleton3D" index="16" unique_id=364123612]
 visible = false
 
-[node name="hanr_pipe" parent="char_brickbot_3/metarig/Skeleton3D" index="17" unique_id=748436281]
+[node name="hanr_pipe" parent="char_brickbot_3/metarig/Skeleton3D" index="17" unique_id=1031503663]
 visible = false
 
-[node name="hanr_sword" parent="char_brickbot_3/metarig/Skeleton3D" index="18" unique_id=1387469709]
+[node name="hanr_sword" parent="char_brickbot_3/metarig/Skeleton3D" index="18" unique_id=1995407584]
 visible = false
 
-[node name="hitbox" parent="char_brickbot_3/metarig/Skeleton3D" index="19" unique_id=19971895]
+[node name="hitbox" parent="char_brickbot_3/metarig/Skeleton3D" index="19" unique_id=10618757]
 visible = false
 
-[node name="legs_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="21" unique_id=253147686]
+[node name="legs_gunslinger" parent="char_brickbot_3/metarig/Skeleton3D" index="21" unique_id=484754424]
 visible = false
 
 [node name="AnimationTree" type="AnimationTree" parent="char_brickbot_3" unique_id=897100888]
@@ -473,6 +474,10 @@ parameters/Melee_Blend/OneShot/active = false
 parameters/Melee_Blend/OneShot/internal_active = false
 parameters/Melee_Blend/OneShot/request = 0
 parameters/Running-Blend/blend_position = Vector2(-0.10526317, 0.6018957)
+
+[node name="AudioStreamPlayerJump" type="AudioStreamPlayer2D" parent="." unique_id=218870464]
+stream = ExtResource("5_s4nun")
+bus = &"SFX"
 
 [editable path="old_char_brickbot_2"]
 [editable path="char_brickbot_3"]

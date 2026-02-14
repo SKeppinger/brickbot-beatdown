@@ -18,6 +18,7 @@ albedo_color = Color(1, 0.599933, 0.540393, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wtyih"]
 material = SubResource("StandardMaterial3D_4us2m")
+height = 1.5
 
 [node name="Enemy" type="CharacterBody3D" unique_id=409825031 groups=["enemy"]]
 collision_layer = 2

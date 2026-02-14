@@ -29,6 +29,7 @@ const VCAM_RANGE = PI / 4 # This is the maximum vertical camera rotation, in rad
 @onready var camera_rear_arm = $CameraPivot/EdgeSpringArm/RearSpringArm
 @onready var default_camera_pivot = camera_pivot.rotation
 @onready var animation_tree = $char_brickbot_3/AnimationTree
+@onready var player_audio_stream_jump = $AudioStreamPlayerJump
 
 signal player_health
 var hp = max_hp
@@ -192,6 +193,7 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("jump"):
 				jump_direction = direction_fb
 				velocity.y = JUMP_SPEED
+				player_audio_stream_jump.play()
 			else:
 				jump_direction = Vector3.ZERO
 				velocity.y = 0

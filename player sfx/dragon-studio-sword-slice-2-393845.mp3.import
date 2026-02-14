@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b8slnug2ss3xt"
+path="res://.godot/imported/dragon-studio-sword-slice-2-393845.mp3-591634369a58707b7769baa456e6b721.mp3str"
+
+[deps]
+
+source_file="res://player sfx/dragon-studio-sword-slice-2-393845.mp3"
+dest_files=["res://.godot/imported/dragon-studio-sword-slice-2-393845.mp3-591634369a58707b7769baa456e6b721.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
