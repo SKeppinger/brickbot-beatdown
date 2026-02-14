@@ -22,6 +22,7 @@ const VCAM_RANGE = PI / 4 # This is the maximum vertical camera rotation, in rad
 
 @export var max_hp = 10
 
+@onready var skeleton = $char_brickbot_3/metarig/Skeleton3D
 
 @onready var facing_ray = $CollisionShape3D/FacingDirection
 @onready var camera_pivot = $CameraPivot
@@ -80,9 +81,39 @@ func load_attachments():
 	special_attachment = $SpecialAttachment.get_child(0)
 	special_attachment.type = Reference.AttachmentType.Special
 	
+	show_attachments()
+	
 	attachmentTypeRight = str(right_attachment)
 	print(attachmentTypeRight)
 
+## Show attachments
+# Called by the load_attachments function to show the models corresponding to the chosen attachments
+func show_attachments():
+	var attachments = [left_attachment, right_attachment] ## TODO: special attachment
+	for a in attachments:
+		var models = []
+		if a is MeleeAttachment:
+			# We need to check WHICH melee it is, we'll make this cleaner in future maybe
+			if a.animation_duration == 0.4: # big sword
+				models.append("_bigsword")
+			else: # pipe
+				models.append("_pipe")
+		elif a is RangedAttachment:
+			# We need to check WHICH ranged it is, we'll make this cleaner in future maybe
+			if a.fire_cooldown == 0.25: # big gun
+				models.append("_biggun")
+				models.append("_biggun_inside")
+			else: # small gun
+				pass
+		for m in models:
+			var model_name = "han"
+			if m.contains("biggun"):
+				model_name = "arm"
+			if a.type == Reference.AttachmentType.LeftArm:
+				model_name = model_name + "l" + m
+			elif a.type == Reference.AttachmentType.RightArm:
+				model_name = model_name + "r" + m
+			skeleton.get_node(model_name).visible = true
 
 ## Ready (capture mouse)
 func _ready():

@@ -8,15 +8,16 @@ height = 2.2
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_egk6i"]
 height = 2.2
 
-[node name="MeleeAttack" type="Area3D"]
+[node name="MeleeAttack" type="Area3D" unique_id=545196869]
+visible = false
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_egk6i")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=294808089]
 shape = SubResource("CapsuleShape3D_0vlmx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1891524261]
 mesh = SubResource("CapsuleMesh_egk6i")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

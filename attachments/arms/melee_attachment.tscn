@@ -12,6 +12,7 @@ radius = 0.1
 height = 1.303
 
 [node name="MeleeAttachment" type="StaticBody3D" unique_id=1885538313]
+visible = false
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_0b6p8")
