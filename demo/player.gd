@@ -45,6 +45,10 @@ var slow_speed = 0.0
 var ms_timer = 0.0
 var movement_locked = false
 var ml_timer = 0.0
+var dashing = true
+var dash_direction = Vector3.ZERO
+var dash_speed = 0.0
+var dash_timer = 0.0
 
 signal change_sprint
 var sprint_meter = MAX_SPRINT
@@ -71,7 +75,8 @@ func load_attachments():
 	left_attachment.type = Reference.AttachmentType.LeftArm
 	right_attachment = $RightArmAttachment.get_child(0)
 	right_attachment.type = Reference.AttachmentType.RightArm
-	## TODO: special attachment and maybe a cleaner way to do this
+	special_attachment = $SpecialAttachment.get_child(0)
+	special_attachment.type = Reference.AttachmentType.Special
 	
 	attachmentTypeRight = str(right_attachment)
 	print(attachmentTypeRight)
@@ -139,8 +144,13 @@ func _process(delta):
 			##it seems how long this is doesnt matter, as long as it ticks
 			##would be cleaner if we could import it directly from the attack scripts
 		## Special
-		if special_attachment and Input.is_action_pressed("special_ability"):
-			special_attachment.do_action()
+		if special_attachment:
+			if special_attachment.special_input_type == Reference.SpecialInputType.Press:
+				if Input.is_action_just_pressed("special_ability"):
+					special_attachment.do_action()
+			elif special_attachment.special_input_type == Reference.SpecialInputType.Hold:
+				if Input.is_action_pressed("special_ability"):
+					special_attachment.do_action()
 		
 		## Sprint Meter
 		if sprint_meter < MAX_SPRINT:
@@ -161,6 +171,12 @@ func _process(delta):
 		if ml_timer <= 0.0:
 			movement_locked = false
 			ml_timer = 0.0
+		## Dash
+		if dashing:
+			dash_timer -= delta
+		if dash_timer <= 0.0:
+			dashing = false
+			dash_timer = 0.0
 		## Hurt
 		if hurt_timer <= 0.0:
 			is_hurt = false
@@ -179,7 +195,7 @@ func _physics_process(delta):
 	if not GameState.paused:
 		## Player Movement
 		var input_dir = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
-		if movement_locked:
+		if movement_locked or dashing:
 			input_dir = Vector2.ZERO
 		var facing_direction = get_facing_direction()
 		var direction_strafe = (facing_direction.cross(up_direction) * input_dir.x).normalized()
@@ -196,9 +212,9 @@ func _physics_process(delta):
 				player_audio_stream_jump.play()
 			else:
 				jump_direction = Vector3.ZERO
-				velocity.y = 0
+				#velocity.y = 0
+		var y_vel = velocity.y
 		if move_direction:
-			var y_vel = velocity.y
 			if Input.is_action_just_pressed("sprint"):
 				if not is_on_floor():
 					sprint_started_on_ground = false
@@ -222,6 +238,9 @@ func _physics_process(delta):
 			else:
 				velocity = Vector3(move_direction.x, 0, move_direction.z).normalized() * slow_speed
 				velocity.y = y_vel
+		elif dashing:
+			velocity = Vector3(dash_direction.x, 0, dash_direction.z).normalized() * dash_speed
+			velocity.y = y_vel
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -251,6 +270,20 @@ func _physics_process(delta):
 			camera_pivot.rotation.x = lerp(camera_pivot.rotation.x, height_diff * CAMLOCK_VRATIO, delta * cam_speed)
 			if abs(camera_pivot.rotation.x) > VCAM_RANGE:
 				camera_pivot.rotation.x = sign(camera_pivot.rotation.x) * VCAM_RANGE
+
+## Dash (for the dash attachment)
+func dash(speed, duration):
+	dashing = true
+	if move_direction == Vector3.ZERO:
+		dash_direction = get_facing_direction()
+	else:
+		dash_direction = move_direction
+	dash_speed = speed
+	dash_timer = duration
+
+## Fly (for the jetpack attachment)
+func fly(speed):
+	velocity.y = speed
 
 ## Slow movement (for attachments that slow movement)
 func slow_movement(speed, duration):

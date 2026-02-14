@@ -5,4 +5,4 @@ class_name DashBoots
 @export var dash_time: float
 
 func do_action():
-	pass
+	player.dash(dash_speed, dash_time)

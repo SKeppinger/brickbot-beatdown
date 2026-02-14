@@ -9,6 +9,9 @@ const VRATIO = 0.5
 ## The type (left/right arm or special)
 @export var type: Reference.AttachmentType
 
+## The input type for a special attachment
+@export var special_input_type = Reference.SpecialInputType.Press
+
 ## A reference to the player
 var player = null
 

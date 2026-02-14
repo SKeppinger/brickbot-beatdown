@@ -2,8 +2,15 @@
 
 [ext_resource type="Script" uid="uid://dcexy7dgxjgd1" path="res://attachments/special/dash_boots.gd" id="1_qkbqn"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qkbqn"]
+
 [node name="DashBoots" type="StaticBody3D" unique_id=1697148390]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_qkbqn")
 dash_speed = 18.0
-dash_time = 0.25
+dash_time = 0.2
 type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=106229835]
+shape = SubResource("BoxShape3D_qkbqn")

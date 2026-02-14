@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c35gco400med4"]
+
+[ext_resource type="Script" uid="uid://0k0cnxqeq0qb" path="res://attachments/special/jetpack.gd" id="1_3surf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qkbqn"]
+
+[node name="Jetpack" type="StaticBody3D" unique_id=1697148390]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_3surf")
+fly_speed = 4.0
+type = 2
+special_input_type = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=106229835]
+shape = SubResource("BoxShape3D_qkbqn")
