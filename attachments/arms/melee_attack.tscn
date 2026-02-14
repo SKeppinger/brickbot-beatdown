@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://xqwucw658v3w"]
+[gd_scene format=3 uid="uid://xqwucw658v3w"]
 
-[ext_resource type="Script" uid="uid://cu4qxewnh8rfw" path="res://attachments/melee_attack.gd" id="1_egk6i"]
+[ext_resource type="Script" uid="uid://cu4qxewnh8rfw" path="res://attachments/arms/melee_attack.gd" id="1_egk6i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0vlmx"]
 height = 2.2

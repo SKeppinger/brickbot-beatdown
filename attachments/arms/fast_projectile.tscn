@@ -1,18 +1,20 @@
-[gd_scene format=3 uid="uid://db1rqoryashc7"]
+[gd_scene format=3 uid="uid://c4rggn0047yes"]
 
-[ext_resource type="Script" uid="uid://11d7lp206w2v" path="res://attachments/projectile.gd" id="1_y86e5"]
+[ext_resource type="Script" uid="uid://11d7lp206w2v" path="res://attachments/arms/projectile.gd" id="1_cll4w"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5pkkt"]
-radius = 0.25
+radius = 0.1
 
 [sub_resource type="SphereMesh" id="SphereMesh_5pkkt"]
-radius = 0.25
-height = 0.5
+radius = 0.1
+height = 0.2
 
-[node name="MedProjectile" type="StaticBody3D" unique_id=71213699]
+[node name="FastProjectile" type="StaticBody3D" unique_id=71213699]
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("1_y86e5")
+script = ExtResource("1_cll4w")
+speed = 34.0
+damage = 0.4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=54050456]
 shape = SubResource("SphereShape3D_5pkkt")

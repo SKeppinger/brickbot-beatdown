@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://hwwble31n3j5"]
 
 [ext_resource type="Script" uid="uid://b11pcibjx50pn" path="res://GUI/main_menu.gd" id="1_06t4h"]
-[ext_resource type="PackedScene" uid="uid://vu04671xunx7" path="res://attachments/fast_ranged_attachment.tscn" id="2_rhcmj"]
-[ext_resource type="PackedScene" uid="uid://ceuf45tbqi1rd" path="res://attachments/med_ranged_attachment.tscn" id="3_exjve"]
-[ext_resource type="PackedScene" uid="uid://bsxw3rsifs8f2" path="res://attachments/big_melee_attachment.tscn" id="4_s7n8e"]
-[ext_resource type="PackedScene" uid="uid://debxgxhqpgpf1" path="res://attachments/melee_attachment.tscn" id="5_w0c01"]
-[ext_resource type="PackedScene" uid="uid://cf2tch766jqhv" path="res://attachments/shield_attachment.tscn" id="6_w0c01"]
+[ext_resource type="PackedScene" uid="uid://vu04671xunx7" path="res://attachments/arms/fast_ranged_attachment.tscn" id="2_rhcmj"]
+[ext_resource type="PackedScene" uid="uid://ceuf45tbqi1rd" path="res://attachments/arms/med_ranged_attachment.tscn" id="3_exjve"]
+[ext_resource type="PackedScene" uid="uid://bsxw3rsifs8f2" path="res://attachments/arms/big_melee_attachment.tscn" id="4_s7n8e"]
+[ext_resource type="PackedScene" uid="uid://debxgxhqpgpf1" path="res://attachments/arms/melee_attachment.tscn" id="5_w0c01"]
+[ext_resource type="PackedScene" uid="uid://cf2tch766jqhv" path="res://attachments/arms/shield_attachment.tscn" id="6_w0c01"]
 
 [node name="Main Menu" type="Node2D" unique_id=1178264397]
 script = ExtResource("1_06t4h")

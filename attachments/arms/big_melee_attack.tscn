@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c444etjderwa0"]
 
-[ext_resource type="Script" uid="uid://cu4qxewnh8rfw" path="res://attachments/melee_attack.gd" id="1_vslpc"]
+[ext_resource type="Script" uid="uid://cu4qxewnh8rfw" path="res://attachments/arms/melee_attack.gd" id="1_vslpc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0vlmx"]
 radius = 0.7

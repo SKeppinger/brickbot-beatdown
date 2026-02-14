@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bois2qc3qxpdc"]
+
+[ext_resource type="Script" uid="uid://dcexy7dgxjgd1" path="res://attachments/special/dash_boots.gd" id="1_qkbqn"]
+
+[node name="DashBoots" type="StaticBody3D" unique_id=1697148390]
+script = ExtResource("1_qkbqn")
+dash_speed = 18.0
+dash_time = 0.25
+type = 2

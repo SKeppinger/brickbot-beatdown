@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ceuf45tbqi1rd"]
 
-[ext_resource type="Script" uid="uid://d3lrrrf0jb20l" path="res://attachments/ranged_attachment.gd" id="1_5gxqo"]
-[ext_resource type="PackedScene" uid="uid://db1rqoryashc7" path="res://attachments/med_projectile.tscn" id="2_m1q76"]
+[ext_resource type="Script" uid="uid://d3lrrrf0jb20l" path="res://attachments/arms/ranged_attachment.gd" id="1_5gxqo"]
+[ext_resource type="PackedScene" uid="uid://db1rqoryashc7" path="res://attachments/arms/med_projectile.tscn" id="2_m1q76"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0mly6"]
 radius = 0.1

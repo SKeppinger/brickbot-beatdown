@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://debxgxhqpgpf1"]
 
-[ext_resource type="Script" uid="uid://gvnrymhelq8d" path="res://attachments/melee_attachment.gd" id="1_0b6p8"]
-[ext_resource type="PackedScene" uid="uid://xqwucw658v3w" path="res://attachments/melee_attack.tscn" id="2_iqotn"]
+[ext_resource type="Script" uid="uid://gvnrymhelq8d" path="res://attachments/arms/melee_attachment.gd" id="1_0b6p8"]
+[ext_resource type="PackedScene" uid="uid://xqwucw658v3w" path="res://attachments/arms/melee_attack.tscn" id="2_iqotn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7jeuy"]
 radius = 0.1

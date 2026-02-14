@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://cf2tch766jqhv"]
+[gd_scene format=3 uid="uid://bsxw3rsifs8f2"]
 
-[ext_resource type="Script" uid="uid://c8p0m002id5q1" path="res://attachments/shield_attachment.gd" id="1_2wu4m"]
-[ext_resource type="PackedScene" uid="uid://b70c5301nw34g" path="res://attachments/shield.tscn" id="2_b22l7"]
+[ext_resource type="Script" uid="uid://gvnrymhelq8d" path="res://attachments/arms/melee_attachment.gd" id="1_vp6rp"]
+[ext_resource type="PackedScene" uid="uid://c444etjderwa0" path="res://attachments/arms/big_melee_attack.tscn" id="2_vp6rp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7jeuy"]
 radius = 0.1
@@ -11,11 +11,14 @@ height = 1.3029785
 radius = 0.1
 height = 1.303
 
-[node name="Shield" type="StaticBody3D" unique_id=757603234]
+[node name="BigMeleeAttachment" type="StaticBody3D" unique_id=757603234]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_2wu4m")
-shield = ExtResource("2_b22l7")
+script = ExtResource("1_vp6rp")
+animation_duration = 0.4
+move_speed = 2.5
+attack_cooldown = 0.9
+attack = ExtResource("2_vp6rp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1533878367]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15148926, 0)
@@ -29,5 +32,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45039567, 0)
 mesh = SubResource("CapsuleMesh_0b6p8")
 skeleton = NodePath("../..")
 
-[node name="ShieldSpawn" type="Node3D" parent="Pivot" unique_id=986540531]
+[node name="AttackSpawn" type="Node3D" parent="Pivot" unique_id=986540531]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90000004, 0)

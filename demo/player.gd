@@ -140,7 +140,7 @@ func _process(delta):
 			##would be cleaner if we could import it directly from the attack scripts
 		## Special
 		if special_attachment and Input.is_action_pressed("special_ability"):
-			pass
+			special_attachment.do_action()
 		
 		## Sprint Meter
 		if sprint_meter < MAX_SPRINT:

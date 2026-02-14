@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b70c5301nw34g"]
 
-[ext_resource type="Script" uid="uid://h77j60a802cy" path="res://attachments/shield.gd" id="1_ug0bx"]
+[ext_resource type="Script" uid="uid://h77j60a802cy" path="res://attachments/arms/shield.gd" id="1_ug0bx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ug0bx"]
 size = Vector3(1, 0.5, 1.75)
