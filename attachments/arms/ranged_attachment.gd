@@ -12,6 +12,10 @@ class_name RangedAttachment
 ## The projectile spawn point
 @onready var proj_spawn = $Pivot/ProjectileSpawn
 
+##the sound
+@onready var audio_attack = $AudioStreamPlayerAttack
+
+
 ## Remaining cooldown time
 var cooldown = 0.0
 ## Whether the action is currently held
@@ -49,3 +53,5 @@ func do_action():
 		proj.global_position = proj_spawn.global_position
 		## Start the cooldown
 		cooldown = fire_cooldown
+		##play da sound
+		audio_attack.play()

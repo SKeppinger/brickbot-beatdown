@@ -20,6 +20,8 @@ class_name MeleeAttachment
 @onready var pivot = $Pivot
 ## The attack spawn point
 @onready var attack_spawn = $Pivot/AttackSpawn
+##the sound
+@onready var audio_attack = $AudioStreamPlayerAttack
 
 ## Remaining cooldown time
 var cooldown = 0.0
@@ -81,3 +83,5 @@ func do_action():
 		
 		## Start the cooldown
 		cooldown = attack_cooldown
+		##play da sound
+		audio_attack.play()

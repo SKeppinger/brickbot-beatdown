@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3lrrrf0jb20l" path="res://attachments/arms/ranged_attachment.gd" id="1_5gxqo"]
 [ext_resource type="PackedScene" uid="uid://db1rqoryashc7" path="res://attachments/arms/med_projectile.tscn" id="2_m1q76"]
+[ext_resource type="AudioStream" uid="uid://i7sc8iq8hwhl" path="res://player sfx/ahmed_abdulaal-laser-312360.mp3" id="3_p5i3b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0mly6"]
 radius = 0.1
@@ -31,3 +32,6 @@ skeleton = NodePath("../..")
 
 [node name="ProjectileSpawn" type="Node3D" parent="Pivot" unique_id=879188515]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90000004, 0)
+
+[node name="AudioStreamPlayerAttack" type="AudioStreamPlayer3D" parent="." unique_id=230903740]
+stream = ExtResource("3_p5i3b")

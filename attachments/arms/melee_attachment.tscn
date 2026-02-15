@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gvnrymhelq8d" path="res://attachments/arms/melee_attachment.gd" id="1_0b6p8"]
 [ext_resource type="PackedScene" uid="uid://xqwucw658v3w" path="res://attachments/arms/melee_attack.tscn" id="2_iqotn"]
+[ext_resource type="AudioStream" uid="uid://b8slnug2ss3xt" path="res://player sfx/dragon-studio-sword-slice-2-393845.mp3" id="3_eys1d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7jeuy"]
 radius = 0.1
@@ -32,3 +33,6 @@ skeleton = NodePath("../..")
 
 [node name="AttackSpawn" type="Node3D" parent="Pivot" unique_id=1416683968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90000004, 0)
+
+[node name="AudioStreamPlayerAttack" type="AudioStreamPlayer3D" parent="." unique_id=168410823]
+stream = ExtResource("3_eys1d")
